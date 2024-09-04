@@ -1,7 +1,6 @@
-import SplashScreen from "@/components/SplashScreen"
-import WelcomeScreen from "@/components/WelcomeScreen"
-import OnboardingScreen from "@/components/OnboardingScreen"
-import { Outlet } from "react-router-dom"
+import SplashScreen from "@/components/root/components/Splash"
+import WelcomeScreen from "@/components/root/components/Welcome"
+import OnboardingScreen from "@/components/root/components/Onboarding"
 import { useState, useEffect } from "react"
 
 function Root() {
@@ -19,13 +18,12 @@ function Root() {
   }, [welcome])
 
   return (
-    <body className="bg-dark-1 flex h-screen w-full items-center justify-center">
-      <main className="bg-dark-1 h-[100%] w-[430px]">
+    <body className="flex h-screen w-full items-center justify-center bg-dark-1">
+      <main className="h-[100%] w-[430px] bg-dark-1">
         {/* Primero se renderiza la SplashScreen y luego de 5 segundos te lleva a la WelcomeScreen */}
         {welcome === 0 && <SplashScreen />}
         {welcome === 1 && <WelcomeScreen />}
         {welcome === 2 && <OnboardingScreen />}
-        <Outlet />
       </main>
     </body>
   )
