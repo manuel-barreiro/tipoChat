@@ -1,6 +1,7 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import Root from "@/components/root/Root"
+import Onboarding from "@/components/onboarding/Onboarding"
 import SignUp from "@/components/signUp/SignUp"
 import SignIn from "@/components/signIn/SignIn"
 import ErrorPage from "@/components/ErrorPage.jsx"
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Root />,
+      },
+      {
+        path: "onboarding",
+        element: <Onboarding />,
       },
       {
         path: "sign-up",

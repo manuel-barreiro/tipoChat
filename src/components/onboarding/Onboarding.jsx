@@ -1,12 +1,12 @@
-import Onboarding from "@/assets/icons/onboarding.svg"
+import OnboardingIcon from "@/assets/icons/onboarding-icon.svg"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
 import staticData from "@/static/staticData"
 import { Link } from "react-router-dom"
 
-function OnboardingScreen() {
+export default function Onboarding() {
   return (
     <section className="relative flex h-full flex-col items-center justify-evenly">
-      <Onboarding className="ml-12" />
+      <OnboardingIcon className="ml-12" />
       <div className="flex flex-col gap-5 px-5 pb-6 text-center">
         <h1 className="text-heading-1 text-white">
           {staticData.dict.EN.onboardingScreen.title}
@@ -19,7 +19,7 @@ function OnboardingScreen() {
       <p className="text-body-medium font-regular text-white">
         {staticData.dict.EN.onboardingScreen.alreadyHaveAccount}{" "}
         <span className="cursor-pointer font-semibold text-primary hover:underline">
-          <Link to={"sign-in"}>
+          <Link to={"/sign-in"}>
             {staticData.dict.EN.onboardingScreen.signIn}
           </Link>
         </span>
@@ -27,5 +27,3 @@ function OnboardingScreen() {
     </section>
   )
 }
-
-export default OnboardingScreen

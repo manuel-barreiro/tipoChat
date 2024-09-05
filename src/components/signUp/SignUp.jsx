@@ -1,3 +1,10 @@
-export default function SignUpScreen() {
-  return <div className="text-5xl text-white">Sign Up</div>
+// import SignUpForm2 from "./components/SignUpForm2"
+import SignUpForm from "./components/SignUpForm"
+
+export default function SignUp() {
+  return (
+    <section className="flex justify-center">
+      <SignUpForm />
+    </section>
+  )
 }
