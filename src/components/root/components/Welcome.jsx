@@ -2,7 +2,7 @@ import staticData from "@/static/staticData"
 
 function WelcomeScreen() {
   return (
-    <section className="relative z-10 flex h-auto min-h-full w-full flex-col items-center justify-end gap-12 overflow-hidden">
+    <section className="relative z-10 flex h-auto min-h-[100dvh] w-full flex-col items-center justify-end gap-12 overflow-hidden">
       <div className="absolute inset-0 bg-dark-1/50" />
       <img
         src="/images/welcome-screen-messi.jpeg"

@@ -5,13 +5,13 @@ import { Link } from "react-router-dom"
 
 export default function Onboarding() {
   return (
-    <section className="relative flex h-full flex-col items-center justify-evenly">
+    <section className="relative flex h-[100%] flex-col items-center justify-evenly">
       <OnboardingIcon className="ml-12" />
       <div className="flex flex-col gap-5 px-5 pb-6 text-center">
         <h1 className="text-heading-2">
           {staticData.dict.EN.onboardingScreen.title}
         </h1>
-        <p className="text-body-xlarge font-medium">
+        <p className="text-body-large font-medium">
           {staticData.dict.EN.onboardingScreen.description}
         </p>
       </div>

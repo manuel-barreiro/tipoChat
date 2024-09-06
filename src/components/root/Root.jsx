@@ -21,11 +21,12 @@ function Root() {
   }, [welcome, navigate])
 
   return (
-    <>
-      {/* Primero se renderiza la Splash y luego de 3 segundos te lleva a la Welcome */}
-      {welcome === 0 && <Splash />}
-      {welcome === 1 && <Welcome />}
-    </>
+    <main className="flex h-auto w-full items-center justify-center bg-dark-1">
+      <div className="flex min-h-[100dvh] w-full max-w-[430px] flex-col justify-center bg-dark-1">
+        {welcome === 0 && <Splash />}
+        {welcome === 1 && <Welcome />}
+      </div>
+    </main>
   )
 }
 

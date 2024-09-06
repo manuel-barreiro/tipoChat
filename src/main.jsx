@@ -12,13 +12,12 @@ import "./index.css"
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Root />,
+  },
+  {
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        index: true,
-        element: <Root />,
-      },
       {
         path: "onboarding",
         element: <Onboarding />,
@@ -31,6 +30,7 @@ const router = createBrowserRouter([
         path: "sign-in",
         element: <SignIn />,
       },
+      // Add more routes here as needed
     ],
   },
 ])

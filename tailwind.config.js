@@ -37,6 +37,7 @@ export default {
         "dark-1": "#181A20",
         "dark-2": "#1F222A",
         "dark-3": "#35383F",
+        "input-focus": "#6949FF14",
         white: "#FFFFFF",
         black: "#000000",
         red: "#F54336",
