@@ -4,22 +4,24 @@ import { z } from "zod"
 import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import SignUpInput from "@/components/input/SignUpInput"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
+// import UserIcon from "@/assets/icons/auth-icons/user-icon.svg"
+import { UserIcon, EmailIcon, PasswordIcon, CalendarIcon } from "@/assets/icons"
 
 const formSchema = z
   .object({
     fullName: z.string().min(2, "Full name is required"),
-    nickname: z.string().optional(),
+    nickName: z.string().optional(),
     email: z.string().email("Invalid email address"),
     password: z.string().min(8, "Password must be at least 8 characters"),
     confirmPassword: z.string(),
     dateOfBirth: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date format"),
-    gender: z.enum(["male", "female", "other", "prefer not to say"]),
-    acceptTerms: z
-      .boolean()
-      .refine(
-        (val) => val === true,
-        "You must accept the terms and conditions"
-      ),
+    // gender: z.enum(["male", "female", "other", "prefer not to say"]),
+    // acceptTerms: z
+    //   .boolean()
+    //   .refine(
+    //     (val) => val === true,
+    //     "You must accept the terms and conditions"
+    //   ),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
@@ -31,26 +33,37 @@ const inputs = [
     name: "fullName",
     type: "text",
     placeholder: "Full Name",
+    icon: UserIcon,
+  },
+  {
+    name: "nickName",
+    type: "text",
+    placeholder: "Nickname",
+    icon: UserIcon,
   },
   {
     name: "email",
     type: "email",
     placeholder: "Email",
+    icon: EmailIcon,
   },
   {
     name: "password",
     type: "password",
     placeholder: "Password",
+    icon: PasswordIcon,
   },
   {
     name: "confirmPassword",
     type: "password",
     placeholder: "Confirm Password",
+    icon: PasswordIcon,
   },
   {
     name: "dateOfBirth",
     type: "date",
     placeholder: "Date of Birth",
+    icon: CalendarIcon,
   },
 ]
 
@@ -59,10 +72,14 @@ export default function SignUpForm() {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      fullName: "",
+      nickName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      dateOfBirth: "",
     },
   })
-  const { handleSubmit, control } = form
 
   // 2. Define a submit handler.
   function onSubmit(values) {
@@ -74,17 +91,15 @@ export default function SignUpForm() {
   return (
     <Form {...form}>
       <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex w-[90%] flex-col gap-6"
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="flex w-full flex-col gap-6"
       >
-        <h1 className="mb-6 text-center text-3xl font-bold">
-          Create New Account
-        </h1>
+        <h1 className="mb-6 text-center text-heading-3">Create New Account</h1>
 
         {inputs.map((input) => (
           <FormField
             key={input.name}
-            control={control}
+            control={form.control}
             name={input.name}
             render={({ field }) => (
               <FormItem>
@@ -92,6 +107,7 @@ export default function SignUpForm() {
                   field={field}
                   placeholder={input.placeholder}
                   type={input.type}
+                  icon={input.icon}
                 />
                 <FormMessage className="text-body-small text-red" />
               </FormItem>
