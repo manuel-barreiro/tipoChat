@@ -6,6 +6,8 @@ import SignUpInput from "@/components/input/SignUpInput"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
 // import UserIcon from "@/assets/icons/auth-icons/user-icon.svg"
 import { UserIcon, EmailIcon, PasswordIcon, CalendarIcon } from "@/assets/icons"
+import staticData from "@/static/staticData"
+import { Link } from "react-router-dom"
 
 const formSchema = z
   .object({
@@ -92,7 +94,7 @@ export default function SignUpForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex w-full flex-col gap-6"
+        className="flex w-full flex-col gap-5"
       >
         <h1 className="mb-6 text-center text-heading-3">Create New Account</h1>
 
@@ -118,6 +120,15 @@ export default function SignUpForm() {
         <PrimaryButton type="submit" text="Create New Account">
           Submit
         </PrimaryButton>
+
+        <p className="mx-auto text-body-medium font-regular">
+          {staticData.dict.EN.onboardingScreen.alreadyHaveAccount}{" "}
+          <span className="cursor-pointer font-semibold text-primary hover:underline">
+            <Link to={"/sign-in"}>
+              {staticData.dict.EN.onboardingScreen.signIn}
+            </Link>
+          </span>
+        </p>
       </form>
     </Form>
   )
