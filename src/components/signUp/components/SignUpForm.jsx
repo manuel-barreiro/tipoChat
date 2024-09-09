@@ -3,9 +3,9 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import SignUpInput from "@/components/input/SignUpInput"
+import DateInput from "@/components/input/DateInput"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
-// import UserIcon from "@/assets/icons/auth-icons/user-icon.svg"
-import { UserIcon, EmailIcon, PasswordIcon, CalendarIcon } from "@/assets/icons"
+import { UserIcon, EmailIcon, PasswordIcon } from "@/assets/icons"
 import staticData from "@/static/staticData"
 import { Link } from "react-router-dom"
 
@@ -16,7 +16,9 @@ const formSchema = z
     email: z.string().email("Invalid email address"),
     password: z.string().min(8, "Password must be at least 8 characters"),
     confirmPassword: z.string(),
-    dateOfBirth: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date format"),
+    dateOfBirth: z.date({
+      required_error: "A date of birth is required.",
+    }),
     // gender: z.enum(["male", "female", "other", "prefer not to say"]),
     // acceptTerms: z
     //   .boolean()
@@ -61,12 +63,12 @@ const inputs = [
     placeholder: "Confirm Password",
     icon: PasswordIcon,
   },
-  {
-    name: "dateOfBirth",
-    type: "date",
-    placeholder: "Date of Birth",
-    icon: CalendarIcon,
-  },
+  // {
+  //   name: "dateOfBirth",
+  //   type: "date",
+  //   placeholder: "Date of Birth",
+  //   icon: CalendarIcon,
+  // },
 ]
 
 export default function SignUpForm() {
@@ -116,6 +118,12 @@ export default function SignUpForm() {
             )}
           />
         ))}
+
+        <FormField
+          control={form.control}
+          name="dateOfBirth"
+          render={({ field }) => <DateInput field={field} />}
+        />
 
         <PrimaryButton type="submit" text="Create New Account">
           Submit
