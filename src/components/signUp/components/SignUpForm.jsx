@@ -4,6 +4,7 @@ import { z } from "zod"
 import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import SignUpInput from "@/components/input/SignUpInput"
 import DateInput from "@/components/input/DateInput"
+import SelectInput from "@/components/input/SelectInput"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
 import { UserIcon, EmailIcon, PasswordIcon } from "@/assets/icons"
 import staticData from "@/static/staticData"
@@ -19,7 +20,7 @@ const formSchema = z
     dateOfBirth: z.date({
       required_error: "A date of birth is required.",
     }),
-    // gender: z.enum(["male", "female", "other", "prefer not to say"]),
+    gender: z.enum(["male", "female", "other"], { message: "Select gender" }),
     // acceptTerms: z
     //   .boolean()
     //   .refine(
@@ -63,12 +64,21 @@ const inputs = [
     placeholder: "Confirm Password",
     icon: PasswordIcon,
   },
-  // {
-  //   name: "dateOfBirth",
-  //   type: "date",
-  //   placeholder: "Date of Birth",
-  //   icon: CalendarIcon,
-  // },
+]
+
+const genderInputOptions = [
+  {
+    label: "Male",
+    value: "male",
+  },
+  {
+    label: "Female",
+    value: "female",
+  },
+  {
+    label: "Other",
+    value: "other",
+  },
 ]
 
 export default function SignUpForm() {
@@ -82,6 +92,7 @@ export default function SignUpForm() {
       password: "",
       confirmPassword: "",
       dateOfBirth: "",
+      gender: "",
     },
   })
 
@@ -98,7 +109,7 @@ export default function SignUpForm() {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex w-full flex-col gap-5"
       >
-        <h1 className="mb-6 text-center text-heading-3">Create New Account</h1>
+        <h1 className="mb-1 text-center text-heading-3">Create New Account</h1>
 
         {inputs.map((input) => (
           <FormField
@@ -123,6 +134,14 @@ export default function SignUpForm() {
           control={form.control}
           name="dateOfBirth"
           render={({ field }) => <DateInput field={field} />}
+        />
+
+        <FormField
+          control={form.control}
+          name="gender"
+          render={({ field }) => (
+            <SelectInput field={field} selectOptions={genderInputOptions} />
+          )}
         />
 
         <PrimaryButton type="submit" text="Create New Account">

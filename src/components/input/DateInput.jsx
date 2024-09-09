@@ -49,7 +49,7 @@ export default function DateInput({ field }) {
           </FormControl>
         </PopoverTrigger>
         <PopoverContent
-          className="w-auto rounded-2xl bg-dark-1 p-0 text-white"
+          className="w-auto rounded-2xl bg-dark-2 p-0 text-white"
           align="start"
         >
           <Calendar
