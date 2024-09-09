@@ -34,7 +34,7 @@ export const EmailIcon = ({ color = "currentColor", ...props }) => (
   </svg>
 )
 
-export const PasswordIcon = ({ color = "currentColor", ...props }) => (
+export const ShowPasswordIcon = ({ color = "currentColor", ...props }) => (
   <svg
     width="20"
     height="21"

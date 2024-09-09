@@ -16,7 +16,7 @@ const SelectGroup = SelectPrimitive.Group
 const SelectValue = SelectPrimitive.Value
 
 const SelectTrigger = React.forwardRef(
-  ({ className, children, ...props }, ref) => (
+  ({ className, children, icon: Icon, isActive, ...props }, ref) => (
     <SelectPrimitive.Trigger
       ref={ref}
       className={cn(
@@ -27,11 +27,11 @@ const SelectTrigger = React.forwardRef(
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        {props.icon ? (
-          <props.icon
+        {Icon ? (
+          <Icon
             className={cn(
               "absolute right-5 top-1/2 -translate-y-1/2 transform",
-              props.isActive ? "text-primary" : "text-gray-500"
+              isActive ? "text-primary" : "text-gray-500"
             )}
           />
         ) : (

@@ -2,9 +2,14 @@ import { useState, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import { FormControl, FormLabel } from "@/components/ui/form"
 import { cn } from "@/lib/utils"
+import { Eye, EyeOff } from "lucide-react"
 
-export default function SignUpInput({ placeholder, type, field, icon }) {
+export default function PasswordInput({ placeholder, type, field, icon }) {
   const [isActive, setIsActive] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
   const IconComponent = icon
 
   useEffect(() => {

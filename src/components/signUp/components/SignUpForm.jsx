@@ -7,7 +7,7 @@ import DateInput from "@/components/input/DateInput"
 import SelectInput from "@/components/input/SelectInput"
 import CheckboxInput from "@/components/input/CheckboxInput"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
-import { UserIcon, EmailIcon, PasswordIcon } from "@/assets/icons"
+import { UserIcon, EmailIcon, ShowPasswordIcon } from "@/assets/icons"
 import staticData from "@/static/staticData"
 import { Link } from "react-router-dom"
 
@@ -57,13 +57,13 @@ const inputs = [
     name: "password",
     type: "password",
     placeholder: "Password",
-    icon: PasswordIcon,
+    icon: ShowPasswordIcon,
   },
   {
     name: "confirmPassword",
     type: "password",
     placeholder: "Confirm Password",
-    icon: PasswordIcon,
+    icon: ShowPasswordIcon,
   },
 ]
 

@@ -82,6 +82,9 @@ export default {
         semibold: "600",
         bold: "700",
       },
+      boxShadow: {
+        "button-1": "4px 8px 24px 0px rgba(3, 253, 204, 0.15)",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
