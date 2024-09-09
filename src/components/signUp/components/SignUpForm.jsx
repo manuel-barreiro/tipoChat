@@ -5,6 +5,7 @@ import { Form, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import SignUpInput from "@/components/input/SignUpInput"
 import DateInput from "@/components/input/DateInput"
 import SelectInput from "@/components/input/SelectInput"
+import CheckboxInput from "@/components/input/CheckboxInput"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
 import { UserIcon, EmailIcon, PasswordIcon } from "@/assets/icons"
 import staticData from "@/static/staticData"
@@ -21,12 +22,12 @@ const formSchema = z
       required_error: "A date of birth is required.",
     }),
     gender: z.enum(["male", "female", "other"], { message: "Select gender" }),
-    // acceptTerms: z
-    //   .boolean()
-    //   .refine(
-    //     (val) => val === true,
-    //     "You must accept the terms and conditions"
-    //   ),
+    acceptTerms: z
+      .boolean()
+      .refine(
+        (val) => val === true,
+        "You must accept the terms and conditions"
+      ),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
@@ -93,6 +94,7 @@ export default function SignUpForm() {
       confirmPassword: "",
       dateOfBirth: "",
       gender: "",
+      acceptTerms: false,
     },
   })
 
@@ -107,7 +109,7 @@ export default function SignUpForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex w-full flex-col gap-5"
+        className="flex h-auto w-full flex-col gap-4"
       >
         <h1 className="mb-1 text-center text-heading-3">Create New Account</h1>
 
@@ -141,6 +143,14 @@ export default function SignUpForm() {
           name="gender"
           render={({ field }) => (
             <SelectInput field={field} selectOptions={genderInputOptions} />
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="acceptTerms"
+          render={({ field }) => (
+            <CheckboxInput field={field} text={"Accept Terms And Conditions"} />
           )}
         />
 
