@@ -60,6 +60,8 @@ export default function DateInput({ field }) {
             toYear={2012}
             selected={field.value}
             onSelect={field.onChange}
+            defaultMonth={field.value}
+            defaultYear={field.value}
             // disabled={(date) =>
             //   Number(date) < Date.now() - 1000 * 60 * 60 * 24 ||
             //   Number(date) > Date.now() + 1000 * 60 * 60 * 24 * 30

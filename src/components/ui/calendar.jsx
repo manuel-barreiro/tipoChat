@@ -71,10 +71,14 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
               <SelectTrigger className="pr-1.5 focus:ring-0">
                 <SelectValue>{selected?.props?.children}</SelectValue>
               </SelectTrigger>
-              <SelectContent position="popper">
+              <SelectContent
+                position="popper"
+                className="bg-dark-2 text-white opacity-100"
+              >
                 <ScrollArea className="h-80">
                   {options.map((option, id) => (
                     <SelectItem
+                      className="focus:bg-primary"
                       key={`${option.props.value}-${id}`}
                       value={option.props.value?.toString() ?? ""}
                     >
