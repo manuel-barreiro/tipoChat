@@ -13,6 +13,7 @@ export default {
         "primary-300": "#9AFEEA",
         "primary-200": "#CDFEF4",
         "primary-100": "#E5FFFA",
+        "primary-disabled": "#02CAA3",
         secondary: "#FFD300",
         "secondary-400": "#FFDC33",
         "secondary-300": "#FFE566",

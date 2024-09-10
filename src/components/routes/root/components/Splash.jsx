@@ -1,4 +1,4 @@
-import Spinner from "@/assets/icons/spinner.svg"
+import { Loader } from "@/assets/icons"
 import staticData from "@/static/staticData"
 
 export default function SplashScreen() {
@@ -7,7 +7,7 @@ export default function SplashScreen() {
       <h1 className="text-heading-1">
         {staticData.dict.EN.splashScreen.title}
       </h1>
-      <Spinner className="absolute bottom-20 animate-spin" />
+      <Loader className="absolute bottom-20 animate-spin" />
     </section>
   )
 }

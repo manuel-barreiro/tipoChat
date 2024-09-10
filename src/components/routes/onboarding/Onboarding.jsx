@@ -1,4 +1,4 @@
-import OnboardingIcon from "@/assets/icons/onboarding-icon.svg"
+import { OnboardingIcon } from "@/assets/icons"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
 import staticData from "@/static/staticData"
 import { Link } from "react-router-dom"

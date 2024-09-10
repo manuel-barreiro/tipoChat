@@ -1,9 +1,10 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
-import Root from "@/components/root/Root"
-import Onboarding from "@/components/onboarding/Onboarding"
-import SignUp from "@/components/signUp/SignUp"
-import SignIn from "@/components/signIn/SignIn"
+import Root from "@/components/routes/root/Root"
+import Onboarding from "@/components/routes/onboarding/Onboarding"
+import SignUp from "@/components/routes/signUp/SignUp"
+import SignIn from "@/components/routes/signIn/SignIn"
+import Profile from "@/components/routes/profile/Profile"
 import ErrorPage from "@/components/ErrorPage.jsx"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "./components/Layout"
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "sign-in",
         element: <SignIn />,
+      },
+      {
+        path: "profile",
+        element: <Profile />,
       },
       // Add more routes here as needed
     ],

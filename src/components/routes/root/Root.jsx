@@ -1,5 +1,5 @@
-import Splash from "@/components/root/components/Splash"
-import Welcome from "@/components/root/components/Welcome"
+import Splash from "@/components/routes/root/components/Splash"
+import Welcome from "@/components/routes/root/components/Welcome"
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
