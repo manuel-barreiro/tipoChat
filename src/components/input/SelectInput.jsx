@@ -1,3 +1,4 @@
+import React, { useState, useEffect, forwardRef } from "react"
 import {
   Select,
   SelectContent,
@@ -8,11 +9,9 @@ import {
 } from "@/components/ui/select"
 import { FormControl, FormItem, FormMessage } from "@/components/ui/form"
 import { CaretDown } from "@/assets/icons"
-
-import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
 
-export default function SelectInput({ field, selectOptions }) {
+const SelectInput = forwardRef(({ field, selectOptions, onKeyDown }, ref) => {
   const [isActive, setIsActive] = useState(false)
 
   useEffect(() => {
@@ -24,6 +23,8 @@ export default function SelectInput({ field, selectOptions }) {
       <Select onValueChange={field.onChange} defaultValue={field.value}>
         <FormControl>
           <SelectTrigger
+            ref={ref}
+            onKeyDown={onKeyDown}
             icon={CaretDown}
             isActive={isActive}
             className={cn(
@@ -52,4 +53,8 @@ export default function SelectInput({ field, selectOptions }) {
       <FormMessage className="text-body-small font-bold text-primary" />
     </FormItem>
   )
-}
+})
+
+SelectInput.displayName = "SelectInput"
+
+export default SelectInput

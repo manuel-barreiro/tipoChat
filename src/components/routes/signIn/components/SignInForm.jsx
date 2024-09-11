@@ -8,13 +8,14 @@ import PasswordInput from "@/components/input/PasswordInput"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
 import { EmailIcon } from "@/assets/icons"
 import staticData from "@/static/staticData"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import SuccessDialog from "@/components/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
 
 export default function SignInForm() {
   const router = useNavigate()
   const [success, setSuccess] = useState(false)
+  const inputRefs = useRef([])
 
   const form = useForm({
     resolver: zodResolver(loginSchema),
@@ -35,6 +36,17 @@ export default function SignInForm() {
     }, 3000)
   }
 
+  const handleKeyDown = (event, index) => {
+    if (event.key === "Enter") {
+      event.preventDefault()
+      const nextIndex = index + 1
+      if (nextIndex < 2) {
+        // +2 for dateOfBirth and gender
+        inputRefs.current[nextIndex].focus()
+      }
+    }
+  }
+
   return (
     <>
       <Form {...form}>
@@ -51,6 +63,8 @@ export default function SignInForm() {
                 placeholder={"Email"}
                 type={"email"}
                 icon={EmailIcon}
+                ref={(el) => (inputRefs.current[0] = el)}
+                onKeyDown={(e) => handleKeyDown(e, 0)}
               />
             )}
           />
@@ -59,7 +73,12 @@ export default function SignInForm() {
             control={form.control}
             name="password"
             render={({ field }) => (
-              <PasswordInput field={field} placeholder="Password" />
+              <PasswordInput
+                field={field}
+                placeholder="Password"
+                ref={(el) => (inputRefs.current[1] = el)}
+                onKeyDown={(e) => handleKeyDown(e, 1)}
+              />
             )}
           />
 

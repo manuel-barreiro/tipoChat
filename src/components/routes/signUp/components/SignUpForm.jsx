@@ -10,7 +10,7 @@ import PasswordInput from "@/components/input/PasswordInput"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
 import { UserIcon, EmailIcon } from "@/assets/icons"
 import staticData from "@/static/staticData"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import SuccessDialog from "@/components/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
 
@@ -33,6 +33,16 @@ const inputs = [
     placeholder: "Email",
     icon: EmailIcon,
   },
+  {
+    name: "password",
+    type: "password",
+    placeholder: "Password",
+  },
+  {
+    name: "confirmPassword",
+    type: "password",
+    placeholder: "Confirm password",
+  },
 ]
 
 const genderInputOptions = [
@@ -53,6 +63,7 @@ const genderInputOptions = [
 export default function SignUpForm() {
   const router = useNavigate()
   const [success, setSuccess] = useState(false)
+  const inputRefs = useRef([])
 
   const form = useForm({
     resolver: zodResolver(signUpSchema),
@@ -88,6 +99,17 @@ export default function SignUpForm() {
     }, 3000)
   }
 
+  const handleKeyDown = (event, index) => {
+    if (event.key === "Enter") {
+      event.preventDefault()
+      const nextIndex = index + 1
+      if (nextIndex < inputs.length + 2) {
+        // +2 for dateOfBirth and gender
+        inputRefs.current[nextIndex].focus()
+      }
+    }
+  }
+
   return (
     <>
       <Form {...form}>
@@ -95,49 +117,55 @@ export default function SignUpForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex h-auto w-full flex-col gap-4"
         >
-          {inputs.map((input) => (
+          {inputs.map((input, index) => (
             <FormField
               key={input.name}
               control={form.control}
               name={input.name}
-              render={({ field }) => (
-                <SignUpInput
-                  field={field}
-                  placeholder={input.placeholder}
-                  type={input.type}
-                  icon={input.icon}
-                />
-              )}
+              render={({ field }) =>
+                input.type === "password" ? (
+                  <PasswordInput
+                    field={field}
+                    placeholder={input.placeholder}
+                    ref={(el) => (inputRefs.current[index] = el)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                  />
+                ) : (
+                  <SignUpInput
+                    field={field}
+                    placeholder={input.placeholder}
+                    type={input.type}
+                    icon={input.icon}
+                    ref={(el) => (inputRefs.current[index] = el)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                  />
+                )
+              }
             />
           ))}
 
           <FormField
             control={form.control}
-            name="password"
-            render={({ field }) => (
-              <PasswordInput field={field} placeholder="Password" />
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="confirmPassword"
-            render={({ field }) => (
-              <PasswordInput field={field} placeholder="Confirm password" />
-            )}
-          />
-
-          <FormField
-            control={form.control}
             name="dateOfBirth"
-            render={({ field }) => <DateInput field={field} />}
+            render={({ field }) => (
+              <DateInput
+                field={field}
+                ref={(el) => (inputRefs.current[inputs.length] = el)}
+                onKeyDown={(e) => handleKeyDown(e, inputs.length)}
+              />
+            )}
           />
 
           <FormField
             control={form.control}
             name="gender"
             render={({ field }) => (
-              <SelectInput field={field} selectOptions={genderInputOptions} />
+              <SelectInput
+                field={field}
+                selectOptions={genderInputOptions}
+                ref={(el) => (inputRefs.current[inputs.length + 1] = el)}
+                onKeyDown={(e) => handleKeyDown(e, inputs.length + 1)}
+              />
             )}
           />
 
@@ -148,12 +176,11 @@ export default function SignUpForm() {
               <CheckboxInput
                 field={field}
                 text={"Accept Terms And Conditions"}
+                ref={(el) => (inputRefs.current[inputs.length + 1] = el)}
+                onKeyDown={(e) => handleKeyDown(e, inputs.length + 1)}
               />
             )}
           />
-
-          {/* For debbuging */}
-          {/* <pre>{JSON.stringify(form.formState.isValid, null, 2)}</pre> */}
 
           <PrimaryButton
             type="submit"

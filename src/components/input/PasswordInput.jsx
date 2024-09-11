@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import React, { useState, useEffect, forwardRef } from "react"
 import { Input } from "@/components/ui/input"
 import {
   FormControl,
@@ -9,7 +9,7 @@ import {
 import { cn } from "@/lib/utils"
 import { Eye, EyeOff } from "lucide-react"
 
-export default function PasswordInput({ placeholder, field }) {
+const PasswordInput = forwardRef(({ placeholder, field, onKeyDown }, ref) => {
   const [isActive, setIsActive] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
   const togglePasswordVisibility = () => {
@@ -46,6 +46,8 @@ export default function PasswordInput({ placeholder, field }) {
             type={showPassword ? "text" : "password"}
             placeholder={placeholder}
             {...field}
+            ref={ref}
+            onKeyDown={onKeyDown}
             className={cn(
               "password-input rounded-2xl border-2 border-transparent p-6 focus:border-primary",
               isActive ? "bg-input-focus" : "bg-dark-2",
@@ -61,4 +63,8 @@ export default function PasswordInput({ placeholder, field }) {
       <FormMessage className="text-body-small font-bold text-primary" />
     </FormItem>
   )
-}
+})
+
+PasswordInput.displayName = "PasswordInput"
+
+export default PasswordInput
