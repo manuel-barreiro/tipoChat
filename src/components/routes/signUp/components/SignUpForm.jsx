@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { signUpSchema } from "@/lib/zod-schemas"
 import { Form, FormField } from "@/components/ui/form"
 import SignUpInput from "@/components/input/SignUpInput"
 import DateInput from "@/components/input/DateInput"
@@ -10,38 +10,9 @@ import PasswordInput from "@/components/input/PasswordInput"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
 import { UserIcon, EmailIcon } from "@/assets/icons"
 import staticData from "@/static/staticData"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import SuccessDialog from "@/components/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
-
-//todo: disable confirm password input until password is entered and valid !!!!!!!!!!!!!!!!!!!!!!!!!
-
-const passwordSchema = z
-  .object({
-    password: z.string().min(8, "Password must be at least 8 characters"),
-    confirmPassword: z.string(),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords must match",
-    path: ["confirmPassword"],
-  })
-
-const userSchema = z.object({
-  fullName: z.string().min(2, "Full name must be at least 2 characters"),
-  nickName: z.string().optional(),
-  email: z.string().email("Invalid email address"),
-  dateOfBirth: z.date({
-    required_error: "Date of birth is required",
-  }),
-  gender: z.enum(["male", "female", "other"], {
-    required_error: "Please select a gender",
-  }),
-  acceptTerms: z.boolean().refine((val) => val === true, {
-    message: "You must accept the terms and conditions",
-  }),
-})
-
-const formSchema = z.intersection(passwordSchema, userSchema)
 
 const inputs = [
   {
@@ -84,7 +55,7 @@ export default function SignUpForm() {
   const [success, setSuccess] = useState(false)
 
   const form = useForm({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       fullName: "",
       nickName: "",
@@ -97,6 +68,16 @@ export default function SignUpForm() {
     },
     mode: "onChange",
   })
+
+  //Trigger validation on password and confirmPassword fields when either of them changes
+  useEffect(() => {
+    const subscription = form.watch((value, { name }) => {
+      if (name === "password" || name === "confirmPassword") {
+        form.trigger(["password", "confirmPassword"])
+      }
+    })
+    return () => subscription.unsubscribe()
+  }, [form])
 
   function onSubmit(values) {
     console.log(values)
@@ -142,11 +123,7 @@ export default function SignUpForm() {
             control={form.control}
             name="confirmPassword"
             render={({ field }) => (
-              <PasswordInput
-                field={field}
-                disabled={form}
-                placeholder="Confirm password"
-              />
+              <PasswordInput field={field} placeholder="Confirm password" />
             )}
           />
 
@@ -175,7 +152,8 @@ export default function SignUpForm() {
             )}
           />
 
-          <pre>{JSON.stringify(form.formState.isValid, null, 2)}</pre>
+          {/* For debbuging */}
+          {/* <pre>{JSON.stringify(form.formState.isValid, null, 2)}</pre> */}
 
           <PrimaryButton
             type="submit"

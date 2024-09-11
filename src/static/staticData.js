@@ -27,6 +27,17 @@ const dict = {
           "Please wait a moment, we are looking for a suitable recommendation for you...",
       },
     },
+    signInScreen: {
+      title: "Sign In to Your Account",
+      button: "Sign In",
+      forgotPassword: "Forgot Password?",
+      noAccount: "Don't have an account?",
+      signUp: "Sign Up",
+      successModal: {
+        title: "Login Successful!",
+        description: "Please wait a moment, we are logging you in...",
+      },
+    },
   },
   ES: {},
 }

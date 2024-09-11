@@ -449,3 +449,29 @@ export const SuccessDialogIcon = ({ ...props }) => (
     </defs>
   </svg>
 )
+
+export const LoginIcon = ({ ...props }) => (
+  <svg
+    width="120"
+    height="120"
+    viewBox="0 0 120 120"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <rect width="120" height="120" rx="60" fill="url(#paint0_linear_13_1723)" />
+    <defs>
+      <linearGradient
+        id="paint0_linear_13_1723"
+        x1="120"
+        y1="120"
+        x2="-22.7892"
+        y2="78.5996"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stopColor="#02DAAF" />
+        <stop offset="1" stopColor="#03FDCC" />
+      </linearGradient>
+    </defs>
+  </svg>
+)
