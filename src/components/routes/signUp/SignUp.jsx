@@ -1,13 +1,11 @@
 import SignUpForm from "./components/SignUpForm"
-import BackButton from "@/components/buttons/BackButton"
 import staticData from "@/static/staticData"
 import { Link } from "react-router-dom"
 
 export default function SignUp() {
   return (
     <section className="flex h-auto flex-col gap-4">
-      <BackButton />
-      <h1 className="mb-1 text-center text-heading-3">
+      <h1 className="mb-1 text-center text-heading-4">
         {staticData.dict.EN.signUpScreen.title}
       </h1>
       <SignUpForm />

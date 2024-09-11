@@ -1,5 +1,4 @@
 import SignInForm from "./components/SignInForm"
-import BackButton from "@/components/buttons/BackButton"
 import staticData from "@/static/staticData"
 import { Link } from "react-router-dom"
 import { LoginIcon } from "@/assets/icons"
@@ -7,9 +6,8 @@ import { LoginIcon } from "@/assets/icons"
 export default function SignIn() {
   return (
     <section className="flex h-auto flex-col gap-12">
-      <BackButton />
       <LoginIcon className="mx-auto" />
-      <h1 className="mb-1 text-center text-heading-3">
+      <h1 className="mb-1 text-center text-heading-4">
         {staticData.dict.EN.signInScreen.title}
       </h1>
       <SignInForm />

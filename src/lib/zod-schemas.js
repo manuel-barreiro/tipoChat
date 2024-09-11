@@ -13,7 +13,7 @@ export const passwordSchema = z
 export const userSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
   nickName: z.string().optional(),
-  email: z.string().email("Invalid email address"),
+  email: z.string().email("Enter a valid email address"),
   dateOfBirth: z.date({
     required_error: "Date of birth is required",
   }),
