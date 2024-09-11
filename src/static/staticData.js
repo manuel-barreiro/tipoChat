@@ -16,6 +16,17 @@ const dict = {
       alreadyHaveAccount: "Already have an account?",
       signIn: "Sign In",
     },
+    signUpScreen: {
+      title: "Create New Account",
+      button: "Sign Up",
+      alreadyHaveAccount: "Already have an account?",
+      signIn: "Sign In",
+      successModal: {
+        title: "Account Created!",
+        description:
+          "Please wait a moment, we are looking for a suitable recommendation for you...",
+      },
+    },
   },
   ES: {},
 }

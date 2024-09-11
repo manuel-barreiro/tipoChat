@@ -47,17 +47,18 @@ export default function PasswordInput({ placeholder, field }) {
             placeholder={placeholder}
             {...field}
             className={cn(
-              "rounded-2xl border-2 border-transparent p-6 focus:border-primary focus:bg-input-focus",
-              isActive
-                ? "bg-input-focus"
-                : "bg-dark-2 placeholder:text-gray-500"
+              "password-input rounded-2xl border-2 border-transparent p-6 focus:border-primary",
+              isActive ? "bg-input-focus" : "bg-dark-2",
+              "text-white placeholder-gray-500",
+              "autofill:bg-input-focus",
+              "[&:-webkit-autofill]:bg-input-focus [&:-webkit-autofill]:[-webkit-box-shadow:0_0_0px_1000px_#6949FF14_inset] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
             )}
             onFocus={() => setIsActive(true)}
             onBlur={() => setIsActive(!!field.value)}
           />
         </FormControl>
       </div>
-      <FormMessage className="text-body-small text-red" />
+      <FormMessage className="text-sm text-red" />
     </FormItem>
   )
 }

@@ -14,8 +14,6 @@ import { useState } from "react"
 import SuccessDialog from "@/components/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
 
-//todo: disable confirm password input until password is entered and valid !!!!!!!!!!!!!!!!!!!!!!!!!
-
 const passwordSchema = z
   .object({
     password: z.string().min(8, "Password must be at least 8 characters"),
@@ -79,7 +77,7 @@ const genderInputOptions = [
   },
 ]
 
-export default function SignUpForm() {
+export default function SignInForm() {
   const router = useNavigate()
   const [success, setSuccess] = useState(false)
 

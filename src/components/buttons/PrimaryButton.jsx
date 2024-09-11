@@ -1,22 +1,31 @@
-// import { useState, useCallback } from "react"
+import { cn } from "@/lib/utils"
 
-export default function PrimaryButton({ text = "Button" }) {
-  // const [isDisabled, setIsDisabled] = useState(false)
-
-  // const handleClick = useCallback(() => {
-  //   setIsDisabled(true)
-  //   setTimeout(() => {
-  //     setIsDisabled(false)
-  //   }, 5000)
-  // }, [])
-
+export default function PrimaryButton({
+  text = "Button",
+  disabled = false,
+  className,
+  ...props
+}) {
   return (
     <button
-      // onClick={handleClick}
-      // disabled={isDisabled}
-      className="w-full rounded-full bg-primary p-4 shadow-button-1 duration-300 ease-in-out"
+      disabled={disabled}
+      className={cn(
+        "w-full rounded-full p-4 duration-300 ease-in-out",
+        disabled
+          ? "cursor-not-allowed bg-primary-disabled"
+          : "bg-primary shadow-button-1",
+        className
+      )}
+      {...props}
     >
-      <span className="text-body-large font-bold text-grey-900">{text}</span>
+      <span
+        className={cn(
+          "text-body-large font-bold",
+          disabled ? "text-grey-900" : "text-grey-900"
+        )}
+      >
+        {text}
+      </span>
     </button>
   )
 }
