@@ -15,6 +15,27 @@ html {
   color: white;
 }
 
+/* Set the background color for the entire page */
+html {
+  background-color: theme("colors.primary");
+}
+
+/* Prevent overscroll behavior */
+body {
+  overscroll-behavior-y: none;
+}
+
+/* Enable smooth scrolling for iOS */
+body {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure the content fills the viewport */
+#root {
+  min-height: 100vh;
+}
+
+/* Reglas para autocomplete de inputs para mantener estilos */
 .password-input::placeholder {
   color: var(--placeholder-color) !important;
   opacity: 1 !important;
