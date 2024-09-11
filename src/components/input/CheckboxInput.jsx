@@ -3,7 +3,7 @@ import {
   FormControl,
   FormItem,
   FormLabel,
-  // FormMessage,
+  FormMessage,
 } from "@/components/ui/form"
 
 export default function CheckboxDemo({ field, text }) {
@@ -15,7 +15,7 @@ export default function CheckboxDemo({ field, text }) {
       <div className="leading-none">
         <FormLabel className="text-body-medium">{text}</FormLabel>
       </div>
-      {/* <FormMessage className="text-body-small text-red" /> */}
+      <FormMessage className="text-body-small font-bold text-primary" />
     </FormItem>
   )
 }

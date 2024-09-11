@@ -22,7 +22,7 @@ export default function SignUpInput({ placeholder, type, field, icon }) {
         {IconComponent && (
           <IconComponent
             className={cn(
-              "absolute right-5 top-1/2 -translate-y-1/2 transform",
+              "absolute right-5 top-1/2 h-6 w-6 -translate-y-1/2 transform",
               isActive ? "text-primary" : "text-gray-500"
             )}
           />
@@ -44,7 +44,7 @@ export default function SignUpInput({ placeholder, type, field, icon }) {
           />
         </FormControl>
       </div>
-      <FormMessage className="text-body-small text-red" />
+      <FormMessage className="text-body-small font-bold text-primary" />
     </FormItem>
   )
 }

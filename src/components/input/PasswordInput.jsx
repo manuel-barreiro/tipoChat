@@ -26,7 +26,7 @@ export default function PasswordInput({ placeholder, field }) {
         {showPassword ? (
           <Eye
             className={cn(
-              "absolute right-5 top-1/2 -translate-y-1/2 transform",
+              "absolute right-5 top-1/2 h-6 w-6 -translate-y-1/2 transform",
               isActive ? "text-primary" : "text-gray-500"
             )}
             onClick={togglePasswordVisibility}
@@ -34,7 +34,7 @@ export default function PasswordInput({ placeholder, field }) {
         ) : (
           <EyeOff
             className={cn(
-              "absolute right-5 top-1/2 -translate-y-1/2 transform",
+              "absolute right-5 top-1/2 h-6 w-6 -translate-y-1/2 transform",
               isActive ? "text-primary" : "text-gray-500"
             )}
             onClick={togglePasswordVisibility}
@@ -58,7 +58,7 @@ export default function PasswordInput({ placeholder, field }) {
           />
         </FormControl>
       </div>
-      <FormMessage className="text-sm text-red" />
+      <FormMessage className="text-body-small font-bold text-primary" />
     </FormItem>
   )
 }

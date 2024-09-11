@@ -49,7 +49,7 @@ export default function SelectInput({ field, selectOptions }) {
         </SelectContent>
       </Select>
 
-      <FormMessage className="text-body-small text-red" />
+      <FormMessage className="text-body-small font-bold text-primary" />
     </FormItem>
   )
 }
