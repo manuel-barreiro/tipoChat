@@ -17,7 +17,7 @@ html {
 
 /* Set the background color for the entire page */
 html {
-  background-color: theme("colors.primary");
+  background-color: theme("colors.dark-1");
 }
 
 /* Prevent overscroll behavior */
