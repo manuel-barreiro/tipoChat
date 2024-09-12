@@ -62,7 +62,11 @@ const DateInputDrawer = forwardRef(({ field, onKeyDown }, ref) => {
             fromYear={1920}
             toYear={2012}
             selected={field.value}
-            onSelect={field.onChange}
+            onSelect={(date) => {
+              field.onChange(date)
+              // Close the drawer immediately after selection
+              document.querySelector('[data-state="open"]')?.click()
+            }}
             defaultMonth={field.value}
             defaultYear={field.value}
             // onDayClick={() => setIsCalendarOpen(false)}
