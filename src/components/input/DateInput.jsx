@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef } from "react"
+import React, { useState, forwardRef } from "react"
 import { cn } from "@/lib/utils"
 import { format } from "date-fns"
 import { Button } from "@/components/ui/button"
@@ -15,10 +15,6 @@ import "react-day-picker/dist/style.css"
 const DateInput = forwardRef(({ field, onKeyDown }, ref) => {
   const [isActive, setIsActive] = useState(false)
   const [isCalendarOpen, setIsCalendarOpen] = useState(false)
-
-  useEffect(() => {
-    setIsActive(!!field.value)
-  }, [field.value])
 
   return (
     <FormItem className="flex flex-col">

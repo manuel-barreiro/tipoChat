@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef } from "react"
+import React, { useState, forwardRef } from "react"
 import { Input } from "@/components/ui/input"
 import {
   FormControl,
@@ -15,10 +15,6 @@ const PasswordInput = forwardRef(({ placeholder, field, onKeyDown }, ref) => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
   }
-
-  useEffect(() => {
-    setIsActive(!!field.value)
-  }, [field.value])
 
   return (
     <FormItem>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef } from "react"
+import React, { useState, forwardRef } from "react"
 import { Input } from "@/components/ui/input"
 import {
   FormControl,
@@ -12,10 +12,6 @@ const SignUpInput = forwardRef(
   ({ placeholder, type, field, icon, onKeyDown }, ref) => {
     const [isActive, setIsActive] = useState(false)
     const IconComponent = icon
-
-    useEffect(() => {
-      setIsActive(!!field.value)
-    }, [field.value])
 
     return (
       <FormItem>

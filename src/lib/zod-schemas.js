@@ -28,7 +28,7 @@ export const userSchema = z.object({
 export const signUpSchema = z.intersection(passwordSchema, userSchema)
 
 export const loginSchema = z.object({
-  email: z.string().email("Invalid email address"),
+  email: z.string().email("Enter a valid email address"),
   password: z.string().min(1, "Password is required"),
   rememberMe: z.boolean(),
 })
