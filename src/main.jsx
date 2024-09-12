@@ -4,7 +4,7 @@ import Root from "@/components/routes/root/Root"
 import Onboarding from "@/components/routes/onboarding/Onboarding"
 import SignUp from "@/components/routes/signUp/SignUp"
 import SignIn from "@/components/routes/signIn/SignIn"
-import Profile from "@/components/routes/profile/Profile"
+import AdminProfile from "@/components/routes/profile/AdminProfile"
 import ErrorPage from "@/components/ErrorPage.jsx"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "./components/Layout"
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: <AdminProfile />,
       },
       // Add more routes here as needed
     ],
