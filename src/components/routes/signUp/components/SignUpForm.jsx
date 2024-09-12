@@ -3,7 +3,8 @@ import { useForm } from "react-hook-form"
 import { signUpSchema } from "@/lib/zod-schemas"
 import { Form, FormField } from "@/components/ui/form"
 import SignUpInput from "@/components/input/SignUpInput"
-import DateInput from "@/components/input/DateInput"
+// import DateInput from "@/components/input/DateInput"
+import DateInputDrawer from "@/components/input/DateInputDrawer"
 import SelectInput from "@/components/input/SelectInput"
 import CheckboxInput from "@/components/input/CheckboxInput"
 import PasswordInput from "@/components/input/PasswordInput"
@@ -144,11 +145,23 @@ export default function SignUpForm() {
             />
           ))}
 
-          <FormField
+          {/* <FormField
             control={form.control}
             name="dateOfBirth"
             render={({ field }) => (
               <DateInput
+                field={field}
+                ref={(el) => (inputRefs.current[inputs.length] = el)}
+                onKeyDown={(e) => handleKeyDown(e, inputs.length)}
+              />
+            )}
+          /> */}
+
+          <FormField
+            control={form.control}
+            name="dateOfBirth"
+            render={({ field }) => (
+              <DateInputDrawer
                 field={field}
                 ref={(el) => (inputRefs.current[inputs.length] = el)}
                 onKeyDown={(e) => handleKeyDown(e, inputs.length)}
