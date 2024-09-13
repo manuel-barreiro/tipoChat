@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/drawer"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
 
-const DateInputDrawer = forwardRef(({ field, onKeyDown }, ref) => {
+const DateInputDrawer = forwardRef(({ field, onKeyDown, onChange }, ref) => {
   const [isActive, setIsActive] = useState(false)
 
   return (
@@ -64,6 +64,7 @@ const DateInputDrawer = forwardRef(({ field, onKeyDown }, ref) => {
             selected={field.value}
             onSelect={(date) => {
               field.onChange(date)
+              onChange()
               // Close the drawer immediately after selection
               document.querySelector('[data-state="open"]')?.click()
             }}

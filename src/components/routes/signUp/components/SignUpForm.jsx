@@ -78,18 +78,33 @@ export default function SignUpForm() {
       password: "",
       confirmPassword: "",
     },
-    mode: "onChange",
+    mode: "onBlur",
   })
 
-  //Trigger validation on password and confirmPassword fields when either of them changes
   useEffect(() => {
-    const subscription = form.watch((value, { name }) => {
-      if (name === "password" || name === "confirmPassword") {
-        form.trigger(["password", "confirmPassword"])
+    const subscription = form.watch(() => {
+      const values = form.getValues()
+      const allFieldsFilled = Object.keys(form.getValues()).every(
+        (key) => values[key] !== ""
+      )
+
+      if (allFieldsFilled) {
+        form.trigger()
       }
     })
+
     return () => subscription.unsubscribe()
   }, [form])
+
+  //Este useEffect es para que cuando se cambie el password, se vuelva a validar el confirmPassword
+  // useEffect(() => {
+  //   const subscription = form.watch((value, { name }) => {
+  //     if (name === "password" || name === "confirmPassword") {
+  //       form.trigger(["password", "confirmPassword"])
+  //     }
+  //   })
+  //   return () => subscription.unsubscribe()
+  // }, [form])
 
   function onSubmit(values) {
     console.log(values)
@@ -100,13 +115,15 @@ export default function SignUpForm() {
     }, 3000)
   }
 
+  // Esta función es para que cuando se presione enter, se vaya al siguiente input
   const handleKeyDown = (event, index) => {
     if (event.key === "Enter") {
       event.preventDefault()
       const nextIndex = index + 1
-      if (nextIndex < inputs.length + 2) {
-        // +2 for dateOfBirth and gender
+      if (nextIndex < inputs.length + 3) {
+        // +3 for dateOfBirth, gender, and acceptTerms
         inputRefs.current[nextIndex].focus()
+        form.trigger(inputs[index].name) // Trigger validation for the current field
       }
     }
   }
@@ -130,6 +147,7 @@ export default function SignUpForm() {
                     placeholder={input.placeholder}
                     ref={(el) => (inputRefs.current[index] = el)}
                     onKeyDown={(e) => handleKeyDown(e, index)}
+                    onBlur={() => form.trigger(input.name)}
                   />
                 ) : (
                   <SignUpInput
@@ -139,6 +157,7 @@ export default function SignUpForm() {
                     icon={input.icon}
                     ref={(el) => (inputRefs.current[index] = el)}
                     onKeyDown={(e) => handleKeyDown(e, index)}
+                    onBlur={() => form.trigger(input.name)}
                   />
                 )
               }
@@ -165,6 +184,7 @@ export default function SignUpForm() {
                 field={field}
                 ref={(el) => (inputRefs.current[inputs.length] = el)}
                 onKeyDown={(e) => handleKeyDown(e, inputs.length)}
+                onChange={() => form.trigger("dateOfBirth")}
               />
             )}
           />
@@ -178,6 +198,7 @@ export default function SignUpForm() {
                 selectOptions={genderInputOptions}
                 ref={(el) => (inputRefs.current[inputs.length + 1] = el)}
                 onKeyDown={(e) => handleKeyDown(e, inputs.length + 1)}
+                onChange={() => form.trigger("gender")}
               />
             )}
           />
@@ -191,9 +212,16 @@ export default function SignUpForm() {
                 text={"Accept Terms And Conditions"}
                 ref={(el) => (inputRefs.current[inputs.length + 1] = el)}
                 onKeyDown={(e) => handleKeyDown(e, inputs.length + 1)}
+                onChange={() => form.trigger("acceptTerms")}
               />
             )}
           />
+
+          {/* Debugging */}
+          <pre className="flex flex-col gap-2">
+            {JSON.stringify(form.formState.isValid, null, 2)}
+            {JSON.stringify(form.formState.errors, null, 2)}
+          </pre>
 
           <PrimaryButton
             type="submit"

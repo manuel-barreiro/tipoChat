@@ -9,7 +9,7 @@ import {
 import { cn } from "@/lib/utils"
 
 const SignUpInput = forwardRef(
-  ({ placeholder, type, field, icon, onKeyDown }, ref) => {
+  ({ placeholder, type, field, icon, onKeyDown, onBlur }, ref) => {
     const [isActive, setIsActive] = useState(false)
     const IconComponent = icon
 
@@ -39,7 +39,11 @@ const SignUpInput = forwardRef(
                   : "bg-dark-2 placeholder:text-gray-500"
               )}
               onFocus={() => setIsActive(true)}
-              onBlur={() => setIsActive(!!field.value)}
+              onBlur={(e) => {
+                setIsActive(!!field.value)
+                field.onBlur(e)
+                onBlur && onBlur(e)
+              }}
             />
           </FormControl>
         </div>
@@ -48,7 +52,6 @@ const SignUpInput = forwardRef(
     )
   }
 )
-
 SignUpInput.displayName = "SignUpInput"
 
 export default SignUpInput

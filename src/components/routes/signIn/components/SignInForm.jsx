@@ -24,7 +24,7 @@ export default function SignInForm() {
       password: "",
       rememberMe: false,
     },
-    mode: "onChange",
+    mode: "onBlur",
   })
 
   function onSubmit(values) {
