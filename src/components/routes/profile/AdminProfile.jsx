@@ -2,6 +2,7 @@ import UserInfo from "./components/UserInfo"
 import PointsCard from "./components/PointsCard"
 import AdminMenu from "./components/AdminMenu"
 import { mockUser } from "@/static/mockUser"
+import TipoChatFooter from "./components/TipoChatFooter"
 
 export default function AdminProfile() {
   return (
@@ -22,6 +23,7 @@ export default function AdminProfile() {
         subscribers={mockUser.data.subscribers}
       />
       <AdminMenu />
+      <TipoChatFooter />
     </section>
   )
 }
