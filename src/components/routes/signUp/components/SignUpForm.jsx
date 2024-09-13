@@ -164,18 +164,6 @@ export default function SignUpForm() {
             />
           ))}
 
-          {/* <FormField
-            control={form.control}
-            name="dateOfBirth"
-            render={({ field }) => (
-              <DateInput
-                field={field}
-                ref={(el) => (inputRefs.current[inputs.length] = el)}
-                onKeyDown={(e) => handleKeyDown(e, inputs.length)}
-              />
-            )}
-          /> */}
-
           <FormField
             control={form.control}
             name="dateOfBirth"
@@ -217,11 +205,11 @@ export default function SignUpForm() {
             )}
           />
 
-          {/* Debugging */}
+          {/* Debugging 
           <pre className="flex flex-col gap-2">
             {JSON.stringify(form.formState.isValid, null, 2)}
             {JSON.stringify(form.formState.errors, null, 2)}
-          </pre>
+          </pre>*/}
 
           <PrimaryButton
             type="submit"
