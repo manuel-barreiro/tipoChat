@@ -8,8 +8,8 @@ export default function UserInfo({
   isMember,
   followers,
   following,
-  subscribers,
-  subscriptions,
+  // subscribers,
+  // subscriptions,
 }) {
   return (
     <section className="flex flex-col gap-10">
@@ -25,8 +25,8 @@ export default function UserInfo({
       <div className="flex w-full justify-evenly">
         <AccountMetric metric={"Followers"} number={followers} />
         <AccountMetric metric={"Following"} number={following} />
-        <AccountMetric metric={"Subscribers"} number={subscribers} />
-        <AccountMetric metric={"Subscriptions"} number={subscriptions} />
+        {/* <AccountMetric metric={"Subscribers"} number={subscribers} /> */}
+        {/* <AccountMetric metric={"Subscriptions"} number={subscriptions} /> */}
       </div>
     </section>
   )

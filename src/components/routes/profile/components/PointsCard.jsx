@@ -1,9 +1,4 @@
-import {
-  // VerifiedIcon,
-  // MemberIcon,
-  // SquareTopArrowIcon,
-  SettingsIcon,
-} from "@/assets/icons"
+import { EditIcon } from "@/assets/icons"
 
 const BackgroundSVG = () => (
   <svg
@@ -79,20 +74,25 @@ const BackgroundSVG = () => (
   </svg>
 )
 
-export default function PointsCard({ points, subscriptionPrice, subscribers }) {
+export default function PointsCard({
+  points,
+  subscriptions,
+  subscribers,
+  subscriptionPrice,
+}) {
   return (
-    <div className="relative w-full overflow-hidden rounded-[32px] bg-secondary px-6 py-8">
+    <div className="relative w-full overflow-hidden rounded-[32px] bg-info px-6 py-8">
       <BackgroundSVG />
-      <div className="relative z-10 flex flex-col items-start justify-evenly gap-4 text-dark-1">
+      <div className="relative z-10 flex flex-col items-start justify-evenly gap-4">
         <span className="text-heading-3 font-bold">Your Points: {points}</span>
 
         <div className="flex w-full gap-6">
           <div className="flex flex-col items-start gap-1">
             <span className="text-body-xsmall font-medium">
-              Your Subscription Price
+              Your Subscriptions
             </span>
             <span className="text-body-medium font-semibold">
-              {subscriptionPrice} Points
+              {subscriptions}
             </span>
           </div>
           <div className="flex flex-col items-start gap-1">
@@ -105,15 +105,15 @@ export default function PointsCard({ points, subscriptionPrice, subscribers }) {
           </div>
         </div>
 
-        <button className="flex items-center gap-2 text-lg font-semibold hover:underline">
-          Edit your subscription price
-          <SettingsIcon className="h-5 w-5" />
-        </button>
-
-        <button className="flex items-center gap-2 text-lg font-semibold hover:underline">
-          Manage your subscriptions
-          <SettingsIcon className="h-5 w-5" />
-        </button>
+        <div className="flex flex-col items-start gap-1">
+          <span className="text-body-xsmall font-medium">
+            Your Subscription Price
+          </span>
+          <button className="flex items-center gap-2 text-body-medium font-semibold hover:underline">
+            {subscriptionPrice} Points
+            <EditIcon />
+          </button>
+        </div>
       </div>
     </div>
   )

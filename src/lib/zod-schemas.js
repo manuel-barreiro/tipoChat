@@ -32,3 +32,16 @@ export const loginSchema = z.object({
   password: z.string().min(1, "Password is required"),
   rememberMe: z.boolean(),
 })
+
+export const manageProfileSchema = z.object({
+  fullName: z.string().min(2, "Full name must be at least 2 characters"),
+  nickName: z.string().optional(),
+  bio: z.string().optional(),
+  dateOfBirth: z.date({
+    required_error: "Date of birth is required",
+  }),
+  email: z.string().email("Enter a valid email address"),
+  gender: z.enum(["male", "female", "other"], {
+    required_error: "Please select a gender",
+  }),
+})

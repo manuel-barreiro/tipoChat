@@ -34,9 +34,10 @@ const dict = {
       noAccount: "Don't have an account?",
       signUp: "Sign Up",
       successModal: {
-        title: "Login Successful!",
-        description: "Please wait a moment, we are logging you in...",
+        title: "Sign In Successful!",
+        description: "Please wait a moment, we are signing you in...",
       },
+      manageProfile: {},
     },
   },
   ES: {},

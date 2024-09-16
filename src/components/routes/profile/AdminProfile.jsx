@@ -8,7 +8,7 @@ export default function AdminProfile() {
   return (
     <section className="flex flex-col items-center gap-8">
       <UserInfo
-        name={mockUser.name}
+        name={mockUser.fullName}
         profilePicUrl={mockUser.profilePicUrl}
         isVerified={mockUser.isVerified}
         isMember={mockUser.isMember}
@@ -19,8 +19,9 @@ export default function AdminProfile() {
       />
       <PointsCard
         points={mockUser.data.points}
-        subscriptionPrice={mockUser.data.subscriptionPrice}
+        subscriptions={mockUser.data.subscriptions}
         subscribers={mockUser.data.subscribers}
+        subscriptionPrice={mockUser.data.subscriptionPrice}
       />
       <AdminMenu />
       <TipoChatFooter />

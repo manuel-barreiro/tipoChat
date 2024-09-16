@@ -1,5 +1,5 @@
 import { OnboardingIcon } from "@/assets/icons"
-import PrimaryButton from "@/components/buttons/PrimaryButton"
+import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 import staticData from "@/static/staticData"
 import { Link } from "react-router-dom"
 

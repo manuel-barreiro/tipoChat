@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from "react"
+import React, { useState, forwardRef, useEffect } from "react"
 import { cn } from "@/lib/utils"
 import { format } from "date-fns"
 import { Button } from "@/components/ui/button"
@@ -16,10 +16,17 @@ import {
   DrawerDescription,
   DrawerTrigger,
 } from "@/components/ui/drawer"
-import PrimaryButton from "@/components/buttons/PrimaryButton"
+import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 
 const DateInputDrawer = forwardRef(({ field, onKeyDown, onChange }, ref) => {
   const [isActive, setIsActive] = useState(false)
+
+  //useEffect to check if the field has a value and set isActive to true
+  useEffect(() => {
+    if (field.value) {
+      setIsActive(true)
+    }
+  }, [])
 
   return (
     <FormItem className="flex flex-col">
@@ -31,7 +38,7 @@ const DateInputDrawer = forwardRef(({ field, onKeyDown, onChange }, ref) => {
               onKeyDown={onKeyDown}
               className={cn(
                 "relative flex justify-start rounded-2xl border-2 border-transparent p-6 hover:bg-input-focus focus:border-primary focus:bg-input-focus",
-                isActive ? "bg-input-focus" : "bg-dark-2 text-gray-500"
+                isActive ? "bg-[#25253b]" : "bg-dark-2 text-gray-500"
               )}
               onFocus={() => setIsActive(true)}
               onBlur={() => setIsActive(!!field.value)}

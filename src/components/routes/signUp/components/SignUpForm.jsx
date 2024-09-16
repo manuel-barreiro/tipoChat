@@ -2,17 +2,17 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { signUpSchema } from "@/lib/zod-schemas"
 import { Form, FormField } from "@/components/ui/form"
-import SignUpInput from "@/components/input/SignUpInput"
+import TextInput from "@/components/common/input/TextInput"
 // import DateInput from "@/components/input/DateInput"
-import DateInputDrawer from "@/components/input/DateInputDrawer"
-import SelectInput from "@/components/input/SelectInput"
-import CheckboxInput from "@/components/input/CheckboxInput"
-import PasswordInput from "@/components/input/PasswordInput"
-import PrimaryButton from "@/components/buttons/PrimaryButton"
+import DateInputDrawer from "@/components/common/input/DateInputDrawer"
+import SelectInput from "@/components/common/input/SelectInput"
+import CheckboxInput from "@/components/common/input/CheckboxInput"
+import PasswordInput from "@/components/common/input/PasswordInput"
+import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 import { UserIcon, EmailIcon } from "@/assets/icons"
 import staticData from "@/static/staticData"
 import { useState, useEffect, useRef } from "react"
-import SuccessDialog from "@/components/dialog/SuccessDialog"
+import SuccessDialog from "@/components/common/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
 
 const inputs = [
@@ -150,7 +150,7 @@ export default function SignUpForm() {
                     onBlur={() => form.trigger(input.name)}
                   />
                 ) : (
-                  <SignUpInput
+                  <TextInput
                     field={field}
                     placeholder={input.placeholder}
                     type={input.type}

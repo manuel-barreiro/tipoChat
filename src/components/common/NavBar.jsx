@@ -1,7 +1,8 @@
-import BackButton from "@/components/buttons/BackButton"
+import BackButton from "@/components/common/buttons/BackButton"
 import { ShareIcon, SettingsIcon } from "@/assets/icons"
 import { useLocation } from "react-router-dom"
 import { useEffect } from "react"
+import { Link } from "react-router-dom"
 
 export default function NavBar() {
   let { pathname } = useLocation()
@@ -17,6 +18,9 @@ export default function NavBar() {
         {pathname === "/profile" && (
           <h1 className="text-heading-4">My Profile</h1>
         )}
+        {pathname === "/edit-profile" && (
+          <h1 className="text-heading-4">Manage Profile</h1>
+        )}
       </div>
 
       {pathname === "/profile" && (
@@ -24,9 +28,12 @@ export default function NavBar() {
           <button className="text-heading-4 hover:text-primary focus:text-primary">
             <ShareIcon className="h-6 w-6" />
           </button>
-          <button className="text-heading-4 hover:text-primary focus:text-primary">
+          <Link
+            to={"/edit-profile"}
+            className="text-heading-4 hover:text-primary focus:text-primary"
+          >
             <SettingsIcon className="h-6 w-6" />
-          </button>
+          </Link>
         </div>
       )}
     </nav>

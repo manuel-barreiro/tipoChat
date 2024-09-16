@@ -1,4 +1,4 @@
-import React, { useState, forwardRef } from "react"
+import React, { useState, forwardRef, useEffect } from "react"
 import { Input } from "@/components/ui/input"
 import {
   FormControl,
@@ -12,6 +12,13 @@ const SignUpInput = forwardRef(
   ({ placeholder, type, field, icon, onKeyDown, onBlur }, ref) => {
     const [isActive, setIsActive] = useState(false)
     const IconComponent = icon
+
+    //useEffect to check if the field has a value and set isActive to true
+    useEffect(() => {
+      if (field.value) {
+        setIsActive(true)
+      }
+    }, [])
 
     return (
       <FormItem>
