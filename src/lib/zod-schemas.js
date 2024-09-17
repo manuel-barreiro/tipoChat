@@ -45,3 +45,13 @@ export const manageProfileSchema = z.object({
     required_error: "Please select a gender",
   }),
 })
+
+export const resetPasswordSchema = z.intersection(
+  z.object({ oldPassword: z.string().min(1, "Enter your old password") }),
+  passwordSchema
+)
+
+export const addLinkSchema = z.object({
+  title: z.string().min(1, "Title is required"),
+  textUrl: z.string().min(1, "URL is required"),
+})

@@ -161,20 +161,14 @@ export default function ManageProfile() {
             )}
           />
 
-          {/* Debugging 
-          <pre className="flex flex-col gap-2">
-            {JSON.stringify(form.formState.isValid, null, 2)}
-            {JSON.stringify(form.formState.errors, null, 2)}
-          </pre>*/}
-
           <div className="flex flex-col gap-10 p-3">
             <AdminMenuButton
               text="Manage your Links"
-              onClick={() => router("/profile")}
+              link="/profile/manage/links"
             />
             <AdminMenuButton
               text="Reset your Password"
-              onClick={() => router("/profile")}
+              link="/profile/manage/reset-password"
             />
           </div>
 
