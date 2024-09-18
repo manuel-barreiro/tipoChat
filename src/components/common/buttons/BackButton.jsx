@@ -17,7 +17,7 @@ export default function BackButton() {
       size="icon"
       className="border-transparent bg-transparent hover:border-input-focus focus:border-input-focus"
     >
-      <LeftArrow className="h-4 w-4" />
+      <LeftArrow className="h-5 w-5" />
     </Button>
   )
 }

@@ -4,11 +4,15 @@ import Root from "@/components/routes/root/Root"
 import Onboarding from "@/components/routes/onboarding/Onboarding"
 import SignUp from "@/components/routes/signUp/SignUp"
 import SignIn from "@/components/routes/signIn/SignIn"
-import Profile from "@/components/routes/profile/Profile"
-import ErrorPage from "@/components/ErrorPage.jsx"
+import AdminProfile from "@/components/routes/profile/AdminProfile"
+import ErrorPage from "@/components/common/ErrorPage.jsx"
+import ManageProfile from "@/components/routes/profile/manage/ManageProfile"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Layout from "./components/Layout"
-import "./index.css"
+import Layout from "@/components/common/Layout"
+import AdminProfileLayout from "@/components/routes/profile/AdminProfileLayout"
+import "@/index.css"
+import ResetPassword from "@/components/routes/profile/manage/reset-password/ResetPassword"
+import ManageLinks from "@/components/routes/profile/manage/links/ManageLinks"
 
 const router = createBrowserRouter([
   {
@@ -33,7 +37,25 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: <AdminProfileLayout />,
+        children: [
+          {
+            path: "",
+            element: <AdminProfile />,
+          },
+          {
+            path: "manage",
+            element: <ManageProfile />,
+          },
+          {
+            path: "manage/reset-password",
+            element: <ResetPassword />,
+          },
+          {
+            path: "manage/links",
+            element: <ManageLinks />,
+          },
+        ],
       },
       // Add more routes here as needed
     ],

@@ -1,42 +1,19 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { signUpSchema } from "@/lib/zod-schemas"
 import { Form, FormField } from "@/components/ui/form"
-import SignUpInput from "@/components/input/SignUpInput"
-import DateInput from "@/components/input/DateInput"
-import SelectInput from "@/components/input/SelectInput"
-import CheckboxInput from "@/components/input/CheckboxInput"
-import PasswordInput from "@/components/input/PasswordInput"
-import PrimaryButton from "@/components/buttons/PrimaryButton"
+import TextInput from "@/components/common/input/TextInput"
+// import DateInput from "@/components/input/DateInput"
+import DateInputDrawer from "@/components/common/input/DateInputDrawer"
+import SelectInput from "@/components/common/input/SelectInput"
+import CheckboxInput from "@/components/common/input/CheckboxInput"
+import PasswordInput from "@/components/common/input/PasswordInput"
+import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 import { UserIcon, EmailIcon } from "@/assets/icons"
 import staticData from "@/static/staticData"
-import { Link } from "react-router-dom"
-import { useState } from "react"
-import SuccessDialog from "@/components/dialog/SuccessDialog"
+import { useState, useEffect, useRef } from "react"
+import SuccessDialog from "@/components/common/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
-
-const formSchema = z
-  .object({
-    fullName: z.string().min(2, "Full name is required"),
-    nickName: z.string().optional(),
-    email: z.string().email("Invalid email address"),
-    password: z.string().min(8, "Password must be at least 8 characters"),
-    confirmPassword: z.string(),
-    dateOfBirth: z.date({
-      required_error: "A date of birth is required.",
-    }),
-    gender: z.enum(["male", "female", "other"], { message: "Select gender" }),
-    acceptTerms: z
-      .boolean()
-      .refine(
-        (val) => val === true,
-        "You must accept the terms and conditions"
-      ),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
-    path: ["confirmPassword"],
-  })
 
 const inputs = [
   {
@@ -56,6 +33,16 @@ const inputs = [
     type: "email",
     placeholder: "Email",
     icon: EmailIcon,
+  },
+  {
+    name: "password",
+    type: "password",
+    placeholder: "Password",
+  },
+  {
+    name: "confirmPassword",
+    type: "password",
+    placeholder: "Confirm password",
   },
 ]
 
@@ -77,32 +64,68 @@ const genderInputOptions = [
 export default function SignUpForm() {
   const router = useNavigate()
   const [success, setSuccess] = useState(false)
+  const inputRefs = useRef([])
 
-  // 1. Define your form.
   const form = useForm({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       fullName: "",
       nickName: "",
       email: "",
-      password: "",
-      confirmPassword: "",
       dateOfBirth: "",
       gender: "",
       acceptTerms: false,
+      password: "",
+      confirmPassword: "",
     },
+    mode: "onBlur",
   })
 
-  // 2. Define a submit handler.
+  useEffect(() => {
+    const subscription = form.watch(() => {
+      const values = form.getValues()
+      const allFieldsFilled = Object.keys(form.getValues()).every(
+        (key) => values[key] !== ""
+      )
+
+      if (allFieldsFilled) {
+        form.trigger()
+      }
+    })
+
+    return () => subscription.unsubscribe()
+  }, [form])
+
+  //Este useEffect es para que cuando se cambie el password, se vuelva a validar el confirmPassword
+  // useEffect(() => {
+  //   const subscription = form.watch((value, { name }) => {
+  //     if (name === "password" || name === "confirmPassword") {
+  //       form.trigger(["password", "confirmPassword"])
+  //     }
+  //   })
+  //   return () => subscription.unsubscribe()
+  // }, [form])
+
   function onSubmit(values) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
     console.log(values)
     setSuccess(true)
     setTimeout(() => {
       setSuccess(false)
       router("/profile")
     }, 3000)
+  }
+
+  // Esta función es para que cuando se presione enter, se vaya al siguiente input
+  const handleKeyDown = (event, index) => {
+    if (event.key === "Enter") {
+      event.preventDefault()
+      const nextIndex = index + 1
+      if (nextIndex < inputs.length + 3) {
+        // +3 for dateOfBirth, gender, and acceptTerms
+        inputRefs.current[nextIndex].focus()
+        form.trigger(inputs[index].name) // Trigger validation for the current field
+      }
+    }
   }
 
   return (
@@ -112,53 +135,59 @@ export default function SignUpForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex h-auto w-full flex-col gap-4"
         >
-          <h1 className="mb-1 text-center text-heading-3">
-            Create New Account
-          </h1>
-
-          {inputs.map((input) => (
+          {inputs.map((input, index) => (
             <FormField
               key={input.name}
               control={form.control}
               name={input.name}
-              render={({ field }) => (
-                <SignUpInput
-                  field={field}
-                  placeholder={input.placeholder}
-                  type={input.type}
-                  icon={input.icon}
-                />
-              )}
+              render={({ field }) =>
+                input.type === "password" ? (
+                  <PasswordInput
+                    field={field}
+                    placeholder={input.placeholder}
+                    ref={(el) => (inputRefs.current[index] = el)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    onBlur={() => form.trigger(input.name)}
+                  />
+                ) : (
+                  <TextInput
+                    field={field}
+                    placeholder={input.placeholder}
+                    type={input.type}
+                    icon={input.icon}
+                    ref={(el) => (inputRefs.current[index] = el)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    onBlur={() => form.trigger(input.name)}
+                  />
+                )
+              }
             />
           ))}
 
           <FormField
             control={form.control}
-            name="password"
-            render={({ field }) => (
-              <PasswordInput field={field} placeholder={"Password"} />
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="confirmPassword"
-            render={({ field }) => (
-              <PasswordInput field={field} placeholder={"Confirm password"} />
-            )}
-          />
-
-          <FormField
-            control={form.control}
             name="dateOfBirth"
-            render={({ field }) => <DateInput field={field} />}
+            render={({ field }) => (
+              <DateInputDrawer
+                field={field}
+                ref={(el) => (inputRefs.current[inputs.length] = el)}
+                onKeyDown={(e) => handleKeyDown(e, inputs.length)}
+                onChange={() => form.trigger("dateOfBirth")}
+              />
+            )}
           />
 
           <FormField
             control={form.control}
             name="gender"
             render={({ field }) => (
-              <SelectInput field={field} selectOptions={genderInputOptions} />
+              <SelectInput
+                field={field}
+                selectOptions={genderInputOptions}
+                ref={(el) => (inputRefs.current[inputs.length + 1] = el)}
+                onKeyDown={(e) => handleKeyDown(e, inputs.length + 1)}
+                onChange={() => form.trigger("gender")}
+              />
             )}
           />
 
@@ -169,25 +198,31 @@ export default function SignUpForm() {
               <CheckboxInput
                 field={field}
                 text={"Accept Terms And Conditions"}
+                ref={(el) => (inputRefs.current[inputs.length + 1] = el)}
+                onKeyDown={(e) => handleKeyDown(e, inputs.length + 1)}
+                onChange={() => form.trigger("acceptTerms")}
               />
             )}
           />
 
-          <PrimaryButton type="submit" text="Create New Account">
-            Submit
-          </PrimaryButton>
+          {/* Debugging 
+          <pre className="flex flex-col gap-2">
+            {JSON.stringify(form.formState.isValid, null, 2)}
+            {JSON.stringify(form.formState.errors, null, 2)}
+          </pre>*/}
 
-          <p className="mx-auto text-body-medium font-regular">
-            {staticData.dict.EN.onboardingScreen.alreadyHaveAccount}{" "}
-            <span className="cursor-pointer font-semibold text-primary hover:underline">
-              <Link to={"/sign-in"}>
-                {staticData.dict.EN.onboardingScreen.signIn}
-              </Link>
-            </span>
-          </p>
+          <PrimaryButton
+            type="submit"
+            text="Sign Up"
+            disabled={!form.formState.isValid || form.formState.isSubmitting}
+          />
         </form>
       </Form>
-      <SuccessDialog isOpen={success} />
+      <SuccessDialog
+        isOpen={success}
+        title={staticData.dict.EN.signUpScreen.successModal.title}
+        description={staticData.dict.EN.signUpScreen.successModal.description}
+      />
     </>
   )
 }

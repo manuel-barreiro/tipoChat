@@ -1,0 +1,20 @@
+export const mockUser = {
+  fullName: "Benjamín Brusa",
+  nickName: "Kakaroto xD",
+  email: "banja.brusa@gmail.com",
+  phone: "123-456-7890",
+  dateOfBirth: new Date("1990-01-01"),
+  bio: "I'm a software engineer and I love to code!",
+  gender: "male",
+  profilePicUrl: "/images/mockUser.png",
+  isVerified: false,
+  isMember: false,
+  data: {
+    followers: 1023,
+    following: 523,
+    points: 333,
+    subscriptionPrice: 10,
+    subscribers: 23,
+    subscriptions: 18,
+  },
+}

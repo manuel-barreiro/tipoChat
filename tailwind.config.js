@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import defaultTheme from "tailwindcss/defaultTheme"
-import animate from "tailwindcss-animate"
+import animate from "tailwindcss-animated"
 
 export default {
   darkMode: ["class"],
