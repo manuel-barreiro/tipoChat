@@ -50,8 +50,8 @@ export default function ResetPassword() {
   }
 
   return (
-    <section className="flex w-full flex-col gap-6">
-      <ChangePasswordIcon />
+    <section className="flex w-full flex-col items-center gap-6">
+      <ChangePasswordIcon className="max-w-[90%]" />
       <Separator className="bg-dark-3" />
       <Form {...form} className>
         <form
