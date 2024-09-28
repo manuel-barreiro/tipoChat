@@ -2,7 +2,7 @@ import { ChangePasswordIcon } from "@/assets/icons"
 import { Separator } from "@/components/ui/separator"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { resetPasswordSchema } from "@/lib/zod-schemas"
+import { passwordSchema } from "@/lib/zod-schemas"
 import { Form, FormField } from "@/components/ui/form"
 import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 import { useState, useEffect, useRef } from "react"
@@ -16,9 +16,8 @@ export default function ResetPassword() {
   const inputRefs = useRef([])
 
   const form = useForm({
-    resolver: zodResolver(resetPasswordSchema),
+    resolver: zodResolver(passwordSchema),
     defaultValues: {
-      oldPassword: "",
       password: "",
       confirmPassword: "",
     },
@@ -58,18 +57,6 @@ export default function ResetPassword() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex h-auto w-full flex-col gap-6"
         >
-          <p className="font-semibold">Old password</p>
-          <FormField
-            control={form.control}
-            name="oldPassword"
-            render={({ field }) => (
-              <PasswordInput
-                field={field}
-                placeholder="Old password"
-                ref={(el) => (inputRefs.current[0] = el)}
-              />
-            )}
-          />
           <p className="font-semibold">Create Your New Password</p>
           <FormField
             control={form.control}
@@ -78,11 +65,10 @@ export default function ResetPassword() {
               <PasswordInput
                 field={field}
                 placeholder="New password"
-                ref={(el) => (inputRefs.current[1] = el)}
+                ref={(el) => (inputRefs.current[0] = el)}
               />
             )}
           />
-
           <FormField
             control={form.control}
             name="confirmPassword"
@@ -90,16 +76,15 @@ export default function ResetPassword() {
               <PasswordInput
                 field={field}
                 placeholder="Confirm new password"
-                ref={(el) => (inputRefs.current[2] = el)}
+                ref={(el) => (inputRefs.current[1] = el)}
               />
             )}
           />
-
           <PrimaryButton
             type="submit"
             text="Continue"
             disabled={!form.formState.isValid || form.formState.isSubmitting}
-            className={"rounded-[16px]"}
+            shadow={true}
           />
         </form>
       </Form>

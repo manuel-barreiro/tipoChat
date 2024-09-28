@@ -2,7 +2,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { loginSchema } from "@/lib/zod-schemas"
 import { Form, FormField } from "@/components/ui/form"
-import SignUpInput from "@/components/common/input/TextInput"
+import TextInput from "@/components/common/input/TextInput"
 import CheckboxInput from "@/components/common/input/CheckboxInput"
 import PasswordInput from "@/components/common/input/PasswordInput"
 import PrimaryButton from "@/components/common/buttons/PrimaryButton"
@@ -58,7 +58,7 @@ export default function SignInForm() {
             control={form.control}
             name={"email"}
             render={({ field }) => (
-              <SignUpInput
+              <TextInput
                 field={field}
                 placeholder={"Email"}
                 type={"email"}
@@ -97,6 +97,7 @@ export default function SignInForm() {
             type="submit"
             text={staticData.dict.EN.signInScreen.button}
             disabled={!form.formState.isValid || form.formState.isSubmitting}
+            shadow={true}
           />
         </form>
       </Form>

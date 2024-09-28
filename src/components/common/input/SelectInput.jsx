@@ -29,7 +29,7 @@ const SelectInput = forwardRef(
               icon={CaretDown}
               isActive={isActive}
               className={cn(
-                "rounded-2xl border-2 border-transparent p-6 focus:border-primary focus:bg-input-focus",
+                " border-2 border-transparent p-6 focus:border-primary focus:bg-input-focus",
                 isActive ? "bg-[#25253b]" : "bg-dark-2 text-gray-500",
                 "touch-manipulation" // Improves touch behavior on mobile
               )}

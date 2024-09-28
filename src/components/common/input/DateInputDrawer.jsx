@@ -37,7 +37,7 @@ const DateInputDrawer = forwardRef(({ field, onKeyDown, onChange }, ref) => {
               ref={ref}
               onKeyDown={onKeyDown}
               className={cn(
-                "relative flex justify-start rounded-2xl border-2 border-transparent p-6 hover:bg-input-focus focus:border-primary focus:bg-input-focus",
+                "relative flex justify-start rounded-[16px] border-2 border-transparent p-6 hover:bg-input-focus focus:border-primary focus:bg-input-focus",
                 isActive ? "bg-[#25253b]" : "bg-dark-2 text-gray-500"
               )}
               onFocus={() => setIsActive(true)}

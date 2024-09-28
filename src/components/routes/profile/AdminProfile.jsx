@@ -11,13 +11,11 @@ export default function AdminProfile() {
       <Outlet />
       <UserInfo
         name={mockUser.fullName}
+        nickName={mockUser.nickName}
         profilePicUrl={mockUser.profilePicUrl}
         isVerified={mockUser.isVerified}
-        isMember={mockUser.isMember}
         followers={mockUser.data.followers}
         following={mockUser.data.following}
-        subscribers={mockUser.data.subscribers}
-        subscriptions={mockUser.data.subscriptions}
       />
       <PointsCard
         points={mockUser.data.points}

@@ -27,7 +27,7 @@ const TextAreaInput = ({ placeholder, field, onBlur }) => {
             placeholder={placeholder}
             {...field}
             className={cn(
-              "resize-none rounded-2xl border-2 border-transparent p-6 focus:border-primary focus:bg-input-focus",
+              "resize-none border-2 border-transparent p-6 focus:border-primary focus:bg-input-focus",
               isActive
                 ? "bg-input-focus"
                 : "bg-dark-2 placeholder:text-gray-500"

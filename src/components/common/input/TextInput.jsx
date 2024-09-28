@@ -40,7 +40,7 @@ const SignUpInput = forwardRef(
               ref={ref}
               onKeyDown={onKeyDown}
               className={cn(
-                "rounded-2xl border-2 border-transparent p-6 focus:border-primary focus:bg-input-focus",
+                "border-2 border-transparent p-6 focus:border-primary focus:bg-input-focus",
                 isActive
                   ? "bg-input-focus"
                   : "bg-dark-2 placeholder:text-gray-500"

@@ -12,9 +12,12 @@ export default function SignIn() {
       </h1>
       <SignInForm />
       <div className="flex flex-col items-center justify-between gap-12">
-        <p className="text-heading-6 text-primary">
+        <Link
+          to={"/forgot-password"}
+          className="cursor-pointer text-heading-6 font-semibold text-primary hover:underline"
+        >
           {staticData.dict.EN.signInScreen.forgotPassword}
-        </p>
+        </Link>
         <p className="text-body-medium font-regular">
           {staticData.dict.EN.signInScreen.noAccount}{" "}
           <span className="cursor-pointer font-semibold text-primary hover:underline">

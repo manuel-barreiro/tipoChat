@@ -214,6 +214,7 @@ export default function SignUpForm() {
           <PrimaryButton
             type="submit"
             text="Sign Up"
+            shadow={true}
             disabled={!form.formState.isValid || form.formState.isSubmitting}
           />
         </form>

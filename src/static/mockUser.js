@@ -8,10 +8,9 @@ export const mockUser = {
   gender: "male",
   profilePicUrl: "/images/mockUser.png",
   isVerified: false,
-  isMember: false,
   data: {
-    followers: 1023,
-    following: 523,
+    followers: 3500,
+    following: 2500,
     points: 333,
     subscriptionPrice: 10,
     subscribers: 23,

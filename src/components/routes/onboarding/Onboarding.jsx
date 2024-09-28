@@ -16,7 +16,7 @@ export default function Onboarding() {
         </p>
       </div>
       <Link to={"/sign-up"} className="w-full">
-        <PrimaryButton text="Sign up with Email" />
+        <PrimaryButton text="Sign up with Email" shadow={true} />
       </Link>
       <p className="text-body-medium font-regular">
         {staticData.dict.EN.onboardingScreen.alreadyHaveAccount}{" "}

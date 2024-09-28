@@ -2,6 +2,10 @@ import { ShareIcon, SettingsIcon } from "@/assets/icons"
 import { Link } from "react-router-dom"
 
 export const navbarConfig = {
+  "/forgot-password": {
+    title: "Password Recovery",
+    rightContent: null,
+  },
   "/profile": {
     title: "My Profile",
     rightContent: (

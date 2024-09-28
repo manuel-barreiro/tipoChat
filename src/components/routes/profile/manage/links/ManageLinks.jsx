@@ -7,7 +7,7 @@ export default function ManageLinks() {
   const [selected, setSelected] = useState("add")
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex h-full flex-col gap-4">
       <p>ADD YOUR PERSONAL LINKS HERE</p>
       <div className="flex w-full items-center justify-between">
         <button

@@ -51,36 +51,38 @@ export default function AddLinkForm() {
       <Form {...form} className>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex h-auto w-full flex-col gap-4"
+          className="flex h-full w-full flex-col gap-60"
         >
-          <p className="font-semibold">Title</p>
-          <FormField
-            control={form.control}
-            name="title"
-            render={({ field }) => (
-              <TextInput
-                field={field}
-                placeholder="Title"
-                ref={(el) => (inputRefs.current[0] = el)}
-              />
-            )}
-          />
-          <p className="font-semibold">Text / URL</p>
-          <FormField
-            control={form.control}
-            name="textUrl"
-            render={({ field }) => (
-              <TextInput
-                field={field}
-                placeholder="URL"
-                ref={(el) => (inputRefs.current[1] = el)}
-              />
-            )}
-          />
+          <div className="flex h-auto w-full flex-col gap-4">
+            <p className="text-heading-6">Title</p>
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <TextInput
+                  field={field}
+                  placeholder="Title"
+                  ref={(el) => (inputRefs.current[0] = el)}
+                />
+              )}
+            />
+            <p className="text-heading-6">Text / URL</p>
+            <FormField
+              control={form.control}
+              name="textUrl"
+              render={({ field }) => (
+                <TextInput
+                  field={field}
+                  placeholder="URL"
+                  ref={(el) => (inputRefs.current[1] = el)}
+                />
+              )}
+            />
+          </div>
 
           <PrimaryButton
             type="submit"
-            text="Continue"
+            text="Add New Link"
             disabled={!form.formState.isValid || form.formState.isSubmitting}
             className={"rounded-[16px]"}
           />

@@ -1,4 +1,8 @@
 import { EditIcon, TrashIcon } from "@/assets/icons"
+import FixedBottomButton from "@/components/common/buttons/FixedBottomButton"
+import ChangesSavedDialog from "@/components/common/dialog/ChangesSavedDialog"
+import ConfirmDialog from "@/components/common/dialog/ConfirmDialog"
+import { useState } from "react"
 
 const mockLinks = [
   { title: "Facebook", url: "https://www.facebook.com" },
@@ -10,6 +14,9 @@ const mockLinks = [
 ]
 
 export default function MyLinks() {
+  const [isOpenSaveChanges, setIsOpenSaveChanges] = useState(false)
+  const [isOpenConfirm, setIsOpenConfirm] = useState(false)
+
   return (
     <>
       {mockLinks.map((link) => (
@@ -26,11 +33,30 @@ export default function MyLinks() {
               <EditIcon className="h-6 w-6 duration-300 ease-in-out hover:text-primary" />
             </button>
             <button className="absolute right-0 top-0">
-              <TrashIcon className="h-6 w-6 duration-300 ease-in-out hover:text-primary" />
+              <TrashIcon
+                onClick={() => setIsOpenConfirm(true)}
+                className="h-6 w-6 duration-300 ease-in-out hover:text-primary"
+              />
             </button>
           </div>
         </>
       ))}
+      <FixedBottomButton
+        text="Save Changes"
+        onClick={() => setIsOpenSaveChanges(true)}
+      />
+      <ConfirmDialog
+        isOpen={isOpenConfirm}
+        setIsOpen={setIsOpenConfirm}
+        title={"Are you sure?"}
+        description={"This action cannot be undone"}
+      />
+      <ChangesSavedDialog
+        isOpen={isOpenSaveChanges}
+        setIsOpen={setIsOpenSaveChanges}
+        title={"Changes Saved"}
+        description={"You’ve succesfully saved your changes"}
+      />
     </>
   )
 }

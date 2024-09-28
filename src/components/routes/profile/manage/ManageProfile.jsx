@@ -176,7 +176,7 @@ export default function ManageProfile() {
             type="submit"
             text="Update"
             disabled={!form.formState.isValid || form.formState.isSubmitting}
-            className={"rounded-[16px]"}
+            shadow={true}
           />
         </form>
       </Form>
