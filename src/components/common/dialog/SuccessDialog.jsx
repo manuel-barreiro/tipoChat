@@ -12,7 +12,7 @@ import { Loader } from "@/assets/icons"
 export default function SuccessDialog({ isOpen, title, description }) {
   return (
     <Dialog open={isOpen}>
-      <DialogContent className="flex max-w-xs flex-col gap-10 rounded-[52px] bg-dark-2">
+      <DialogContent className="flex max-w-xs flex-col gap-10 rounded-[52px] bg-dark-1">
         <DialogHeader className="flex flex-col items-center justify-center gap-5">
           <SuccessDialogIcon className="h-36 w-36" />
           <DialogTitle className="text-primary">{title}</DialogTitle>

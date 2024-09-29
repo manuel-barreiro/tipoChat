@@ -16,7 +16,7 @@ export default function MyRooms() {
           actions={room.actions}
         />
       ))}
-      <FixedBottomButton text="Create New Room" />
+      <FixedBottomButton text="Create New Room" link={"create-room"} />
     </section>
   )
 }
