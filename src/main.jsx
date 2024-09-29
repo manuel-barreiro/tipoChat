@@ -14,6 +14,7 @@ import AdminProfileLayout from "@/components/routes/profile/AdminProfileLayout"
 import "@/index.css"
 import ResetPassword from "@/components/routes/profile/manage/reset-password/ResetPassword"
 import ManageLinks from "@/components/routes/profile/manage/links/ManageLinks"
+import MyRooms from "@/components/routes/my-rooms/MyRooms"
 
 const router = createBrowserRouter([
   {
@@ -62,7 +63,10 @@ const router = createBrowserRouter([
           },
         ],
       },
-      // Add more routes here as needed
+      {
+        path: "my-rooms",
+        element: <MyRooms />,
+      },
     ],
   },
 ])
