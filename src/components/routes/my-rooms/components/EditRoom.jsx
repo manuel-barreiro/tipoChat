@@ -55,7 +55,7 @@ export default function EditRoom() {
 
   return (
     <>
-      <RoomForm form={form} onSubmit={onSubmit} submitText="Update Room" />
+      <RoomForm form={form} onSubmit={onSubmit} submitText="Save Changes" />
       <SuccessDialog
         isOpen={success}
         title="Room Updated"

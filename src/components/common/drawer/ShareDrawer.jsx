@@ -37,7 +37,9 @@ export default function ShareDrawer({ isOpen, setIsOpen }) {
               className="flex flex-col items-center justify-center gap-2"
             >
               <img src={social.icon} alt={social.name} className="" />
-              <span className="text-body-small font-medium">{social.name}</span>
+              <span className="text-body-xsmall font-medium">
+                {social.name}
+              </span>
             </button>
           ))}
         </div>
