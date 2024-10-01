@@ -55,3 +55,24 @@ export const addLinkSchema = z.object({
   title: z.string().min(1, "Title is required"),
   textUrl: z.string().min(1, "URL is required"),
 })
+
+export const roomSchema = z.object({
+  title: z.string().min(1, "Title is required"),
+  about: z.string().min(1, "Description is required"),
+  category: z.enum(["Music", "Entertainment", "Gaming", "Lifestyle"]),
+  subCategory: z.enum([
+    "Pop",
+    "Rock",
+    "Jazz",
+    "Hip-Hop",
+    "Classical",
+    "Electronic",
+    "Country",
+    "Reggae",
+  ]),
+  language: z.enum(["English", "Spanish"]),
+  age: z.enum(["all", "18+", "21+"]),
+  type: z.enum(["Public", "Private"]),
+  indexRoom: z.boolean(),
+  allowEmbed: z.boolean(),
+})

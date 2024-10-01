@@ -15,6 +15,9 @@ import "@/index.css"
 import ResetPassword from "@/components/routes/profile/manage/reset-password/ResetPassword"
 import ManageLinks from "@/components/routes/profile/manage/links/ManageLinks"
 import MyRooms from "@/components/routes/my-rooms/MyRooms"
+import MyRoomsLayout from "@/components/routes/my-rooms/MyRoomsLayout"
+import CreateRoom from "@/components/routes/my-rooms/components/CreateRoom"
+import EditRoom from "@/components/routes/my-rooms/components/EditRoom"
 
 const router = createBrowserRouter([
   {
@@ -65,7 +68,21 @@ const router = createBrowserRouter([
       },
       {
         path: "my-rooms",
-        element: <MyRooms />,
+        element: <MyRoomsLayout />,
+        children: [
+          {
+            path: "",
+            element: <MyRooms />,
+          },
+          {
+            path: "create",
+            element: <CreateRoom />,
+          },
+          {
+            path: "edit",
+            element: <EditRoom />,
+          },
+        ],
       },
     ],
   },

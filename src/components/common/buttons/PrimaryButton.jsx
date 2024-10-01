@@ -4,11 +4,13 @@ export default function PrimaryButton({
   text = "Button",
   disabled = false,
   shadow = false,
+  type,
   className,
   ...props
 }) {
   return (
     <button
+      type={type}
       disabled={disabled}
       className={cn(
         "w-full rounded-[16px] p-4 text-grey-900 duration-300 ease-in-out",

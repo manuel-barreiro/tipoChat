@@ -5,6 +5,7 @@ import CardTag from "@/components/common/cards/CardTag"
 import EmbedRoomDialog from "@/components/common/dialog/EmbedRoomDialog"
 import DeleteRoomDialog from "@/components/common/dialog/DeleteRoomDialog"
 import ShareDrawer from "@/components/common/drawer/ShareDrawer"
+import { Link } from "react-router-dom"
 
 function formatText(text, maxChars) {
   if (text.length > maxChars) {
@@ -25,9 +26,6 @@ export default function RoomCard({
   const [isShareOpen, setIsShareOpen] = useState(false)
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
 
-  // const handleEdit = () => {
-  //   router.push(`/edit-room/${id}`)
-  // }
   return (
     <>
       <Card className="flex h-full w-full flex-col gap-4 rounded-[20px] border-0 bg-dark-2 p-4 text-white">
@@ -70,7 +68,11 @@ export default function RoomCard({
               onClick={() => setIsShareOpen(true)}
             />
           )}
-          {actions.edit && <CardActionChip action="Edit" />}
+          {actions.edit && (
+            <Link to="edit">
+              <CardActionChip action="Edit" />
+            </Link>
+          )}
           {actions.delete && (
             <CardActionChip
               action="Delete"

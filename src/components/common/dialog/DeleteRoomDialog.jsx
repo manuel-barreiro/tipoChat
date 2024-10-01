@@ -5,7 +5,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogClose,
 } from "@/components/ui/dialog"
 import { WarningIcon } from "@/assets/icons"
 import PrimaryButton from "@/components/common/buttons/PrimaryButton"
@@ -24,15 +23,12 @@ export default function DeleteRoomDialog({ isOpen, setIsOpen }) {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="flex w-full flex-col items-center gap-2">
-          <DialogClose className="w-full" onClick={() => setIsOpen(false)}>
-            <PrimaryButton text="Yes, please" />
-          </DialogClose>
-          <DialogClose className="w-full" onClick={() => setIsOpen(false)}>
-            <PrimaryButton
-              className="bg-dark-3 text-white"
-              text="No, take me back"
-            />
-          </DialogClose>
+          <PrimaryButton text="Yes, please" onClick={() => setIsOpen(false)} />
+          <PrimaryButton
+            className="bg-dark-3 text-white"
+            text="No, take me back"
+            onClick={() => setIsOpen(false)}
+          />
         </DialogFooter>
       </DialogContent>
     </Dialog>

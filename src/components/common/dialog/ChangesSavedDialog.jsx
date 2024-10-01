@@ -5,7 +5,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogClose,
 } from "@/components/ui/dialog"
 import { WarningIcon } from "@/assets/icons"
 import PrimaryButton from "@/components/common/buttons/PrimaryButton"
@@ -29,9 +28,7 @@ export default function ChangesSavedDialog({
           </DialogDescription>
         </DialogHeader>
         <DialogFooter className="flex w-full flex-col items-center gap-2">
-          <DialogClose className="w-full" onClick={() => setIsOpen(false)}>
-            <PrimaryButton text="Ok" />
-          </DialogClose>
+          <PrimaryButton text="Ok" onClick={() => setIsOpen(false)} />
         </DialogFooter>
       </DialogContent>
     </Dialog>

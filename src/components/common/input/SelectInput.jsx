@@ -12,16 +12,24 @@ import { CaretDown } from "@/assets/icons"
 import { cn } from "@/lib/utils"
 
 const SelectInput = forwardRef(
-  ({ field, selectOptions, onKeyDown, onChange }, ref) => {
+  ({ field, selectOptions, onKeyDown, onChange, placeholder }, ref) => {
     const [isActive, setIsActive] = useState(false)
 
     useEffect(() => {
-      setIsActive(!!field.value)
+      setIsActive(field.value !== undefined && field.value !== "")
     }, [field.value])
+
+    const handleChange = (value) => {
+      // Convert string 'true' or 'false' to boolean if necessary
+      const booleanValue =
+        value === "true" ? true : value === "false" ? false : value
+      field.onChange(booleanValue)
+      if (onChange) onChange(booleanValue)
+    }
 
     return (
       <FormItem className="flex flex-col">
-        <Select onValueChange={field.onChange} defaultValue={field.value}>
+        <Select onValueChange={handleChange} value={String(field.value)}>
           <FormControl>
             <SelectTrigger
               ref={ref}
@@ -29,12 +37,12 @@ const SelectInput = forwardRef(
               icon={CaretDown}
               isActive={isActive}
               className={cn(
-                " border-2 border-transparent p-6 focus:border-primary focus:bg-input-focus",
+                "border-2 border-transparent p-6 focus:border-primary focus:bg-input-focus",
                 isActive ? "bg-[#25253b]" : "bg-dark-2 text-gray-500",
-                "touch-manipulation" // Improves touch behavior on mobile
+                "touch-manipulation"
               )}
             >
-              <SelectValue placeholder="Gender" className="text-white" />
+              <SelectValue placeholder={placeholder} className="text-white" />
             </SelectTrigger>
           </FormControl>
           <SelectContent className="rounded-2xl bg-dark-2 text-white">
@@ -43,11 +51,7 @@ const SelectInput = forwardRef(
                 <SelectItem
                   className="cursor-pointer rounded-2xl px-6 focus:bg-primary"
                   key={option.value}
-                  value={option.value}
-                  onClick={() => {
-                    field.onChange(option.value)
-                    onChange()
-                  }}
+                  value={String(option.value)}
                 >
                   {option.label}
                 </SelectItem>

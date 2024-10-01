@@ -6,7 +6,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogClose,
 } from "@/components/ui/dialog"
 import { EmbedIcon } from "@/assets/icons"
 import PrimaryButton from "@/components/common/buttons/PrimaryButton"
@@ -33,12 +32,12 @@ export default function EmbedRoomDialog({ isOpen, setIsOpen }) {
           </p>
         </div>
         <DialogFooter className="flex w-full flex-col items-center gap-2">
-          <DialogClose className="w-full" onClick={() => setIsOpen(false)}>
-            <PrimaryButton text="Copy" />
-          </DialogClose>
-          <DialogClose className="w-full" onClick={() => setIsOpen(false)}>
-            <PrimaryButton className="bg-dark-3 text-white" text="Cancel" />
-          </DialogClose>
+          <PrimaryButton text="Copy" onClick={() => setIsOpen(false)} />
+          <PrimaryButton
+            className="bg-dark-3 text-white"
+            text="Cancel"
+            onClick={() => setIsOpen(false)}
+          />
         </DialogFooter>
       </DialogContent>
     </Dialog>
