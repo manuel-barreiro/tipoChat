@@ -20,27 +20,25 @@ export default function FixedBottomButton({
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 flex w-full justify-center border-t-2 border-dark-3 bg-dark-1 py-5 backdrop-blur-[20px]">
-      <div className="flex w-full max-w-[430px] items-center justify-between px-6">
-        {link ? (
-          <Link to={link} className="w-full" onClick={handleClick}>
-            <PrimaryButton
-              type={type || "button"}
-              disabled={disabled}
-              text={text}
-              shadow={shadow}
-            />
-          </Link>
-        ) : (
+    <div className="sticky bottom-0 left-0 right-0 z-50 flex w-full items-center justify-between border-t-2 border-dark-3 bg-dark-1 py-5 backdrop-blur-[20px]">
+      {link ? (
+        <Link to={link} className="w-full" onClick={handleClick}>
           <PrimaryButton
             type={type || "button"}
             disabled={disabled}
-            onClick={handleClick}
             text={text}
             shadow={shadow}
           />
-        )}
-      </div>
+        </Link>
+      ) : (
+        <PrimaryButton
+          type={type || "button"}
+          disabled={disabled}
+          onClick={handleClick}
+          text={text}
+          shadow={shadow}
+        />
+      )}
     </div>
   )
 }
