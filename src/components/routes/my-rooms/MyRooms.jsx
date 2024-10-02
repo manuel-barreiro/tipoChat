@@ -1,4 +1,4 @@
-import FixedBottomButton from "@/components/common/buttons/FixedBottomButton"
+// import FixedBottomButton from "@/components/common/buttons/FixedBottomButton"
 import RoomCard from "@/components/common/cards/RoomCard"
 import { mockRooms } from "@/static/mockRooms"
 
@@ -16,7 +16,7 @@ export default function MyRooms() {
           actions={room.actions}
         />
       ))}
-      <FixedBottomButton text="Create New Room" link={"create"} />
+      {/* <FixedBottomButton text="Create New Room" link={"create"} /> */}
     </section>
   )
 }
