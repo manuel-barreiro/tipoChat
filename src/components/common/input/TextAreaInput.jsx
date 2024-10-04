@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/form"
 import { cn } from "@/lib/utils"
 
-const TextAreaInput = ({ placeholder, field, onBlur }) => {
+const TextAreaInput = ({ placeholder, field, onBlur, id }) => {
   const [isActive, setIsActive] = useState(false)
 
   //useEffect to check if the field has a value and set isActive to true
@@ -24,6 +24,7 @@ const TextAreaInput = ({ placeholder, field, onBlur }) => {
         <FormLabel className="sr-only">{placeholder}</FormLabel>
         <FormControl>
           <Textarea
+            id={id}
             placeholder={placeholder}
             {...field}
             className={cn(

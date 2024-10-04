@@ -187,6 +187,7 @@ export default function SignUpForm() {
                 ref={(el) => (inputRefs.current[inputs.length + 1] = el)}
                 onKeyDown={(e) => handleKeyDown(e, inputs.length + 1)}
                 onChange={() => form.trigger("gender")}
+                placeholder="Gender"
               />
             )}
           />

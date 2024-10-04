@@ -9,7 +9,7 @@ import {
 import { cn } from "@/lib/utils"
 
 const SignUpInput = forwardRef(
-  ({ placeholder, type, field, icon, onKeyDown, onBlur }, ref) => {
+  ({ placeholder, type, field, icon, onKeyDown, onBlur, id }, ref) => {
     const [isActive, setIsActive] = useState(false)
     const IconComponent = icon
 
@@ -34,6 +34,7 @@ const SignUpInput = forwardRef(
           <FormLabel className="sr-only">{placeholder}</FormLabel>
           <FormControl>
             <Input
+              id={id}
               type={type || "text"}
               placeholder={placeholder}
               {...field}

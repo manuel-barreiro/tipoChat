@@ -2,6 +2,19 @@ import { ShareIcon, SettingsIcon } from "@/assets/icons"
 import { Link } from "react-router-dom"
 
 export const navbarConfig = {
+  "/my-rooms": {
+    title: "My Rooms",
+    rightContent: null,
+  },
+  "/my-rooms/create": {
+    title: "Create Room",
+    rightContent: null,
+  },
+  "/my-rooms/edit": {
+    title: "Edit Room",
+    rightContent: null,
+  },
+
   "/forgot-password": {
     title: "Password Recovery",
     rightContent: null,

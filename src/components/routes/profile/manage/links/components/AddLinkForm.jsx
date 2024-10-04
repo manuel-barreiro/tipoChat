@@ -51,7 +51,7 @@ export default function AddLinkForm() {
       <Form {...form} className>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="flex h-full w-full flex-col gap-60"
+          className="flex h-full w-full flex-col justify-between gap-10"
         >
           <div className="flex h-auto w-full flex-col gap-4">
             <p className="text-heading-6">Title</p>

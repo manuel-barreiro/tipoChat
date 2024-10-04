@@ -19,8 +19,8 @@ export default function MyLinks() {
 
   return (
     <>
-      {mockLinks.map((link) => (
-        <>
+      <div className="h-auto min-h-[80dvh]">
+        {mockLinks.map((link) => (
           <div
             key={link.url}
             className="relative mb-2 flex w-full flex-col justify-around gap-2"
@@ -39,8 +39,8 @@ export default function MyLinks() {
               />
             </button>
           </div>
-        </>
-      ))}
+        ))}
+      </div>
       <FixedBottomButton
         text="Save Changes"
         onClick={() => setIsOpenSaveChanges(true)}
