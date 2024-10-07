@@ -6,92 +6,114 @@ export default {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {
-      colors: {
-        primary: "#03FDCC",
-        "primary-400": "#67FEE0",
-        "primary-300": "#9AFEEA",
-        "primary-200": "#CDFEF4",
-        "primary-100": "#E5FFFA",
-        "primary-disabled": "#02CAA3",
-        secondary: "#FFD300",
-        "secondary-400": "#FFDC33",
-        "secondary-300": "#FFE566",
-        "secondary-200": "#FFED99",
-        "secondary-100": "#FFED99",
-        success: "#1BAC4B",
-        info: "#6949FF",
-        warning: "#FACC15",
-        error: "#F75555",
-        disabled: "#D8D8D8",
-        "dis-button": "#607D8A",
-        "grey-900": "#212121",
-        "grey-800": "#424242",
-        "grey-700": "#616161",
-        "grey-600": "#757575",
-        "grey-500": "#9E9E9E",
-        "grey-400": "#BDBDBD",
-        "grey-300": "#E0E0E0",
-        "grey-200": "#EEEEEE",
-        "grey-100": "#F5F5F5",
-        "grey-50": "#FAFAFA",
-        "dark-1": "#181A20",
-        "dark-2": "#1F222A",
-        "dark-3": "#35383F",
-        "input-focus": "#6949FF14",
-        white: "#FFFFFF",
-        black: "#000000",
-        red: "#F54336",
-        pink: "#EA1E61",
-        purple: "#EA1E61",
-        "deep-purple": "#673AB3",
-        indigo: "#3F51B2",
-        blue: "#1A96F0",
-        "light-blue": "#00A9F1",
-        cyan: "#00BCD3",
-        teal: "#009689",
-        green: "#4AAF57",
-        "light-green": "#8BC255",
-        lime: "#CDDC4C",
-        yellow: "#FFEB4F",
-        amber: "#FFC02D",
-        orange: "#FF981F",
-        "deep-orange": "#FF5726",
-        brown: "#7A5548",
-        "blue-grey": "#607D8A",
-      },
-      fontFamily: {
-        sans: ["Urbanist", ...defaultTheme.fontFamily.sans],
-        urbanist: ["Urbanist", "sans-serif"],
-      },
-      fontSize: {
-        "heading-1": ["48px", { lineHeight: "1.2", fontWeight: "700" }],
-        "heading-2": ["40px", { lineHeight: "1.2", fontWeight: "700" }],
-        "heading-3": ["32px", { lineHeight: "1.2", fontWeight: "700" }],
-        "heading-4": ["24px", { lineHeight: "1.2", fontWeight: "700" }],
-        "heading-5": ["20px", { lineHeight: "1.2", fontWeight: "700" }],
-        "heading-6": ["18px", { lineHeight: "1.2", fontWeight: "700" }],
-        "body-xlarge": ["20px", { lineHeight: "1.5" }],
-        "body-large": ["18px", { lineHeight: "1.5" }],
-        "body-medium": ["16px", { lineHeight: "1.5" }],
-        "body-small": ["14px", { lineHeight: "1.5" }],
-        "body-xsmall": ["12px", { lineHeight: "1.5" }],
-      },
-      fontWeight: {
-        regular: "400",
-        medium: "500",
-        semibold: "600",
-        bold: "700",
-      },
-      boxShadow: {
-        "button-1": "4px 8px 24px 0px rgba(3, 253, 204, 0.25)",
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
-    },
+  	extend: {
+  		colors: {
+  			primary: '#03FDCC',
+  			'primary-400': '#67FEE0',
+  			'primary-300': '#9AFEEA',
+  			'primary-200': '#CDFEF4',
+  			'primary-100': '#E5FFFA',
+  			'primary-disabled': '#02CAA3',
+  			secondary: '#FFD300',
+  			'secondary-400': '#FFDC33',
+  			'secondary-300': '#FFE566',
+  			'secondary-200': '#FFED99',
+  			'secondary-100': '#FFED99',
+  			success: '#1BAC4B',
+  			info: '#6949FF',
+  			warning: '#FACC15',
+  			error: '#F75555',
+  			disabled: '#D8D8D8',
+  			'dis-button': '#607D8A',
+  			'grey-900': '#212121',
+  			'grey-800': '#424242',
+  			'grey-700': '#616161',
+  			'grey-600': '#757575',
+  			'grey-500': '#9E9E9E',
+  			'grey-400': '#BDBDBD',
+  			'grey-300': '#E0E0E0',
+  			'grey-200': '#EEEEEE',
+  			'grey-100': '#F5F5F5',
+  			'grey-50': '#FAFAFA',
+  			'dark-1': '#181A20',
+  			'dark-2': '#1F222A',
+  			'dark-3': '#35383F',
+  			'input-focus': '#6949FF14',
+  			white: '#FFFFFF',
+  			black: '#000000',
+  			red: '#F54336',
+  			pink: '#EA1E61',
+  			purple: '#EA1E61',
+  			'deep-purple': '#673AB3',
+  			indigo: '#3F51B2',
+  			blue: '#1A96F0',
+  			'light-blue': '#00A9F1',
+  			cyan: '#00BCD3',
+  			teal: '#009689',
+  			green: '#4AAF57',
+  			'light-green': '#8BC255',
+  			lime: '#CDDC4C',
+  			yellow: '#FFEB4F',
+  			amber: '#FFC02D',
+  			orange: '#FF981F',
+  			'deep-orange': '#FF5726',
+  			brown: '#7A5548',
+  			'blue-grey': '#607D8A'
+  		},
+  		fontFamily: {
+  			sans: ["Urbanist", ...defaultTheme.fontFamily.sans],
+  			urbanist: ["Urbanist", "sans-serif"]
+  		},
+  		fontSize: {
+  			'heading-1': ["48px", { lineHeight: "1.2", fontWeight: "700" }],
+  			'heading-2': ["40px", { lineHeight: "1.2", fontWeight: "700" }],
+  			'heading-3': ["32px", { lineHeight: "1.2", fontWeight: "700" }],
+  			'heading-4': ["24px", { lineHeight: "1.2", fontWeight: "700" }],
+  			'heading-5': ["20px", { lineHeight: "1.2", fontWeight: "700" }],
+  			'heading-6': ["18px", { lineHeight: "1.2", fontWeight: "700" }],
+  			'body-xlarge': ["20px", { lineHeight: "1.5" }],
+  			'body-large': ["18px", { lineHeight: "1.5" }],
+  			'body-medium': ["16px", { lineHeight: "1.5" }],
+  			'body-small': ["14px", { lineHeight: "1.5" }],
+  			'body-xsmall': ["12px", { lineHeight: "1.5" }]
+  		},
+  		fontWeight: {
+  			regular: '400',
+  			medium: '500',
+  			semibold: '600',
+  			bold: '700'
+  		},
+  		boxShadow: {
+  			'button-1': '4px 8px 24px 0px rgba(3, 253, 204, 0.25)'
+  		},
+  		borderRadius: {
+  			lg: 'var(--radius)',
+  			md: 'calc(var(--radius) - 2px)',
+  			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
+  		}
+  	}
   },
   plugins: [
     animate,

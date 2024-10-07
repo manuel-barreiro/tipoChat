@@ -1,9 +1,10 @@
 import { cn } from "@/lib/utils"
 
 export default function PrimaryButton({
-  text = "Button",
+  text = false,
   disabled = false,
   shadow = false,
+  icon = false,
   type,
   className,
   ...props
@@ -13,14 +14,15 @@ export default function PrimaryButton({
       type={type}
       disabled={disabled}
       className={cn(
-        "w-full rounded-[16px] p-4 text-grey-900 duration-300 ease-in-out",
+        "flex w-full items-center justify-center gap-4 rounded-[16px] p-4 text-grey-900 duration-300 ease-in-out",
         disabled ? "cursor-not-allowed bg-primary-disabled" : "bg-primary",
         shadow && !disabled && "shadow-button-1",
         className
       )}
       {...props}
     >
-      <span className="text-body-large font-bold">{text}</span>
+      {text && <span className="text-body-large font-bold">{text}</span>}
+      {icon && icon}
     </button>
   )
 }
