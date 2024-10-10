@@ -19,6 +19,11 @@ import MyRoomsLayout from "@/components/routes/my-rooms/MyRoomsLayout"
 import CreateRoom from "@/components/routes/my-rooms/components/CreateRoom"
 import EditRoom from "@/components/routes/my-rooms/components/EditRoom"
 import UserProfile from "@/components/routes/profile/user/UserProfile"
+import MyPosts from "@/components/routes/posts/admin/MyPosts"
+import UserPosts from "@/components/routes/posts/user/UserPosts"
+import PostsLayout from "@/components/routes/posts/PostsLayout"
+import CreatePost from "@/components/routes/posts/admin/create/CreatePost"
+import EditPost from "@/components/routes/posts/admin/edit/EditPost"
 
 const router = createBrowserRouter([
   {
@@ -86,6 +91,28 @@ const router = createBrowserRouter([
           {
             path: "edit",
             element: <EditRoom />,
+          },
+        ],
+      },
+      {
+        path: "posts",
+        element: <PostsLayout />,
+        children: [
+          {
+            path: "admin",
+            element: <MyPosts />,
+          },
+          {
+            path: "admin/create",
+            element: <CreatePost />,
+          },
+          {
+            path: "admin/edit",
+            element: <EditPost />,
+          },
+          {
+            path: "user",
+            element: <UserPosts />,
           },
         ],
       },

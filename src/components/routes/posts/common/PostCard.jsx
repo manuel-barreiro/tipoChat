@@ -2,9 +2,7 @@ import React, { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import CardActionChip from "@/components/common/cards/CardActionChip"
 import CardTag from "@/components/common/cards/CardTag"
-import EmbedRoomDialog from "@/components/common/dialog/EmbedRoomDialog"
 import DeleteDialog from "@/components/common/dialog/DeleteDialog"
-import ShareDrawer from "@/components/common/drawer/ShareDrawer"
 import { Link } from "react-router-dom"
 
 function formatText(text, maxChars) {
@@ -14,7 +12,7 @@ function formatText(text, maxChars) {
   return text
 }
 
-export default function RoomCard({
+export default function PostCard({
   id,
   title,
   description,
@@ -22,8 +20,6 @@ export default function RoomCard({
   tags,
   actions,
 }) {
-  const [isEmbedOpen, setIsEmbedOpen] = useState(false)
-  const [isShareOpen, setIsShareOpen] = useState(false)
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
 
   return (
@@ -55,19 +51,7 @@ export default function RoomCard({
           </div>
         </CardContent>
 
-        <div className="flex justify-between gap-2 md:justify-around">
-          {actions.embed && (
-            <CardActionChip
-              action="Embed"
-              onClick={() => setIsEmbedOpen(true)}
-            />
-          )}
-          {actions.share && (
-            <CardActionChip
-              action="Share"
-              onClick={() => setIsShareOpen(true)}
-            />
-          )}
+        <div className="flex justify-start gap-2">
           {actions.edit && (
             <Link to="edit">
               <CardActionChip action="Edit" />
@@ -82,14 +66,11 @@ export default function RoomCard({
         </div>
       </Card>
 
-      <EmbedRoomDialog isOpen={isEmbedOpen} setIsOpen={setIsEmbedOpen} />
-
       <DeleteDialog
         isOpen={isDeleteOpen}
         setIsOpen={setIsDeleteOpen}
-        text="room"
+        text="post"
       />
-      <ShareDrawer isOpen={isShareOpen} setIsOpen={setIsShareOpen} />
     </>
   )
 }

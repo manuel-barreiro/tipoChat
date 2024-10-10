@@ -76,3 +76,11 @@ export const roomSchema = z.object({
   indexRoom: z.boolean(),
   allowEmbed: z.boolean(),
 })
+
+export const postSchema = z.object({
+  title: z.string().min(1, "Title is required"),
+  about: z.string().min(1, "Description is required"),
+  type: z.enum(["Music", "Entertainment", "Gaming", "Lifestyle"]),
+  price: z.number(),
+  link: z.string().url("Enter a valid URL"),
+})

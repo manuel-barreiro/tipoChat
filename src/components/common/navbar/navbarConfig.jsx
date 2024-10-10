@@ -47,4 +47,28 @@ export const navbarConfig = {
     title: "Manage Your Links",
     rightContent: null,
   },
+  "/posts/admin": {
+    title: "My Posts",
+    rightContent: null,
+  },
+  "/posts/user": {
+    title: "Posts",
+    rightContent: null,
+  },
+  "/posts/admin/create": {
+    title: "Create Post",
+    rightContent: (
+      <button className="rounded-full border-2 border-primary px-6 py-2 text-xs text-primary">
+        Upload Image
+      </button>
+    ),
+  },
+  "/posts/admin/edit": {
+    title: "Edit Post",
+    rightContent: (
+      <button className="rounded-full border-2 border-primary px-6 py-2 text-xs text-primary">
+        Upload Image
+      </button>
+    ),
+  },
 }
