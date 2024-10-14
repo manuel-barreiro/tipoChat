@@ -24,6 +24,11 @@ import UserPosts from "@/components/routes/posts/user/UserPosts"
 import PostsLayout from "@/components/routes/posts/PostsLayout"
 import CreatePost from "@/components/routes/posts/admin/create/CreatePost"
 import EditPost from "@/components/routes/posts/admin/edit/EditPost"
+import Post from "@/components/routes/posts/Post"
+import MyWalletLayout from "@/components/routes/wallet/MyWalletLayout"
+import Wallet from "@/components/routes/wallet/Wallet"
+import BuyPoints from "@/components/routes/wallet/components/BuyPoints"
+import ChooseCryptoNetwork from "@/components/routes/wallet/components/ChooseCryptoNetwork"
 
 const router = createBrowserRouter([
   {
@@ -113,6 +118,28 @@ const router = createBrowserRouter([
           {
             path: "user",
             element: <UserPosts />,
+          },
+          {
+            path: "view",
+            element: <Post />,
+          },
+        ],
+      },
+      {
+        path: "wallet",
+        element: <MyWalletLayout />,
+        children: [
+          {
+            path: "",
+            element: <Wallet />,
+          },
+          {
+            path: "buy-points",
+            element: <BuyPoints />,
+          },
+          {
+            path: "buy-points/choose-crypto-network",
+            element: <ChooseCryptoNetwork />,
           },
         ],
       },

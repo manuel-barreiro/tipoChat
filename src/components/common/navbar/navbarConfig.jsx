@@ -71,4 +71,20 @@ export const navbarConfig = {
       </button>
     ),
   },
+  "/posts/view/": {
+    title: "My Gaming Post",
+    rightContent: null,
+  },
+  "/wallet": {
+    title: "Your Wallet",
+    rightContent: null,
+  },
+  "/wallet/buy-points": {
+    title: "Buy Points",
+    rightContent: null,
+  },
+  "/wallet/choose-crypto-network": {
+    title: "Choose Network",
+    rightContent: null,
+  },
 }

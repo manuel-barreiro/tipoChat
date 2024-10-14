@@ -91,3 +91,11 @@ input:-webkit-autofill:focus {
 input[data-autocompleted] {
   background-color: var(--input-focus-bg) !important;
 }
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

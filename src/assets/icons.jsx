@@ -1684,3 +1684,43 @@ export const LockIcon = ({ color = "currentColor", ...props }) => (
     />
   </svg>
 )
+
+export const TransactionIcon = ({ color = "currentColor", ...props }) => (
+  <svg
+    width="28"
+    height="28"
+    viewBox="0 0 28 28"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path
+      d="M19.6461 23.5241V7.63672"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M24.4034 18.7461L19.646 23.5255L14.8886 18.7461"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M8.06296 4.47168V20.3591"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M3.30568 9.25015L8.06309 4.4707L12.8205 9.25015"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+)

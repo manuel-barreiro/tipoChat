@@ -1,5 +1,5 @@
 import UserInfo from "./components/UserInfo"
-import PointsCard from "./components/PointsCard"
+import PointsCard from "@/components/common/cards/PointsCard"
 import AdminMenu from "./components/AdminMenu"
 import { mockUser } from "@/static/mockUser"
 import TipoChatFooter from "./components/TipoChatFooter"

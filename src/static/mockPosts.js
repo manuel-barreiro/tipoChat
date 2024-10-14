@@ -6,10 +6,7 @@ export const mockPosts = [
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
     privacy: "Private",
     tags: ["Esp", "Genre"],
-    actions: {
-      edit: true,
-      delete: true,
-    },
+    price: 15,
   },
   {
     id: 2,
@@ -18,10 +15,7 @@ export const mockPosts = [
     description: "Explore the fascinating world of contemporary art...",
     privacy: "Open",
     tags: ["Esp", "Genre"],
-    actions: {
-      edit: true,
-      delete: true,
-    },
+    price: 0,
   },
   {
     id: 3,
@@ -30,10 +24,7 @@ export const mockPosts = [
     description: "Discover the beauty of nature through stunning visuals...",
     privacy: "Private",
     tags: ["Esp", "Genre"],
-    actions: {
-      edit: true,
-      delete: true,
-    },
+    price: 15,
   },
   {
     id: 4,
@@ -43,10 +34,7 @@ export const mockPosts = [
       "Join us for an in-depth discussion on the latest in technology...",
     privacy: "Open",
     tags: ["Esp", "Genre"],
-    actions: {
-      edit: true,
-      delete: true,
-    },
+    price: 0,
   },
   {
     id: 5,
@@ -55,10 +43,7 @@ export const mockPosts = [
     description: "Learn to cook delicious meals with expert chefs...",
     privacy: "Private",
     tags: ["Esp", "Genre"],
-    actions: {
-      edit: true,
-      delete: true,
-    },
+    price: 15,
   },
   {
     id: 6,
@@ -67,10 +52,7 @@ export const mockPosts = [
     description: "Get in shape with our intensive fitness...",
     privacy: "Open",
     tags: ["Esp", "Genre"],
-    actions: {
-      edit: true,
-      delete: true,
-    },
+    price: 0,
   },
   {
     id: 7,
@@ -79,9 +61,6 @@ export const mockPosts = [
     description: "Experience live performances...",
     privacy: "Private",
     tags: ["Esp", "Genre"],
-    actions: {
-      edit: true,
-      delete: true,
-    },
+    price: 15,
   },
 ]

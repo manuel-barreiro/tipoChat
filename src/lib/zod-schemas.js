@@ -81,6 +81,15 @@ export const postSchema = z.object({
   title: z.string().min(1, "Title is required"),
   about: z.string().min(1, "Description is required"),
   type: z.enum(["Music", "Entertainment", "Gaming", "Lifestyle"]),
-  price: z.number(),
+  price: z.preprocess((val) => Number(val), z.number()),
   link: z.string().url("Enter a valid URL"),
+})
+
+export const buyPointsSchema = z.object({
+  amount: z.string().min(1, "Amount is required"),
+  method: z.string().min(1, "Method is required"),
+})
+
+export const chooseCryptoNetworkSchema = z.object({
+  network: z.string().min(1, "Network is required"),
 })
