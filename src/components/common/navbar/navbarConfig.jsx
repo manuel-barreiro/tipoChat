@@ -57,19 +57,11 @@ export const navbarConfig = {
   },
   "/posts/admin/create": {
     title: "Create Post",
-    rightContent: (
-      <button className="rounded-full border-2 border-primary px-6 py-2 text-xs text-primary">
-        Upload Image
-      </button>
-    ),
+    rightContent: null,
   },
   "/posts/admin/edit": {
     title: "Edit Post",
-    rightContent: (
-      <button className="rounded-full border-2 border-primary px-6 py-2 text-xs text-primary">
-        Upload Image
-      </button>
-    ),
+    rightContent: null,
   },
   "/posts/view/": {
     title: "My Gaming Post",

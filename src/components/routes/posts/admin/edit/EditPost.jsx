@@ -10,9 +10,17 @@ const mockPostData = {
   title: "Rock Music Lovers",
   about:
     "A room for rock music enthusiasts to discuss their favorite bands and songs.",
-  type: "Music", // Changed from "Public" to "Music"
-  price: 0,
+  type: "Music",
+  price: 150,
   link: "https://www.spotify.com",
+  images: [
+    "/images/game1.png",
+    "/images/game2.png",
+    "/images/game3.png",
+    "/images/game4.png",
+    "/images/game5.png",
+    "/images/game6.png",
+  ],
 }
 
 export default function EditPost() {

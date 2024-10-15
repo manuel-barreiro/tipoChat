@@ -15,9 +15,10 @@ export default function CreatePost() {
     defaultValues: {
       title: "",
       about: "",
-      price: "",
+      price: null,
       type: "",
       link: "",
+      images: [],
     },
     mode: "onBlur",
   })
