@@ -191,9 +191,9 @@ export default function PostForm({ form, onSubmit, submitText }) {
                   <button
                     type="button"
                     onClick={() => handleImageRemove(index)}
-                    className="bg-red-500 absolute right-1 top-1 flex h-7 w-7 items-center justify-center rounded-full text-red"
+                    className="absolute right-1 top-1 flex items-center justify-center rounded-full bg-primary p-1 text-dark-1"
                   >
-                    <XIcon className="h-3 w-3" />
+                    <XIcon className="h-3 w-3 font-bold" />
                   </button>
                 </div>
               ))}
