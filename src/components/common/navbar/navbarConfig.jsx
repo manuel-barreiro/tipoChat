@@ -47,4 +47,36 @@ export const navbarConfig = {
     title: "Manage Your Links",
     rightContent: null,
   },
+  "/posts/admin": {
+    title: "My Posts",
+    rightContent: null,
+  },
+  "/posts/user": {
+    title: "Posts",
+    rightContent: null,
+  },
+  "/posts/admin/create": {
+    title: "Create Post",
+    rightContent: null,
+  },
+  "/posts/admin/edit": {
+    title: "Edit Post",
+    rightContent: null,
+  },
+  "/posts/view/": {
+    title: "My Gaming Post",
+    rightContent: null,
+  },
+  "/wallet": {
+    title: "Your Wallet",
+    rightContent: null,
+  },
+  "/wallet/buy-points": {
+    title: "Buy Points",
+    rightContent: null,
+  },
+  "/wallet/choose-crypto-network": {
+    title: "Choose Network",
+    rightContent: null,
+  },
 }

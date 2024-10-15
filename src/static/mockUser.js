@@ -1,7 +1,7 @@
 export const mockUser = {
   fullName: "Benjamín Brusa",
   nickName: "Kakaroto xD",
-  email: "banja.brusa@gmail.com",
+  email: "benja.brusa@gmail.com",
   phone: "123-456-7890",
   dateOfBirth: new Date("1990-01-01"),
   bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.",

@@ -2,10 +2,9 @@ import React, { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import CardActionChip from "@/components/common/cards/CardActionChip"
 import CardTag from "@/components/common/cards/CardTag"
-import EmbedRoomDialog from "@/components/common/dialog/EmbedRoomDialog"
 import DeleteDialog from "@/components/common/dialog/DeleteDialog"
-import ShareDrawer from "@/components/common/drawer/ShareDrawer"
 import { Link } from "react-router-dom"
+import { LockIcon } from "@/assets/icons"
 
 function formatText(text, maxChars) {
   if (text.length > maxChars) {
@@ -14,29 +13,32 @@ function formatText(text, maxChars) {
   return text
 }
 
-export default function RoomCard({
+export default function PostCard({
   id,
   title,
   description,
   privacy,
+  price,
   tags,
-  actions,
+  viewer,
+  owner,
 }) {
-  const [isEmbedOpen, setIsEmbedOpen] = useState(false)
-  const [isShareOpen, setIsShareOpen] = useState(false)
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
 
   return (
     <>
       <Card className="flex h-full w-full flex-col gap-4 rounded-[20px] border-0 bg-dark-2 p-4 text-white">
         <CardContent className="flex h-full items-stretch justify-between gap-4 p-0">
-          <div className="w-1/2 overflow-hidden rounded-[16px]">
+          <div className="relative w-1/2 overflow-hidden rounded-[16px]">
             <img
               src="/images/mockRoom.png"
               alt="room image"
               title={id}
               className="h-full w-full object-cover"
             />
+            {viewer !== owner && price > 0 && (
+              <LockIcon className="absolute right-[43%] top-[40%] text-[#212121]" />
+            )}
           </div>
 
           <div className="flex h-full w-1/2 flex-col">
@@ -55,41 +57,31 @@ export default function RoomCard({
           </div>
         </CardContent>
 
-        <div className="flex justify-between gap-2 md:justify-around">
-          {actions.embed && (
-            <CardActionChip
-              action="Embed"
-              onClick={() => setIsEmbedOpen(true)}
-            />
-          )}
-          {actions.share && (
-            <CardActionChip
-              action="Share"
-              onClick={() => setIsShareOpen(true)}
-            />
-          )}
-          {actions.edit && (
+        {viewer === owner ? (
+          <div className="flex justify-start gap-2">
             <Link to="edit">
               <CardActionChip action="Edit" />
             </Link>
-          )}
-          {actions.delete && (
+
             <CardActionChip
               action="Delete"
               onClick={() => setIsDeleteOpen(true)}
             />
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="flex justify-start gap-2">
+            <button className="rounded-full border-[3px] border-orange bg-transparent px-4 py-1 text-center text-xs font-semibold text-orange duration-300 ease-in-out hover:bg-orange hover:text-dark-2 md:text-sm">
+              {price === 0 ? "Price: Free" : `Buy: ${price} Points`}
+            </button>
+          </div>
+        )}
       </Card>
-
-      <EmbedRoomDialog isOpen={isEmbedOpen} setIsOpen={setIsEmbedOpen} />
 
       <DeleteDialog
         isOpen={isDeleteOpen}
         setIsOpen={setIsDeleteOpen}
-        text="room"
+        text="post"
       />
-      <ShareDrawer isOpen={isShareOpen} setIsOpen={setIsShareOpen} />
     </>
   )
 }
