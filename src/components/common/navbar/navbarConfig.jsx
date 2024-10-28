@@ -79,4 +79,28 @@ export const navbarConfig = {
     title: "Choose Network",
     rightContent: null,
   },
+  "/community": {
+    title: "Your Community",
+    rightContent: null,
+  },
+  "/community/subscribers": {
+    title: "Your Community",
+    rightContent: null,
+  },
+  "/community/subscriptions": {
+    title: "Your Community",
+    rightContent: null,
+  },
+  "/community/followers": {
+    title: "Your Community",
+    rightContent: null,
+  },
+  "/community/following": {
+    title: "Your Community",
+    rightContent: null,
+  },
+  "/community/banned": {
+    title: "Your Community",
+    rightContent: null,
+  },
 }

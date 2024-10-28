@@ -29,6 +29,9 @@ import MyWalletLayout from "@/components/routes/wallet/MyWalletLayout"
 import Wallet from "@/components/routes/wallet/Wallet"
 import BuyPoints from "@/components/routes/wallet/components/BuyPoints"
 import ChooseCryptoNetwork from "@/components/routes/wallet/components/ChooseCryptoNetwork"
+import CommunityLayout from "@/components/routes/community/CommunityLayout"
+import CommunityMenu from "@/components/routes/community/CommunityMenu"
+import CommunityPage from "@/components/routes/community/CommunityPage"
 
 const router = createBrowserRouter([
   {
@@ -140,6 +143,36 @@ const router = createBrowserRouter([
           {
             path: "buy-points/choose-crypto-network",
             element: <ChooseCryptoNetwork />,
+          },
+        ],
+      },
+      {
+        path: "community",
+        element: <CommunityLayout />,
+        children: [
+          {
+            path: "",
+            element: <CommunityMenu />,
+          },
+          {
+            path: "subscribers",
+            element: <CommunityPage />,
+          },
+          {
+            path: "following",
+            element: <CommunityPage />,
+          },
+          {
+            path: "followers",
+            element: <CommunityPage />,
+          },
+          {
+            path: "subscriptions",
+            element: <CommunityPage />,
+          },
+          {
+            path: "banned",
+            element: <CommunityPage />,
           },
         ],
       },
