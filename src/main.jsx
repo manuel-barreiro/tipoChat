@@ -32,6 +32,8 @@ import ChooseCryptoNetwork from "@/components/routes/wallet/components/ChooseCry
 import CommunityLayout from "@/components/routes/community/CommunityLayout"
 import CommunityMenu from "@/components/routes/community/CommunityMenu"
 import CommunityPage from "@/components/routes/community/CommunityPage"
+import ChatLayout from "@/components/routes/chat/ChatLayout"
+import ChatInterface from "@/components/routes/chat/ChatInterface"
 
 const router = createBrowserRouter([
   {
@@ -174,6 +176,20 @@ const router = createBrowserRouter([
             path: "banned",
             element: <CommunityPage />,
           },
+        ],
+      },
+      {
+        path: "chat",
+        element: <ChatLayout />,
+        children: [
+          {
+            path: "",
+            element: <ChatInterface />,
+          },
+          // {
+          //   path: "stream/:id",
+          //   element: <LiveStream />,
+          // }
         ],
       },
     ],

@@ -2,9 +2,20 @@ import BackButton from "@/components/common/buttons/BackButton"
 import { useLocation } from "react-router-dom"
 import { navbarConfig } from "./navbarConfig"
 
+const ROUTES_WITHOUT_NAVBAR = ["/chat", "/chat/"] // Add any other chat routes here
+
 export default function NavBar() {
   const { pathname } = useLocation()
   const currentConfig = navbarConfig[pathname] || {}
+
+  // Check if current route should hide navbar
+  const shouldHideNavbar = ROUTES_WITHOUT_NAVBAR.some((route) =>
+    pathname.startsWith(route)
+  )
+
+  if (shouldHideNavbar) {
+    return null
+  }
 
   return (
     <nav className="sticky left-0 right-0 top-0 z-50 flex h-12 w-full items-center justify-between bg-dark-1 py-8">
