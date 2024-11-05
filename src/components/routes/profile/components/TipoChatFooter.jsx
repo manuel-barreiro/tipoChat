@@ -1,5 +1,5 @@
 import { LoginIcon, ThreeDotsButton } from "@/assets/icons"
-import CustomDropdownMenu from "@/components/common/menu/DropdownMenu"
+import CustomDropdownMenu from "@/components/common/dropdown/DropdownMenu"
 
 const menuItems = [
   { text: "Help", type: "checkbox" },

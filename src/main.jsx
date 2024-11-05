@@ -32,8 +32,8 @@ import ChooseCryptoNetwork from "@/components/routes/wallet/components/ChooseCry
 import CommunityLayout from "@/components/routes/community/CommunityLayout"
 import CommunityMenu from "@/components/routes/community/CommunityMenu"
 import CommunityPage from "@/components/routes/community/CommunityPage"
-import ChatLayout from "@/components/routes/chat/ChatLayout"
-import ChatInterface from "@/components/routes/chat/ChatInterface"
+import ChatLayout from "@/components/routes/room/RoomLayout"
+import ChatInterface from "@/components/routes/room/Room"
 
 const router = createBrowserRouter([
   {
@@ -179,7 +179,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "chat",
+        path: "room",
         element: <ChatLayout />,
         children: [
           {
