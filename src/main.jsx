@@ -32,18 +32,18 @@ import ChooseCryptoNetwork from "@/components/routes/wallet/components/ChooseCry
 import CommunityLayout from "@/components/routes/community/CommunityLayout"
 import CommunityMenu from "@/components/routes/community/CommunityMenu"
 import CommunityPage from "@/components/routes/community/CommunityPage"
-import ChatLayout from "@/components/routes/room/RoomLayout"
-import ChatInterface from "@/components/routes/room/Room"
+import RoomLayout from "@/components/routes/room/RoomLayout"
+import Room from "@/components/routes/room/Room"
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Root />,
-  },
   {
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
+      {
+        path: "/",
+        element: <Root />,
+      },
       {
         path: "onboarding",
         element: <Onboarding />,
@@ -180,16 +180,12 @@ const router = createBrowserRouter([
       },
       {
         path: "room",
-        element: <ChatLayout />,
+        element: <RoomLayout />,
         children: [
           {
             path: "",
-            element: <ChatInterface />,
+            element: <Room />,
           },
-          // {
-          //   path: "stream/:id",
-          //   element: <LiveStream />,
-          // }
         ],
       },
     ],

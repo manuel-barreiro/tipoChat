@@ -1,7 +1,6 @@
-import { EditIcon, TrashIcon } from "@/assets/icons"
+import { EditIcon, TrashIcon, WarningIcon, Check } from "@/assets/icons"
 import FixedBottomButton from "@/components/common/buttons/FixedBottomButton"
-import ChangesSavedDialog from "@/components/common/dialog/ChangesSavedDialog"
-import ConfirmDialog from "@/components/common/dialog/ConfirmDialog"
+import ActionDialog from "@/components/common/dialog/ActionDialog"
 import { useState } from "react"
 
 const mockLinks = [
@@ -45,15 +44,19 @@ export default function MyLinks() {
         text="Save Changes"
         onClick={() => setIsOpenSaveChanges(true)}
       />
-      <ConfirmDialog
+      <ActionDialog
         isOpen={isOpenConfirm}
         setIsOpen={setIsOpenConfirm}
+        icon={<WarningIcon />}
+        variant="error"
         title={"Are you sure?"}
         description={"This action cannot be undone"}
       />
-      <ChangesSavedDialog
+      <ActionDialog
         isOpen={isOpenSaveChanges}
         setIsOpen={setIsOpenSaveChanges}
+        icon={<Check />}
+        variant="success"
         title={"Changes Saved"}
         description={"You’ve succesfully saved your changes"}
       />

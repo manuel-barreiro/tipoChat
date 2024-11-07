@@ -1,32 +1,46 @@
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Separator } from "@/components/ui/separator"
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu"
+import { EllipsisVertical } from "lucide-react"
 
-export default function CustomDropdownMenu({ trigger, items }) {
+export default function TipoChatDropdownMenu({
+  menuItems,
+  onOpenChange,
+  open,
+}) {
   return (
-    <Popover>
-      <PopoverTrigger>{trigger}</PopoverTrigger>
-      <PopoverContent className="flex w-auto flex-col rounded-[20px] border-0 bg-dark-2 px-2 py-4 text-white">
-        {items.map((item, index) => (
-          <div key={index} className="flex flex-col gap-5 p-3">
-            <DropdownMenuCheckBoxItem text={item.text} />
-            {index < items.length - 1 && <Separator className="bg-dark-3" />}
-          </div>
-        ))}
-      </PopoverContent>
-    </Popover>
-  )
-}
-
-function DropdownMenuCheckBoxItem({ text }) {
-  return (
-    <div className="flex items-center gap-3">
-      <Checkbox className="border-white shadow focus-visible:outline-none focus-visible:ring-1 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-white data-[state=checked]:text-dark-1" />
-      <span className="text-body-medium font-semibold">{text}</span>
-    </div>
+    <DropdownMenu onOpenChange={onOpenChange} open={open}>
+      <DropdownMenuTrigger asChild>
+        <button>
+          <EllipsisVertical size={24} className="text-grey-600" />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="flex w-auto flex-col rounded-[20px] border-0 bg-dark-2 py-4 text-white">
+        <DropdownMenuGroup className="px-2">
+          {menuItems.map((item, index) => (
+            <div key={index}>
+              <DropdownMenuItem
+                className="cursor-pointer hover:!bg-transparent hover:!text-primary"
+                onSelect={(e) => {
+                  if (item.type === "div") {
+                    e.preventDefault()
+                  }
+                }}
+              >
+                {item}
+              </DropdownMenuItem>
+              {index < menuItems.length - 1 && (
+                <DropdownMenuSeparator className="bg-dark-3" />
+              )}
+            </div>
+          ))}
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import CardActionChip from "@/components/common/cards/CardActionChip"
 import CardTag from "@/components/common/cards/CardTag"
-import DeleteDialog from "@/components/common/dialog/DeleteDialog"
 import { Link } from "react-router-dom"
-import { LockIcon } from "@/assets/icons"
+import { LockIcon, TrashIcon } from "@/assets/icons"
+import ActionDialog from "@/components/common/dialog/ActionDialog"
 
 function formatText(text, maxChars) {
   if (text.length > maxChars) {
@@ -77,10 +77,15 @@ export default function PostCard({
         )}
       </Card>
 
-      <DeleteDialog
+      <ActionDialog
         isOpen={isDeleteOpen}
         setIsOpen={setIsDeleteOpen}
-        text="post"
+        title="You are about to delete this room and its content"
+        description="Are you sure you want to procede?"
+        icon={<TrashIcon />}
+        variant="error"
+        confirmText="Yes, please"
+        cancelText="No, take me back"
       />
     </>
   )

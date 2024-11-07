@@ -6,7 +6,7 @@ import {
   InfoReportIcon,
   WarningIcon,
 } from "@/assets/icons"
-import TipoChatDropdownMenu from "@/components/common/dropdown/TipoChatDropdownMenu"
+import DropdownMenu from "@/components/common/dropdown/DropdownMenu"
 import { useState } from "react"
 import ActionDialog from "@/components/common/dialog/ActionDialog"
 import ShareDrawer from "@/components/common/drawer/ShareDrawer"
@@ -93,7 +93,7 @@ export default function Stream({ user }) {
             <h2 className="text-body-large font-medium">
               Los Simpson, Lorem Ipsum
             </h2>
-            <TipoChatDropdownMenu
+            <DropdownMenu
               menuItems={getMenuItems()}
               onOpenChange={setIsDropdownOpen}
               open={isDropdownOpen}

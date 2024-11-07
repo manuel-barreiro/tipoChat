@@ -2,10 +2,10 @@ import React, { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import CardActionChip from "@/components/common/cards/CardActionChip"
 import CardTag from "@/components/common/cards/CardTag"
-import EmbedRoomDialog from "@/components/common/dialog/EmbedRoomDialog"
-import DeleteDialog from "@/components/common/dialog/DeleteDialog"
+import ActionDialog from "@/components/common/dialog/ActionDialog"
 import ShareDrawer from "@/components/common/drawer/ShareDrawer"
 import { Link } from "react-router-dom"
+import { EmbedIcon, TrashIcon } from "@/assets/icons"
 
 function formatText(text, maxChars) {
   if (text.length > maxChars) {
@@ -82,13 +82,30 @@ export default function RoomCard({
         </div>
       </Card>
 
-      <EmbedRoomDialog isOpen={isEmbedOpen} setIsOpen={setIsEmbedOpen} />
+      <ActionDialog
+        isOpen={isEmbedOpen}
+        setIsOpen={setIsEmbedOpen}
+        title="Embed this Room"
+        description="Copy the link below to embed this chat room in your site."
+        icon={<EmbedIcon />}
+        variant="embed"
+        confirmText="Copy"
+        embedText={
+          '<iframe width="560" height="315" src="https://www.youtube.com/embed/eGUEAvNpz48" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+        }
+      />
 
-      <DeleteDialog
+      <ActionDialog
         isOpen={isDeleteOpen}
         setIsOpen={setIsDeleteOpen}
-        text="room"
+        title="You are about to delete this room and its content"
+        description="Are you sure you want to procede?"
+        icon={<TrashIcon />}
+        variant="error"
+        confirmText="Yes, please"
+        cancelText="No, take me back"
       />
+
       <ShareDrawer isOpen={isShareOpen} setIsOpen={setIsShareOpen} />
     </>
   )
