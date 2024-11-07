@@ -8,9 +8,13 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { EllipsisVertical } from "lucide-react"
 
-export default function TipoChatDropdownMenu({ menuItems }) {
+export default function TipoChatDropdownMenu({
+  menuItems,
+  onOpenChange,
+  open,
+}) {
   return (
-    <DropdownMenu>
+    <DropdownMenu onOpenChange={onOpenChange} open={open}>
       <DropdownMenuTrigger asChild>
         <button>
           <EllipsisVertical size={24} className="text-grey-600" />

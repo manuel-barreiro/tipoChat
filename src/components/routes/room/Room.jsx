@@ -11,7 +11,7 @@ const useAuth = () => {
     user: {
       id: "123",
       name: "Test User",
-      role: "user", // or "user"
+      role: "admin", // or "user"
       avatar: "/images/mockUser.png",
     },
     isAuthenticated: true,
