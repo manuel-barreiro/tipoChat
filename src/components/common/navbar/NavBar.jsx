@@ -2,7 +2,7 @@ import BackButton from "@/components/common/buttons/BackButton"
 import { useLocation } from "react-router-dom"
 import { navbarConfig } from "./navbarConfig"
 
-const ROUTES_WITHOUT_NAVBAR = ["/chat", "/chat/"] // Add any other chat routes here
+const ROUTES_WITHOUT_NAVBAR = ["/room", "/room/"] // Add any other chat routes here
 
 export default function NavBar() {
   const { pathname } = useLocation()

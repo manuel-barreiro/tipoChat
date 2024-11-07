@@ -11,7 +11,7 @@ const BottomMenu = ({ user }) => {
   const [showChatInput, setShowChatInput] = useState(false)
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 z-50 flex h-[72px] items-center justify-around rounded-t-[24px] border-t border-dark-3 !bg-dark-1/85 px-8 py-4 !backdrop-blur">
+    <div className="absolute bottom-0 left-0 right-0 flex h-[72px] items-center justify-around rounded-t-[24px] border-t border-dark-3 !bg-dark-1/85 px-8 py-4 !backdrop-blur">
       {showChatInput ? (
         <div className="relative flex-1">
           <button className="absolute left-3 top-1/2 -translate-y-1/2">

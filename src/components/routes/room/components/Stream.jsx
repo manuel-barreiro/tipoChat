@@ -44,9 +44,9 @@ export default function Stream({ user }) {
   }
 
   return (
-    <div>
+    <div className="absolute left-0 right-0 top-[60px] flex h-[280px] flex-col justify-around overflow-hidden px-6 pb-[10px]">
       <img src="/images/streamPreview.png" className="w-full" alt="" />
-      <div className="mt-2 w-full border-b border-dark-3 py-3">
+      <div className="mt-2 w-full">
         <div className="flex items-center justify-between gap-2">
           <div className="flex items-center gap-1">
             <ViewersIcon className="text-white" />

@@ -110,8 +110,8 @@ const messages = [
 
 const Chat = () => {
   return (
-    <div className="absolute bottom-0 left-0 right-0 top-[340px] overflow-hidden px-6 sm:top-[345px]">
-      <ScrollArea className="h-full w-full py-1 pb-[72px]">
+    <div className="absolute bottom-0 left-0 right-0 top-[340px] overflow-hidden px-6">
+      <ScrollArea className="h-full w-full pb-[72px]">
         {messages.map((msg, index) => (
           <ChatMessage key={index} {...msg} />
         ))}
