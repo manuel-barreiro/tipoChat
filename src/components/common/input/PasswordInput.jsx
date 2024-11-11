@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 import { Eye, EyeOff } from "lucide-react"
 
 const PasswordInput = forwardRef(
-  ({ placeholder, field, onKeyDown, onBlur, disabled }, ref) => {
+  ({ placeholder, field, onKeyDown, onBlur, disabled, id }, ref) => {
     const [isActive, setIsActive] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
     const togglePasswordVisibility = () => {
@@ -44,6 +44,7 @@ const PasswordInput = forwardRef(
               placeholder={placeholder}
               {...field}
               ref={ref}
+              id={id}
               disabled={disabled}
               onKeyDown={onKeyDown}
               className={cn(

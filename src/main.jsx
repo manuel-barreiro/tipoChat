@@ -34,6 +34,9 @@ import CommunityMenu from "@/components/routes/community/CommunityMenu"
 import CommunityPage from "@/components/routes/community/CommunityPage"
 import RoomLayout from "@/components/routes/room/RoomLayout"
 import Room from "@/components/routes/room/Room"
+import StartStreaming from "@/components/routes/room/components/start-streaming/StartStreaming"
+import LiveEncoder from "@/components/routes/room/components/start-streaming/live-encoder/LiveEncoder"
+import LiveMic from "@/components/routes/room/components/start-streaming/live-mic/LiveMic"
 
 const router = createBrowserRouter([
   {
@@ -183,8 +186,20 @@ const router = createBrowserRouter([
         element: <RoomLayout />,
         children: [
           {
-            path: "",
+            path: ":id",
             element: <Room />,
+          },
+          {
+            path: ":id/go-live",
+            element: <StartStreaming />,
+          },
+          {
+            path: ":id/go-live/live-encoder",
+            element: <LiveEncoder />,
+          },
+          {
+            path: ":id/go-live/live-mic",
+            element: <LiveMic />,
           },
         ],
       },

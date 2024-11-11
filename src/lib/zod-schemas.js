@@ -102,3 +102,14 @@ export const buyPointsSchema = z.object({
 export const chooseCryptoNetworkSchema = z.object({
   network: z.string().min(1, "Network is required"),
 })
+
+export const liveEncoderSchema = z.object({
+  server: z.string().min(1, "Server is required"),
+  publicKey: z.string().min(1, "Public key is required"),
+  privateKey: z.string().min(1, "Private key is required"),
+})
+
+export const liveMicSchema = z.object({
+  camera: z.string().min(1, "Camera is required"),
+  microphone: z.string().min(1, "Microphone is required"),
+})

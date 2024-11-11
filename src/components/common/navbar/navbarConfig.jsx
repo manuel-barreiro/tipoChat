@@ -103,4 +103,16 @@ export const navbarConfig = {
     title: "Your Community",
     rightContent: null,
   },
+  "/room/:id/go-live": {
+    title: "Go Live",
+    rightContent: null,
+  },
+  "/room/:id/go-live/live-encoder": {
+    title: "Streaming - Live Encoder",
+    rightContent: null,
+  },
+  "/room/:id/go-live/live-mic": {
+    title: "Streaming - Mic Live",
+    rightContent: null,
+  },
 }
