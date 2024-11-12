@@ -6,6 +6,7 @@ import {
   SendMessagesIcon,
 } from "@/assets/icons"
 import { ChevronLeft } from "lucide-react"
+import { Link } from "react-router-dom"
 
 const BottomMenu = ({ user }) => {
   const [showChatInput, setShowChatInput] = useState(false)
@@ -40,10 +41,12 @@ const BottomMenu = ({ user }) => {
             <span className="text-body-xsmall">Chat</span>
           </button>
           {user.role === "admin" ? (
-            <button className="flex flex-col items-center gap-1 text-grey-400 transition-colors hover:text-primary">
-              <GoLiveIcon size={24} />
-              <span className="text-body-xsmall">Go Live</span>
-            </button>
+            <Link to={"go-live"}>
+              <button className="flex flex-col items-center gap-1 text-grey-400 transition-colors hover:text-primary">
+                <GoLiveIcon size={24} />
+                <span className="text-body-xsmall">Go Live</span>
+              </button>
+            </Link>
           ) : (
             <button className="relative flex flex-col items-center gap-1 text-grey-400 transition-colors hover:text-primary">
               <img src={user.avatar} alt="avatar" className="w-14" />

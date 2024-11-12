@@ -115,4 +115,12 @@ export const navbarConfig = {
     title: "Streaming - Mic Live",
     rightContent: null,
   },
+  "/help": {
+    title: "Help Center",
+    rightContent: null,
+  },
+  "/help/about": {
+    title: "About TipoChat",
+    rightContent: null,
+  },
 }

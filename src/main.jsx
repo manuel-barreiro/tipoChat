@@ -37,6 +37,8 @@ import Room from "@/components/routes/room/Room"
 import StartStreaming from "@/components/routes/room/components/start-streaming/StartStreaming"
 import LiveEncoder from "@/components/routes/room/components/start-streaming/live-encoder/LiveEncoder"
 import LiveMic from "@/components/routes/room/components/start-streaming/live-mic/LiveMic"
+import HelpCenter from "@/components/routes/help/HelpCenter"
+import About from "@/components/routes/help/About"
 
 const router = createBrowserRouter([
   {
@@ -202,6 +204,14 @@ const router = createBrowserRouter([
             element: <LiveMic />,
           },
         ],
+      },
+      {
+        path: "help",
+        element: <HelpCenter />,
+      },
+      {
+        path: "help/about",
+        element: <About />,
       },
     ],
   },

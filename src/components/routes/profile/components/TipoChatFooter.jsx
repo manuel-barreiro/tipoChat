@@ -9,6 +9,7 @@ import DropdownMenu from "@/components/common/dropdown/DropdownMenu"
 import { useState } from "react"
 import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
+import { Link } from "react-router-dom"
 
 const SwitchMenuItem = ({ label, id }) => (
   <div
@@ -25,10 +26,10 @@ const menuItems = [
     <SettingsIcon className="h-4 w-4" />
     <span>Help</span>
   </button>,
-  <button onClick={() => {}} key={1} className="flex items-center gap-2">
+  <Link to={"/help/about"} key={1} className="flex items-center gap-2">
     <InfoReportIcon className="h-4 w-4 rotate-180" />
     <span>About TipoChat</span>
-  </button>,
+  </Link>,
   <button onClick={() => {}} key={2} className="flex items-center gap-2">
     <CopyrightIcon className="h-4 w-4" />
     <span>Copyright</span>
