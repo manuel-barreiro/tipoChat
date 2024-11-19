@@ -39,6 +39,8 @@ import LiveEncoder from "@/components/routes/room/components/start-streaming/liv
 import LiveMic from "@/components/routes/room/components/start-streaming/live-mic/LiveMic"
 import HelpCenter from "@/components/routes/help/HelpCenter"
 import About from "@/components/routes/help/About"
+import { SearchResults } from "@/components/routes/search/SearchResults"
+import Home from "@/components/routes/home/Home"
 
 const router = createBrowserRouter([
   {
@@ -64,6 +66,10 @@ const router = createBrowserRouter([
       {
         path: "forgot-password",
         element: <ForgotPassword />,
+      },
+      {
+        path: "home",
+        element: <Home />,
       },
       {
         path: "profile",
@@ -212,6 +218,10 @@ const router = createBrowserRouter([
       {
         path: "help/about",
         element: <About />,
+      },
+      {
+        path: "search",
+        element: <SearchResults />,
       },
     ],
   },

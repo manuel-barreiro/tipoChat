@@ -9,7 +9,9 @@ export default function CardTag({ text, variant }) {
         variant === "primary" &&
           "bg-secondary text-dark-3 hover:bg-secondary hover:text-dark-3",
         variant === "secondary" &&
-          "bg-dark-3 text-secondary hover:bg-dark-3 hover:text-secondary"
+          "bg-dark-3 text-secondary hover:bg-dark-3 hover:text-secondary",
+        variant === "default" &&
+          "bg-dark-3 text-grey-300 hover:bg-dark-3 hover:text-grey-300"
       )}
     >
       {text}

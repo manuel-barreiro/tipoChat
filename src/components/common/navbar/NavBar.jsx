@@ -2,7 +2,9 @@ import BackButton from "@/components/common/buttons/BackButton"
 import { useLocation } from "react-router-dom"
 import { navbarConfig } from "./navbarConfig"
 
-const ROUTES_WITHOUT_NAVBAR = ["/", "/room/:id"]
+const ROUTES_WITHOUT_NAVBAR = ["/search", "/room", "/home"]
+const EXCEPTION_ROUTES = ["/go-live"]
+
 function matchPath(pattern, path) {
   const patternParts = pattern.split("/")
   const pathParts = path.split("/")
@@ -12,6 +14,28 @@ function matchPath(pattern, path) {
   return patternParts.every((part, i) => {
     return part.startsWith(":") || part === pathParts[i]
   })
+}
+
+function shouldHideNavbar(pathname) {
+  // Check if the pathname matches any route in ROUTES_WITHOUT_NAVBAR
+  const hideNavbar = ROUTES_WITHOUT_NAVBAR.some((route) => {
+    if (route === pathname) return true
+    if (route.includes(":")) {
+      const routeParts = route.split("/")
+      const pathParts = pathname.split("/")
+      return routeParts.every(
+        (part, i) => part.startsWith(":") || part === pathParts[i]
+      )
+    }
+    return pathname.startsWith(route)
+  })
+
+  // Check if the pathname matches any route in EXCEPTION_ROUTES
+  const isException = EXCEPTION_ROUTES.some((exception) =>
+    pathname.includes(exception)
+  )
+
+  return hideNavbar && !isException
 }
 
 function getNavConfig(pathname) {
@@ -25,29 +49,18 @@ function getNavConfig(pathname) {
 
   return matchingPattern ? navbarConfig[matchingPattern] : {}
 }
+
 export default function NavBar() {
   const { pathname } = useLocation()
   const currentConfig = getNavConfig(pathname)
 
-  const shouldHideNavbar = ROUTES_WITHOUT_NAVBAR.some((route) => {
-    if (route === "/") return pathname === route
-    if (route === "/room/:id") {
-      // Show navbar if we're on the go-live page
-      if (pathname.includes("/go-live")) return false
-      // Hide navbar for main room view
-      return (
-        pathname.split("/").slice(0, 3).join("/") ===
-        "/room/" + pathname.split("/")[2]
-      )
-    }
-    return false
-  })
+  const shouldHide = shouldHideNavbar(pathname)
 
-  if (shouldHideNavbar) {
+  if (shouldHide) {
     return null
   }
 
-  return (
+  return currentConfig ? (
     <nav className="sticky left-0 right-0 top-0 z-50 flex h-12 w-full items-center justify-between bg-dark-1 py-8">
       <div className="flex items-center gap-2">
         <BackButton />
@@ -57,5 +70,5 @@ export default function NavBar() {
       </div>
       {currentConfig.rightContent}
     </nav>
-  )
+  ) : null
 }
