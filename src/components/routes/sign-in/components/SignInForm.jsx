@@ -32,7 +32,7 @@ export default function SignInForm() {
     setSuccess(true)
     setTimeout(() => {
       setSuccess(false)
-      router("/profile")
+      router("/home")
     }, 3000)
   }
 

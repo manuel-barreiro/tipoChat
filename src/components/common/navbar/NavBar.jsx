@@ -2,7 +2,7 @@ import BackButton from "@/components/common/buttons/BackButton"
 import { useLocation } from "react-router-dom"
 import { navbarConfig } from "./navbarConfig"
 
-const ROUTES_WITHOUT_NAVBAR = ["/search", "/room", "/home"]
+const ROUTES_WITHOUT_NAVBAR = ["/search", "/room", "/home", "/"]
 const EXCEPTION_ROUTES = ["/go-live"]
 
 function matchPath(pattern, path) {
@@ -17,8 +17,14 @@ function matchPath(pattern, path) {
 }
 
 function shouldHideNavbar(pathname) {
-  // Check if the pathname matches any route in ROUTES_WITHOUT_NAVBAR
+  // Special case for root path
+  if (pathname === "/" && ROUTES_WITHOUT_NAVBAR.includes("/")) {
+    return true
+  }
+
+  // Check other routes
   const hideNavbar = ROUTES_WITHOUT_NAVBAR.some((route) => {
+    if (route === "/") return false // Skip root path in general check
     if (route === pathname) return true
     if (route.includes(":")) {
       const routeParts = route.split("/")
@@ -30,7 +36,6 @@ function shouldHideNavbar(pathname) {
     return pathname.startsWith(route)
   })
 
-  // Check if the pathname matches any route in EXCEPTION_ROUTES
   const isException = EXCEPTION_ROUTES.some((exception) =>
     pathname.includes(exception)
   )
