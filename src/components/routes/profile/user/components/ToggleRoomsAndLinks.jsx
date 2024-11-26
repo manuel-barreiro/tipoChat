@@ -1,10 +1,12 @@
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 import UserRooms from "./UserRooms"
 import UserLinks from "./UserLinks"
 
 export default function ToggleRoomsAndLinks({ rooms, links }) {
   const [selected, setSelected] = useState("rooms")
+  const { t } = useTranslation()
 
   return (
     <section className="flex h-full w-full flex-col gap-4">
@@ -16,7 +18,7 @@ export default function ToggleRoomsAndLinks({ rooms, links }) {
             selected === "rooms" && "border-primary text-primary"
           )}
         >
-          Rooms
+          {t("profile.toggle.rooms")}
         </button>
         <button
           onClick={() => setSelected("links")}
@@ -25,7 +27,7 @@ export default function ToggleRoomsAndLinks({ rooms, links }) {
             selected === "links" && "border-primary text-primary"
           )}
         >
-          Links
+          {t("profile.toggle.links")}
         </button>
       </div>
 

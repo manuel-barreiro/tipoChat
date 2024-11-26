@@ -6,6 +6,7 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer"
 import { Separator } from "@/components/ui/separator"
+import { useTranslation } from "react-i18next"
 
 const socials = [
   { name: "Copy Link", icon: "/images/social-icons/copylink.png" },
@@ -22,11 +23,12 @@ const socials = [
 ]
 
 export default function ShareDrawer({ isOpen, setIsOpen }) {
+  const { t } = useTranslation()
   return (
     <Drawer className="max-w-[430px]" open={isOpen} onOpenChange={setIsOpen}>
       <DrawerContent className="flex flex-col items-center gap-2 px-8">
         <DrawerHeader>
-          <DrawerTitle>Share</DrawerTitle>
+          <DrawerTitle>{t("common.drawer.shareDrawer.title")}</DrawerTitle>
         </DrawerHeader>
         <Separator className="h-[1px] w-full bg-dark-3" />
 

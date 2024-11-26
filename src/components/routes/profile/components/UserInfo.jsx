@@ -1,5 +1,6 @@
 import { VerifiedIcon, SquareTopArrowIcon } from "@/assets/icons"
 import { cn } from "@/lib/utils"
+import { useTranslation } from "react-i18next"
 
 const formatNumber = (num) => {
   if (num >= 1000) {
@@ -16,6 +17,8 @@ export default function UserInfo({
   following,
   nickName,
 }) {
+  const { t } = useTranslation()
+
   return (
     <div className="flex w-full items-center justify-start gap-4">
       <img src={profilePicUrl} alt="Profile Photo" />
@@ -33,14 +36,14 @@ export default function UserInfo({
           <h4 className="text-body-small text-disabled">{nickName}</h4>
           {!isVerified && (
             <span className="flex cursor-pointer items-center gap-1 text-primary duration-300 ease-in-out hover:underline">
-              Verify now
+              {t("profile.userInfo.verifyNow")}
               <SquareTopArrowIcon className="h-3 w-3" />
             </span>
           )}
         </div>
         <h5 className="text-disabled">
-          {formatNumber(following)} Following - {formatNumber(followers)}{" "}
-          Followers
+          {formatNumber(following)} {t("profile.userInfo.following")} -{" "}
+          {formatNumber(followers)} {t("profile.userInfo.followers")}
         </h5>
       </div>
     </div>

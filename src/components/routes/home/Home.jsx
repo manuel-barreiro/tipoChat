@@ -4,6 +4,7 @@ import HamburgerMenu from "@/components/common/buttons/HamburgerMenu"
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { useTranslation } from "react-i18next"
 // import Following from "./components/Following"
 // import Subscriptions from "./components/Subscriptions"
 import { mockResults } from "@/static/mockSearchResults"
@@ -12,6 +13,7 @@ import UserResultCard from "@/components/common/cards/UserResultCard"
 import FixedBottomButton from "@/components/common/buttons/FixedBottomButton"
 
 export default function Home() {
+  const { t } = useTranslation()
   const [selected, setSelected] = useState("subscriptions")
 
   return (
@@ -35,7 +37,7 @@ export default function Home() {
               selected === "subscriptions" && "border-primary text-primary"
             )}
           >
-            Top Subscriptions
+            {t("home.topSubscriptions")}
           </button>
           <button
             onClick={() => setSelected("following")}
@@ -44,7 +46,7 @@ export default function Home() {
               selected === "following" && "border-primary text-primary"
             )}
           >
-            Top Following
+            {t("home.topFollowing")}
           </button>
         </div>
 
@@ -59,7 +61,10 @@ export default function Home() {
           )}
         </div>
 
-        <FixedBottomButton text="Create New Room" link={"/my-rooms/create"} />
+        <FixedBottomButton
+          text={t("home.createNewRoom")}
+          link={"/my-rooms/create"}
+        />
       </section>
     </>
   )

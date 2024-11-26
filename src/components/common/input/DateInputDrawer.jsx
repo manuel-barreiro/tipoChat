@@ -1,6 +1,8 @@
 import React, { useState, forwardRef, useEffect } from "react"
+import { useTranslation } from "react-i18next"
 import { cn } from "@/lib/utils"
 import { format } from "date-fns"
+import { es, enUS } from "date-fns/locale"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
 import { FormControl, FormItem, FormMessage } from "@/components/ui/form"
@@ -20,6 +22,13 @@ import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 
 const DateInputDrawer = forwardRef(({ field, onKeyDown, onChange }, ref) => {
   const [isActive, setIsActive] = useState(false)
+  const { t, i18n } = useTranslation()
+
+  const formatDate = (date) => {
+    return format(date, "PPP", {
+      locale: i18n.language === "es" ? es : enUS,
+    })
+  }
 
   //useEffect to check if the field has a value and set isActive to true
   useEffect(() => {
@@ -44,9 +53,9 @@ const DateInputDrawer = forwardRef(({ field, onKeyDown, onChange }, ref) => {
               onBlur={() => setIsActive(!!field.value)}
             >
               {field.value ? (
-                format(field.value, "PPP")
+                formatDate(field.value)
               ) : (
-                <span>Pick a date</span>
+                <span>{t("common.input.dateInputDrawer.pickDate")}</span>
               )}
               <CalendarIcon
                 className={cn(
@@ -59,7 +68,9 @@ const DateInputDrawer = forwardRef(({ field, onKeyDown, onChange }, ref) => {
         </DrawerTrigger>
         <DrawerContent className="flex flex-col items-center justify-evenly">
           <DrawerHeader>
-            <DrawerTitle>Select your Date of Birth</DrawerTitle>
+            <DrawerTitle>
+              {t("common.input.dateInputDrawer.selectDob")}
+            </DrawerTitle>
             <DrawerDescription></DrawerDescription>
           </DrawerHeader>
           <Calendar
@@ -84,13 +95,12 @@ const DateInputDrawer = forwardRef(({ field, onKeyDown, onChange }, ref) => {
             <DrawerClose asChild>
               <PrimaryButton
                 disabled={!field.value}
-                text={`
-                ${
+                text={
                   field.value
-                    ? format(field.value, "PPP")
-                    : "Select your date of birth"
-                }`}
-              ></PrimaryButton>
+                    ? formatDate(field.value)
+                    : t("common.input.dateInputDrawer.selectDob")
+                }
+              />
             </DrawerClose>
           </DrawerFooter>
         </DrawerContent>

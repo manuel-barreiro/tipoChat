@@ -7,12 +7,11 @@ import CheckboxInput from "@/components/common/input/CheckboxInput"
 import PasswordInput from "@/components/common/input/PasswordInput"
 import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 import { EmailIcon } from "@/assets/icons"
-import staticData from "@/static/staticData"
 import { useState, useRef } from "react"
 import SuccessDialog from "@/components/common/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
 
-export default function SignInForm() {
+export default function SignInForm({ translations }) {
   const router = useNavigate()
   const [success, setSuccess] = useState(false)
   const inputRefs = useRef([])
@@ -60,7 +59,7 @@ export default function SignInForm() {
             render={({ field }) => (
               <TextInput
                 field={field}
-                placeholder={"Email"}
+                placeholder={translations.email}
                 type={"email"}
                 icon={EmailIcon}
                 ref={(el) => (inputRefs.current[0] = el)}
@@ -75,7 +74,7 @@ export default function SignInForm() {
             render={({ field }) => (
               <PasswordInput
                 field={field}
-                placeholder="Password"
+                placeholder={translations.password}
                 ref={(el) => (inputRefs.current[1] = el)}
                 onKeyDown={(e) => handleKeyDown(e, 1)}
               />
@@ -86,16 +85,13 @@ export default function SignInForm() {
             control={form.control}
             name="rememberMe"
             render={({ field }) => (
-              <CheckboxInput field={field} text={"Remember me"} />
+              <CheckboxInput field={field} text={translations.rememberMe} />
             )}
           />
 
-          {/* Debugging */}
-          {/* <pre>{JSON.stringify(form.formState.isValid, null, 2)}</pre> */}
-
           <PrimaryButton
             type="submit"
-            text={staticData.dict.EN.signInScreen.button}
+            text={translations.button}
             disabled={!form.formState.isValid || form.formState.isSubmitting}
             shadow={true}
           />
@@ -103,8 +99,8 @@ export default function SignInForm() {
       </Form>
       <SuccessDialog
         isOpen={success}
-        title={staticData.dict.EN.signInScreen.successModal.title}
-        description={staticData.dict.EN.signInScreen.successModal.description}
+        title={translations.successModal.title}
+        description={translations.successModal.description}
       />
     </>
   )

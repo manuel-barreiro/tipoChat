@@ -1,6 +1,6 @@
 import React from "react"
 import PointsCard from "@/components/common/cards/PointsCard"
-import { mockUser } from "@/static/mockUser"
+import { loggedUser } from "@/static/loggedUser"
 import TransactionHistory from "./components/TransactionHistory"
 import { Link } from "react-router-dom"
 import PrimaryButton from "@/components/common/buttons/PrimaryButton"
@@ -28,10 +28,10 @@ export default function Wallet() {
   return (
     <section className="flex flex-col gap-5">
       <PointsCard
-        points={mockUser.data.points}
-        subscriptions={mockUser.data.subscriptions}
-        subscribers={mockUser.data.subscribers}
-        subscriptionPrice={mockUser.data.subscriptionPrice}
+        points={loggedUser.data.points}
+        subscriptions={loggedUser.data.subscriptions}
+        subscribers={loggedUser.data.subscribers}
+        subscriptionPrice={loggedUser.data.subscriptionPrice}
       />
       <TransactionHistory transactions={mockTransactionHistory} />
       <div className="sticky bottom-0 left-0 right-0 z-50 flex w-full items-center justify-between border-t-2 border-dark-3 bg-dark-1 py-5 backdrop-blur-[20px]">

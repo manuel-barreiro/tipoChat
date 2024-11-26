@@ -1,0 +1,180 @@
+{
+  "root": {
+    "splash": {
+      "title": "TipoChat"
+    },
+    "welcome": {
+      "title": "Welcome to TipoChat! 👋",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  },
+  "onboarding": {
+    "title": "Welcome to your new Chat",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "button": "Sign up with Email",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign In"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Sign In",
+      "button": "Sign In",
+      "forgotPassword": "Forgot your Password?",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign Up",
+      "form": {
+        "email": "Email",
+        "password": "Password",
+        "rememberMe": "Remember me"
+      },
+      "successModal": {
+        "title": "Sign In Successful!",
+        "description": "Please wait a moment, we are signing you in..."
+      }
+    },
+    "signUp": {
+      "title": "Create New Account",
+      "button": "Sign Up",
+      "alreadyHaveAccount": "Already have an account?",
+      "signIn": "Sign In",
+      "successModal": {
+        "title": "Account Created!",
+        "description": "Please wait a moment, we are looking for a suitable recommendation for you..."
+      },
+      "form": {
+        "fullName": "Full Name",
+        "nickName": "Nickname",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm password",
+        "dateOfBirth": "Date of Birth",
+        "gender": "Gender",
+        "genderOptions": {
+          "male": "Male",
+          "female": "Female",
+          "other": "Other"
+        },
+        "acceptTerms": "Accept Terms And Conditions"
+      }
+    }
+  },
+  "home": {
+    "topSubscriptions": "Top Subscriptions",
+    "topFollowing": "Top Following",
+    "createNewRoom": "Create New Room"
+  },
+  "profile": {
+    "userInfo": {
+      "verifyNow": "Verify now",
+      "following": "Following",
+      "followers": "Followers"
+    },
+    "userActions": {
+      "subscribe": "Subscribe {{points}} Points/Month",
+      "follow": "Follow",
+      "sendGift": "Send Gift",
+      "block": "Block User"
+    },
+    "toggle": {
+      "rooms": "Rooms",
+      "links": "Links"
+    },
+    "admin": {
+      "adminMenu": {
+        "chatRooms": "Chat Rooms",
+        "wallet": "Wallet",
+        "community": "Community",
+        "logOut": "Log out"
+      },
+      "tipoChatFooter": {
+        "help": "Help",
+        "about": "About TipoChat",
+        "copyright": "Copyright",
+        "contact": "Contact",
+        "lightMode": "Light mode",
+        "language": "ENG / ESP"
+      },
+      "logOutDrawer": {
+        "logOut": "Log Out",
+        "question": "Are you sure you want to log out?",
+        "cancel": "Cancel",
+        "continue": "Continue"
+      }
+    }
+  },
+  "my-rooms": {
+    "createNewRoom": "Create New Room"
+  },
+  "common": {
+    "input": {
+      "dateInputDrawer": {
+        "pickDate": "Pick a date",
+        "selectDob": "Select your Date of Birth"
+      }
+    },
+    "cards": {
+      "userResultCard": {
+        "follow": "Follow"
+      },
+      "pointsCard": {
+        "yourPoints": "Your Points",
+        "yourSubscriptions": "Your Subscriptions",
+        "yourSubscribers": "Your Subscribers",
+        "yourSubscriptionPrice": "Your Subscription Price"
+      },
+      "roomCard": {
+        "cardActionChip": {
+          "embed": "Embed",
+          "share": "Share",
+          "edit": "Edit",
+          "delete": "Delete"
+        },
+        "deleteConfirmationDialog": {
+          "title": "You are about to delete this room and its content",
+          "description": "Are you sure you want to procede?",
+          "confirm": "Yes, please",
+          "cancel": "No, take me back"
+        },
+        "embedDialog": {
+          "title": "Embed this room",
+          "description": "Copy the link below to embed this chat room in your site.",
+          "copy": "Copy",
+          "cancel": "Cancel"
+        }
+      }
+    },
+    "searchBar": {
+      "placeholder": "Search"
+    },
+    "drawer": {
+      "shareDrawer": {
+        "title": "Share",
+        "copyLink": "Copy Link"
+      }
+    }
+  },
+  "navbar": {
+    "myRooms": "My Rooms",
+    "createRoom": "Create Room",
+    "editRoom": "Edit Room",
+    "passwordRecovery": "Password Recovery",
+    "myProfile": "My Profile",
+    "manageProfile": "Manage Profile",
+    "createNewPassword": "Create New Password",
+    "manageLinks": "Manage Your Links",
+    "myPosts": "My Posts",
+    "posts": "Posts",
+    "createPost": "Create Post",
+    "editPost": "Edit Post",
+    "myGamingPost": "My Gaming Post",
+    "yourWallet": "Your Wallet",
+    "buyPoints": "Buy Points",
+    "chooseNetwork": "Choose Network",
+    "yourCommunity": "Your Community",
+    "goLive": "Go Live",
+    "streamingLiveEncoder": "Streaming - Live Encoder",
+    "streamingMicLive": "Streaming - Mic Live",
+    "helpCenter": "Help Center",
+    "aboutTipoChat": "About TipoChat"
+  }
+}

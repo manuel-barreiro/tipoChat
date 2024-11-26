@@ -1,11 +1,14 @@
 import FixedBottomButton from "@/components/common/buttons/FixedBottomButton"
 import RoomCard from "@/components/common/cards/RoomCard"
-import { mockRooms } from "@/static/mockRooms"
+import { useAuth } from "@/contexts/AuthContext"
+import { useTranslation } from "react-i18next"
 
 export default function MyRooms() {
+  const { t } = useTranslation()
+  const { currentUser } = useAuth()
   return (
     <section className="flex h-auto min-h-[75dvh] flex-col gap-4">
-      {mockRooms.map((room) => (
+      {currentUser.rooms.map((room) => (
         <RoomCard
           key={room.id}
           id={room.id}
@@ -16,7 +19,7 @@ export default function MyRooms() {
           actions={room.actions}
         />
       ))}
-      <FixedBottomButton text="Create New Room" link={"create"} />
+      <FixedBottomButton text={t("my-rooms.createNewRoom")} link={"create"} />
     </section>
   )
 }

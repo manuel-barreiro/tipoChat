@@ -1,4 +1,4 @@
-export const mockUser = {
+export const loggedUser = {
   fullName: "Benjamín Brusa",
   nickName: "Kakaroto xD",
   email: "benja.brusa@gmail.com",
@@ -43,6 +43,72 @@ export const mockUser = {
       title: "Modern Art",
       description: "Explore the fascinating world of contemporary art...",
       privacy: "Open",
+      tags: ["Esp", "Genre"],
+      actions: {
+        embed: true,
+        share: true,
+        edit: true,
+        delete: true,
+      },
+    },
+    {
+      id: 3,
+      title: "Nature",
+      description: "Discover the beauty of nature through stunning visuals...",
+      privacy: "Private",
+      tags: ["Esp", "Genre"],
+      actions: {
+        embed: true,
+        share: true,
+        edit: true,
+        delete: true,
+      },
+    },
+    {
+      id: 4,
+      title: "Tech Conference",
+      description:
+        "Join us for an in-depth discussion on the latest in technology...",
+      privacy: "Open",
+      tags: ["Esp", "Genre"],
+      actions: {
+        embed: true,
+        share: true,
+        edit: true,
+        delete: true,
+      },
+    },
+    {
+      id: 5,
+      title: "Cooking Class",
+      description: "Learn to cook delicious meals with expert chefs...",
+      privacy: "Private",
+      tags: ["Esp", "Genre"],
+      actions: {
+        embed: true,
+        share: true,
+        edit: true,
+        delete: true,
+      },
+    },
+    {
+      id: 6,
+      title: "Fitness ",
+      description: "Get in shape with our intensive fitness...",
+      privacy: "Open",
+      tags: ["Esp", "Genre"],
+      actions: {
+        embed: true,
+        share: true,
+        edit: true,
+        delete: true,
+      },
+    },
+    {
+      id: 7,
+      title: "Music Festival",
+      description: "Experience live performances...",
+      privacy: "Private",
       tags: ["Esp", "Genre"],
       actions: {
         embed: true,

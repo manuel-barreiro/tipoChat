@@ -1,0 +1,180 @@
+{
+  "root": {
+    "splash": {
+      "title": "TipoChat"
+    },
+    "welcome": {
+      "title": "¡Bienvenido a TipoChat! 👋",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    }
+  },
+  "onboarding": {
+    "title": "Bienvenido a tu nuevo Chat",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "button": "Registrarse con Email",
+    "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+    "signIn": "Iniciar Sesión"
+  },
+  "auth": {
+    "signIn": {
+      "title": "Iniciar Sesión",
+      "button": "Iniciar Sesión",
+      "forgotPassword": "¿Olvidaste tu Contraseña?",
+      "noAccount": "¿No tienes una cuenta?",
+      "signUp": "Registrarse",
+      "form": {
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "rememberMe": "Recordarme"
+      },
+      "successModal": {
+        "title": "¡Inicio de Sesión Exitoso!",
+        "description": "Por favor espera un momento, estamos iniciando tu sesión..."
+      }
+    },
+    "signUp": {
+      "title": "Crear Nueva Cuenta",
+      "button": "Registrarse",
+      "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+      "signIn": "Iniciar Sesión",
+      "successModal": {
+        "title": "¡Cuenta Creada!",
+        "description": "Por favor espera un momento, estamos buscando recomendaciones adecuadas para ti..."
+      },
+      "form": {
+        "fullName": "Nombre Completo",
+        "nickName": "Apodo",
+        "email": "Correo electrónico",
+        "password": "Contraseña",
+        "confirmPassword": "Confirmar contraseña",
+        "dateOfBirth": "Fecha de nacimiento",
+        "gender": "Género",
+        "genderOptions": {
+          "male": "Masculino",
+          "female": "Femenino",
+          "other": "Otro"
+        },
+        "acceptTerms": "Aceptar Términos y Condiciones"
+      }
+    }
+  },
+  "home": {
+    "topSubscriptions": "Top Suscripciones",
+    "topFollowing": "Top Siguiendo",
+    "createNewRoom": "Crear Nueva Sala"
+  },
+  "profile": {
+    "userInfo": {
+      "verifyNow": "Verificar ahora",
+      "following": "Siguiendo",
+      "followers": "Seguidores"
+    },
+    "userActions": {
+      "subscribe": "Suscribirse {{points}} Puntos/Mes",
+      "follow": "Seguir",
+      "sendGift": "Regalar",
+      "block": "Bloquear Usuario"
+    },
+    "toggle": {
+      "rooms": "Salas",
+      "links": "Enlaces"
+    },
+    "admin": {
+      "adminMenu": {
+        "chatRooms": "Salas de Chat",
+        "wallet": "Cartera",
+        "community": "Comunidad",
+        "logOut": "Cerrar sesión"
+      },
+      "tipoChatFooter": {
+        "help": "Ayuda",
+        "about": "Acerca de TipoChat",
+        "copyright": "Copyright",
+        "contact": "Contacto",
+        "lightMode": "Modo claro",
+        "language": "ENG / ESP"
+      },
+      "logOutDrawer": {
+        "logOut": "Cerrar sesión",
+        "question": "¿Estás seguro de que deseas cerrar sesión?",
+        "cancel": "Cancelar",
+        "continue": "Continuar"
+      }
+    }
+  },
+  "my-rooms": {
+    "createNewRoom": "Crear Nueva Sala"
+  },
+  "common": {
+    "input": {
+      "dateInputDrawer": {
+        "pickDate": "Seleccionar fecha",
+        "selectDob": "Fecha de Nacimiento"
+      }
+    },
+    "cards": {
+      "userResultCard": {
+        "follow": "Seguir"
+      },
+      "pointsCard": {
+        "yourPoints": "Tus Puntos",
+        "yourSubscriptions": "Tus Suscripciones",
+        "yourSubscribers": "Tus Suscriptores",
+        "yourSubscriptionPrice": "Precio de tu Suscripción"
+      },
+      "roomCard": {
+        "cardActionChip": {
+          "embed": "Insertar",
+          "share": "Compartir",
+          "edit": "Editar",
+          "delete": "Borrar"
+        },
+        "deleteConfirmationDialog": {
+          "title": "Estás a punto de eliminar esta sala y su contenido",
+          "description": "¿Estás seguro de que deseas proceder?",
+          "confirm": "Sí, por favor",
+          "cancel": "Cancelar"
+        },
+        "embedDialog": {
+          "title": "Insertar sala",
+          "description": "Copia el enlace a continuación para insertar esta sala de chat.",
+          "copy": "Copiar",
+          "cancel": "Cancelar"
+        }
+      }
+    },
+    "searchBar": {
+      "placeholder": "Buscar"
+    },
+    "drawer": {
+      "shareDrawer": {
+        "title": "Compartir",
+        "copyLink": "Copiar Enlace"
+      }
+    }
+  },
+  "navbar": {
+    "myRooms": "Mis Salas",
+    "createRoom": "Crear Sala",
+    "editRoom": "Editar Sala",
+    "passwordRecovery": "Recuperación de Contraseña",
+    "myProfile": "Mi Perfil",
+    "manageProfile": "Administrar Perfil",
+    "createNewPassword": "Crear Nueva Contraseña",
+    "manageLinks": "Administrar tus Enlaces",
+    "myPosts": "Mis Publicaciones",
+    "posts": "Publicaciones",
+    "createPost": "Crear Publicación",
+    "editPost": "Editar Publicación",
+    "myGamingPost": "Mi Publicación de Juegos",
+    "yourWallet": "Tu Cartera",
+    "buyPoints": "Comprar Puntos",
+    "chooseNetwork": "Elegir Red",
+    "yourCommunity": "Tu Comunidad",
+    "goLive": "Transmitir en Vivo",
+    "streamingLiveEncoder": "Transmisión - Codificador en Vivo",
+    "streamingMicLive": "Transmisión - Micrófono en Vivo",
+    "helpCenter": "Centro de Ayuda",
+    "aboutTipoChat": "Acerca de TipoChat"
+  }
+}

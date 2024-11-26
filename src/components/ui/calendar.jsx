@@ -11,12 +11,17 @@ import {
 import { cn } from "@/lib/utils"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { DayPicker } from "react-day-picker"
+import { useTranslation } from "react-i18next"
+import { es, enUS } from "date-fns/locale"
 
 function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
+  const { i18n } = useTranslation()
+
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
+      locale={i18n.language === "es" ? es : enUS}
       classNames={{
         months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
         month: "space-y-4",
@@ -53,7 +58,7 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
         ...classNames,
       }}
       components={{
-        Dropdown: ({ value, onChange, children, ...props }) => {
+        Dropdown: ({ value, onChange, children }) => {
           const options = React.Children.toArray(children)
           const selected = options.find((child) => child.props.value === value)
           const handleChange = (value) => {
@@ -70,11 +75,13 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
               }}
             >
               <SelectTrigger className="pr-1.5 focus:ring-0">
-                <SelectValue>{selected?.props?.children}</SelectValue>
+                <SelectValue className="!capitalize">
+                  {selected?.props?.children}
+                </SelectValue>
               </SelectTrigger>
               <SelectContent
                 position="popper"
-                className="bg-dark-2 text-white opacity-100"
+                className="bg-dark-2 capitalize text-white opacity-100"
               >
                 <ScrollArea className="h-80">
                   {options.map((option, id) => (
@@ -91,8 +98,8 @@ function Calendar({ className, classNames, showOutsideDays = true, ...props }) {
             </Select>
           )
         },
-        IconLeft: ({ ...props }) => <ChevronLeft className="h-4 w-4" />,
-        IconRight: ({ ...props }) => <ChevronRight className="h-4 w-4" />,
+        IconLeft: () => <ChevronLeft className="h-4 w-4" />,
+        IconRight: () => <ChevronRight className="h-4 w-4" />,
       }}
       {...props}
     />

@@ -6,13 +6,8 @@ import ActionDialog from "@/components/common/dialog/ActionDialog"
 import ShareDrawer from "@/components/common/drawer/ShareDrawer"
 import { Link } from "react-router-dom"
 import { EmbedIcon, TrashIcon } from "@/assets/icons"
-
-function formatText(text, maxChars) {
-  if (text.length > maxChars) {
-    return text.substring(0, maxChars) + "..."
-  }
-  return text
-}
+import { useTranslation } from "react-i18next"
+import { formatText } from "@/lib/formatText"
 
 export default function RoomCard({
   id,
@@ -22,6 +17,7 @@ export default function RoomCard({
   tags,
   actions,
 }) {
+  const { t } = useTranslation()
   const [isEmbedOpen, setIsEmbedOpen] = useState(false)
   const [isShareOpen, setIsShareOpen] = useState(false)
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
@@ -46,9 +42,9 @@ export default function RoomCard({
             <p className="mt-1 text-sm text-gray-300">
               {formatText(description, 120)}
             </p>
-            <div className="md: mt-2 flex justify-start gap-1">
+            <div className="flex flex-wrap justify-start gap-2 md:mt-2">
               <CardTag text={privacy} variant="primary" />
-              {tags.map((tag) => (
+              {tags.slice(0, 2).map((tag) => (
                 <CardTag key={tag} text={tag} variant="secondary" />
               ))}
             </div>
@@ -58,24 +54,24 @@ export default function RoomCard({
         <div className="flex justify-between gap-2 md:justify-around">
           {actions.embed && (
             <CardActionChip
-              action="Embed"
+              action="embed"
               onClick={() => setIsEmbedOpen(true)}
             />
           )}
           {actions.share && (
             <CardActionChip
-              action="Share"
+              action="share"
               onClick={() => setIsShareOpen(true)}
             />
           )}
           {actions.edit && (
             <Link to="edit">
-              <CardActionChip action="Edit" />
+              <CardActionChip action="edit" />
             </Link>
           )}
           {actions.delete && (
             <CardActionChip
-              action="Delete"
+              action="delete"
               onClick={() => setIsDeleteOpen(true)}
             />
           )}
@@ -85,11 +81,12 @@ export default function RoomCard({
       <ActionDialog
         isOpen={isEmbedOpen}
         setIsOpen={setIsEmbedOpen}
-        title="Embed this Room"
-        description="Copy the link below to embed this chat room in your site."
+        title={t("common.cards.roomCard.embedDialog.title")}
+        description={t("common.cards.roomCard.embedDialog.description")}
         icon={<EmbedIcon />}
         variant="embed"
-        confirmText="Copy"
+        confirmText={t("common.cards.roomCard.embedDialog.copy")}
+        cancelText={t("common.cards.roomCard.embedDialog.cancel")}
         embedText={
           '<iframe width="560" height="315" src="https://www.youtube.com/embed/eGUEAvNpz48" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         }
@@ -98,12 +95,16 @@ export default function RoomCard({
       <ActionDialog
         isOpen={isDeleteOpen}
         setIsOpen={setIsDeleteOpen}
-        title="You are about to delete this room and its content"
-        description="Are you sure you want to procede?"
+        title={t("common.cards.roomCard.deleteConfirmationDialog.title")}
+        description={t(
+          "common.cards.roomCard.deleteConfirmationDialog.description"
+        )}
         icon={<TrashIcon />}
         variant="error"
-        confirmText="Yes, please"
-        cancelText="No, take me back"
+        confirmText={t(
+          "common.cards.roomCard.deleteConfirmationDialog.confirm"
+        )}
+        cancelText={t("common.cards.roomCard.deleteConfirmationDialog.cancel")}
       />
 
       <ShareDrawer isOpen={isShareOpen} setIsOpen={setIsShareOpen} />

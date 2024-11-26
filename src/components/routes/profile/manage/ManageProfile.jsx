@@ -11,7 +11,7 @@ import { UserIcon, EmailIcon, EditProfilePicIcon } from "@/assets/icons"
 import { useState, useEffect } from "react"
 import SuccessDialog from "@/components/common/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
-import { mockUser } from "@/static/mockUser"
+import { loggedUser } from "@/static/loggedUser"
 import AdminMenuButton from "@/components/common/buttons/AdminMenuButton"
 
 const genderInputOptions = [
@@ -36,12 +36,12 @@ export default function ManageProfile() {
   const form = useForm({
     resolver: zodResolver(manageProfileSchema),
     defaultValues: {
-      fullName: mockUser.fullName,
-      nickName: mockUser.nickName,
-      bio: mockUser.bio,
-      dateOfBirth: mockUser.dateOfBirth,
-      email: mockUser.email,
-      gender: mockUser.gender,
+      fullName: loggedUser.fullName,
+      nickName: loggedUser.nickName,
+      bio: loggedUser.bio,
+      dateOfBirth: loggedUser.dateOfBirth,
+      email: loggedUser.email,
+      gender: loggedUser.gender,
     },
     mode: "onBlur",
   })
@@ -73,7 +73,7 @@ export default function ManageProfile() {
   return (
     <section className="flex flex-col items-center gap-5">
       <div className="relative h-auto w-auto">
-        <img src={mockUser.profilePicUrl} alt="Profile Picture" />
+        <img src={loggedUser.profilePicUrl} alt="Profile Picture" />
         <button className="absolute bottom-0 right-1 h-4 w-4">
           <EditProfilePicIcon className="text-primary" />
         </button>
