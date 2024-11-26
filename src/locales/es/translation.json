@@ -64,6 +64,66 @@
     "createNewRoom": "Crear Nueva Sala"
   },
   "profile": {
+    "manage": {
+      "title": "Gestionar Perfil",
+      "form": {
+        "fullName": "Nombre Completo",
+        "nickName": "Apodo",
+        "bio": "Editar Biografía...",
+        "email": "Correo electrónico",
+        "gender": "Género",
+        "genderOptions": {
+          "male": "Masculino",
+          "female": "Femenino",
+          "other": "Otro"
+        },
+        "buttons": {
+          "update": "Actualizar",
+          "manageLinks": "Administrar tus Enlaces",
+          "resetPassword": "Restablecer tu Contraseña"
+        }
+      },
+      "links": {
+        "title": "AÑADE TUS ENLACES AQUÍ",
+        "tabs": {
+          "addNew": "Añadir Enlace",
+          "myUrls": "Mis Enlaces"
+        },
+        "addForm": {
+          "title": "Título",
+          "titlePlaceholder": "Título",
+          "url": "Texto / URL",
+          "urlPlaceholder": "URL",
+          "addButton": "Añadir Nuevo Enlace"
+        },
+        "successDialog": {
+          "title": "¡Enlace Añadido!",
+          "description": "Tu nuevo enlace ha sido añadido exitosamente."
+        },
+        "deleteDialog": {
+          "title": "¿Estás seguro?",
+          "description": "Esta acción no se puede deshacer",
+          "confirm": "Sí, por favor",
+          "cancel": "Cancelar"
+        },
+        "saveChanges": {
+          "button": "Guardar Cambios",
+          "successTitle": "Cambios Guardados",
+          "successDescription": "Has guardado tus cambios exitosamente"
+        }
+      },
+      "resetPassword": {
+        "title": "Restablecer Contraseña",
+        "description": "Tu contraseña ha sido actualizada exitosamente.",
+        "newPassword": "Nueva contraseña",
+        "confirmPassword": "Confirmar nueva contraseña",
+        "continue": "Continuar"
+      },
+      "successDialog": {
+        "title": "Perfil Actualizado",
+        "description": "Tu perfil ha sido actualizado exitosamente."
+      }
+    },
     "userInfo": {
       "verifyNow": "Verificar ahora",
       "following": "Siguiendo",
@@ -102,8 +162,266 @@
       }
     }
   },
+  "community": {
+    "title": "Administra tu comunidad",
+    "menu": {
+      "subscribers": "Mis Suscriptores",
+      "subscriptions": "Mis Suscripciones",
+      "followers": "Mis Seguidores",
+      "following": "Siguiendo",
+      "bannedUsers": "Usuarios Bloqueados"
+    },
+    "userDisplay": {
+      "followers": "seguidores",
+      "removeBan": "Eliminar Bloqueo",
+      "unfollowDialog": {
+        "title": "Dejar de Seguir",
+        "description": "¿Estás seguro de que quieres dejar de seguir a este usuario?"
+      },
+      "banDialog": {
+        "title": "Bloquear Usuario",
+        "description": "¿Estás seguro de que quieres bloquear a este usuario?"
+      },
+      "removeBanDialog": {
+        "title": "Eliminar Bloqueo",
+        "description": "¿Estás seguro de que quieres eliminar el bloqueo de este usuario?"
+      },
+      "dialog": {
+        "confirm": "Sí, por favor",
+        "cancel": "Cancelar"
+      }
+    },
+    "pageTitle": {
+      "subscribers": "Tus Suscriptores",
+      "subscriptions": "Tus Suscripciones",
+      "followers": "Mira quién te sigue",
+      "following": "Mira a quién sigues",
+      "banned": "Usuarios Bloqueados"
+    }
+  },
+  "wallet": {
+    "title": "Puedes comprar puntos aquí",
+    "lastTransactions": "Últimas transacciones",
+    "transactionDetails": {
+      "bought": "Compraste",
+      "sold": "Vendiste",
+      "gifted": "Regalaste",
+      "points": "Puntos",
+      "otherDetails": "Otros detalles sobre la transacción aquí"
+    },
+    "buyPoints": {
+      "chooseAmount": "Elegir Cantidad",
+      "chooseMethod": "Elegir Método",
+      "chooseNetwork": "Elegir Red",
+      "amountPlaceholder": "Cantidad",
+      "methodPlaceholder": "Método",
+      "networkPlaceholder": "Red"
+    },
+    "cryptoPayment": {
+      "title": "Estás comprando {{amount}} Puntos con Cripto",
+      "quantity": "Cantidad",
+      "crypto": "Cripto",
+      "cryptoType": "USDT.BEP20 - Tether USD",
+      "address": "Dirección",
+      "status": "Estado",
+      "statusPending": "PENDIENTE",
+      "waitingConfirmation": "Por favor espera la confirmación del pago",
+      "buttons": {
+        "buyNow": "Comprar Ahora",
+        "cancel": "Cancelar",
+        "continue": "Continuar"
+      }
+    },
+    "successDialog": {
+      "title": "¡Orden Exitosa!",
+      "description": "Has comprado {{amount}} Puntos. ¡Disfruta los beneficios!"
+    },
+    "buttons": {
+      "withdraw": "Retirar",
+      "buyPoints": "Comprar Puntos"
+    },
+    "fixedButtons": {
+      "cancel": "Cancelar",
+      "continue": "Continuar",
+      "default": "Botón Fijo"
+    }
+  },
   "my-rooms": {
-    "createNewRoom": "Crear Nueva Sala"
+    "createNewRoomButton": "Crear Nueva Sala",
+    "editRoomButton": "Guardar Cambios",
+    "create": {
+      "successDialog": {
+        "title": "¡Sala Creada!",
+        "description": "Tu sala ha sido creada exitosamente."
+      }
+    },
+    "edit": {
+      "successDialog": {
+        "title": "¡Sala Actualizada!",
+        "description": "Tu sala ha sido actualizada exitosamente."
+      }
+    },
+    "roomForm": {
+      "title": {
+        "label": "Título de la Sala",
+        "placeholder": "Título"
+      },
+      "about": {
+        "label": "Acerca de esta Sala",
+        "placeholder": "Descripción"
+      },
+      "category": {
+        "label": "Categoría",
+        "placeholder": "Categoría",
+        "options": {
+          "music": "Música",
+          "entertainment": "Entretenimiento",
+          "gaming": "Juegos",
+          "lifestyle": "Estilo de Vida"
+        }
+      },
+      "subCategory": {
+        "label": "Sub-Categoría",
+        "placeholder": "Sub-Categoría",
+        "options": {
+          "pop": "Pop",
+          "rock": "Rock",
+          "jazz": "Jazz",
+          "hipHop": "Hip-Hop",
+          "classical": "Clásica",
+          "electronic": "Electrónica",
+          "country": "Country",
+          "reggae": "Reggae"
+        }
+      },
+      "language": {
+        "label": "Idioma",
+        "placeholder": "Idioma",
+        "options": {
+          "english": "Inglés",
+          "spanish": "Español"
+        }
+      },
+      "age": {
+        "label": "Edad",
+        "placeholder": "Edad",
+        "options": {
+          "all": "Todas las Edades",
+          "18plus": "18+",
+          "21plus": "21+"
+        }
+      },
+      "type": {
+        "label": "Tipo",
+        "placeholder": "Tipo",
+        "options": {
+          "public": "Público",
+          "private": "Privado"
+        }
+      },
+      "indexRoom": {
+        "label": "¿Indexar Sala?",
+        "placeholder": "¿Indexar Sala?"
+      },
+      "allowEmbed": {
+        "label": "¿Permitir Insertar?",
+        "placeholder": "¿Permitir Insertar?"
+      },
+      "boolean": {
+        "yes": "Sí",
+        "no": "No"
+      }
+    }
+  },
+  "room": {
+    "stream": {
+      "dropdown": {
+        "share": "Compartir",
+        "embed": "Insertar Chat",
+        "copy": "Copiar Link",
+        "about": "Acerca de esta Sala",
+        "report": "Reportar Chat"
+      },
+      "embedDialog": {
+        "title": "Insertar esta Sala",
+        "description": "Copia el enlace a continuación para insertar esta sala de chat en tu sitio.",
+        "copy": "Copiar",
+        "cancel": "Cancelar"
+      },
+      "aboutDialog": {
+        "title": "Acerca de esta Sala",
+        "description": "Esta sala es para discutir varios temas relacionados con Los Simpson.",
+        "close": "Cerrar"
+      },
+      "reportDialog": {
+        "title": "Reportar Chat",
+        "description": "¿Estás seguro de que quieres reportar este chat?",
+        "confirm": "Sí, reportar",
+        "cancel": "Cancelar"
+      }
+    },
+    "go-live": {
+      "title": "¡Transmite en Vivo Ahora!",
+      "guidelines": {
+        "text": "Recuerda siempre seguir las",
+        "link": "Pautas de la Comunidad de Tipo Chat",
+        "description": "actividades ilegales, violencia, acoso, discurso de odio, gore, sexo y desnudos son inapropiados."
+      },
+      "options": {
+        "mic": {
+          "title": "Micrófono en Vivo",
+          "description": "Inicia una transmisión en vivo e interactúa con tu audiencia"
+        },
+        "encoder": {
+          "title": "Codificador en Vivo",
+          "description": "Usa un codificador para transmitir en Tipo Chat"
+        }
+      },
+      "live-mic": {
+        "title": "Puedes comprar puntos aquí",
+        "camera": {
+          "title": "Elegir cámara",
+          "placeholder": "Elegir Cámara"
+        },
+        "microphone": {
+          "title": "Elegir micrófono",
+          "placeholder": "Elegir Micrófono"
+        },
+        "success": {
+          "title": "¡Estás en vivo!",
+          "description": ""
+        },
+        "help": {
+          "text": "¿Necesitas ayuda?",
+          "link": "Haz clic aquí"
+        },
+        "button": "Transmitir"
+      },
+      "live-encoder": {
+        "title": "INFORMACIÓN ADICIONAL",
+        "server": {
+          "label": "Servidor",
+          "placeholder": "Ingresa tu servidor"
+        },
+        "publicKey": {
+          "label": "Clave Pública",
+          "placeholder": "Ingresa tu clave pública"
+        },
+        "privateKey": {
+          "label": "Clave Privada",
+          "placeholder": "Ingresa tu clave privada"
+        },
+        "help": {
+          "text": "¿Necesitas ayuda?",
+          "link": "Haz clic aquí"
+        },
+        "button": "Actualizar Claves de Transmisión",
+        "success": {
+          "title": "Credenciales Actualizadas",
+          "description": "Tus credenciales han sido actualizadas exitosamente."
+        }
+      }
+    }
   },
   "common": {
     "input": {
@@ -144,7 +462,11 @@
       }
     },
     "searchBar": {
-      "placeholder": "Buscar"
+      "placeholder": "Buscar",
+      "notFound": {
+        "title": "Sin Resultados",
+        "description": "Lo sentimos, la palabra clave que ingresaste no se pudo encontrar, por favor verifica nuevamente o busca con otra palabra clave."
+      }
     },
     "drawer": {
       "shareDrawer": {
@@ -172,8 +494,8 @@
     "chooseNetwork": "Elegir Red",
     "yourCommunity": "Tu Comunidad",
     "goLive": "Transmitir en Vivo",
-    "streamingLiveEncoder": "Transmisión - Codificador en Vivo",
-    "streamingMicLive": "Transmisión - Micrófono en Vivo",
+    "streamingLiveEncoder": "Codificador en Vivo",
+    "streamingMicLive": "Micrófono en Vivo",
     "helpCenter": "Centro de Ayuda",
     "aboutTipoChat": "Acerca de TipoChat"
   }

@@ -7,11 +7,13 @@ import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 import SuccessDialog from "@/components/common/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
 import TextInput from "@/components/common/input/TextInput"
+import { useTranslation } from "react-i18next"
 
 export default function AddLinkForm() {
   const router = useNavigate()
   const [success, setSuccess] = useState(false)
   const inputRefs = useRef([])
+  const { t } = useTranslation()
 
   const form = useForm({
     resolver: zodResolver(addLinkSchema),
@@ -54,26 +56,32 @@ export default function AddLinkForm() {
           className="flex h-full w-full flex-col justify-between gap-10"
         >
           <div className="flex h-auto w-full flex-col gap-4">
-            <p className="text-heading-6">Title</p>
+            <p className="text-heading-6">
+              {t("profile.manage.links.addForm.title")}
+            </p>
             <FormField
               control={form.control}
               name="title"
               render={({ field }) => (
                 <TextInput
                   field={field}
-                  placeholder="Title"
+                  placeholder={t(
+                    "profile.manage.links.addForm.titlePlaceholder"
+                  )}
                   ref={(el) => (inputRefs.current[0] = el)}
                 />
               )}
             />
-            <p className="text-heading-6">Text / URL</p>
+            <p className="text-heading-6">
+              {t("profile.manage.links.addForm.url")}
+            </p>
             <FormField
               control={form.control}
               name="textUrl"
               render={({ field }) => (
                 <TextInput
                   field={field}
-                  placeholder="URL"
+                  placeholder={t("profile.manage.links.addForm.urlPlaceholder")}
                   ref={(el) => (inputRefs.current[1] = el)}
                 />
               )}
@@ -82,7 +90,7 @@ export default function AddLinkForm() {
 
           <PrimaryButton
             type="submit"
-            text="Add New Link"
+            text={t("profile.manage.links.addForm.addButton")}
             disabled={!form.formState.isValid || form.formState.isSubmitting}
             className={"rounded-[16px]"}
           />
@@ -91,8 +99,8 @@ export default function AddLinkForm() {
 
       <SuccessDialog
         isOpen={success}
-        title={"Link Added!"}
-        description={"Your new link has been added successfully."}
+        title={t("profile.manage.links.successDialog.title")}
+        description={t("profile.manage.links.successDialog.description")}
       />
     </>
   )

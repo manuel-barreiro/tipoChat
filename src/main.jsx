@@ -32,9 +32,9 @@ import CommunityMenu from "@/components/routes/community/CommunityMenu"
 import CommunityPage from "@/components/routes/community/CommunityPage"
 import RoomLayout from "@/components/routes/room/RoomLayout"
 import Room from "@/components/routes/room/Room"
-import StartStreaming from "@/components/routes/room/components/start-streaming/StartStreaming"
-import LiveEncoder from "@/components/routes/room/components/start-streaming/live-encoder/LiveEncoder"
-import LiveMic from "@/components/routes/room/components/start-streaming/live-mic/LiveMic"
+import StartStreaming from "@/components/routes/room/components/go-live/StartStreaming"
+import LiveEncoder from "@/components/routes/room/components/go-live/live-encoder/LiveEncoder"
+import LiveMic from "@/components/routes/room/components/go-live/live-mic/LiveMic"
 import HelpCenter from "@/components/routes/help/HelpCenter"
 import About from "@/components/routes/help/About"
 import { SearchResults } from "@/components/routes/search/SearchResults"
@@ -77,11 +77,11 @@ const router = createBrowserRouter([
         element: <ProfileLayout />,
         children: [
           {
-            path: "", // Own profile
+            path: "",
             element: <Profile />,
           },
           {
-            path: ":id", // Other user's profile
+            path: ":id",
             element: <Profile />,
           },
           {

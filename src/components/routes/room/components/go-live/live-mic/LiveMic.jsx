@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom"
 import SelectInput from "@/components/common/input/SelectInput"
 import { Link } from "react-router-dom"
 import SuccessDialog from "@/components/common/dialog/SuccessDialog"
+import { useTranslation } from "react-i18next"
 
 const cameraOptions = [
   { label: "Cam 1", value: 10 },
@@ -25,6 +26,7 @@ export default function LiveMic() {
   const router = useNavigate()
   const [success, setSuccess] = useState(false)
   const inputRefs = useRef([])
+  const { t } = useTranslation()
 
   const form = useForm({
     resolver: zodResolver(liveMicSchema),
@@ -67,8 +69,12 @@ export default function LiveMic() {
           className="flex h-full w-full flex-col justify-between gap-10"
         >
           <div className="flex h-auto w-full flex-col gap-4">
-            <p className="mb-4 text-heading-6">You can buy points here</p>
-            <p className="text-heading-6">Choose camera</p>
+            <p className="mb-4 text-heading-6">
+              {t("room.go-live.live-mic.title")}
+            </p>
+            <p className="text-heading-6">
+              {t("room.go-live.live-mic.camera.title")}
+            </p>
             <FormField
               control={form.control}
               name="camera"
@@ -76,12 +82,14 @@ export default function LiveMic() {
                 <SelectInput
                   field={field}
                   selectOptions={cameraOptions}
-                  placeholder="Choose Camera"
+                  placeholder={t("room.go-live.live-mic.camera.placeholder")}
                   ref={(el) => (inputRefs.current[0] = el)}
                 />
               )}
             />
-            <p className="text-heading-6">Choose microphone</p>
+            <p className="text-heading-6">
+              {t("room.go-live.live-mic.microphone.title")}
+            </p>
             <FormField
               control={form.control}
               name="microphone"
@@ -89,7 +97,9 @@ export default function LiveMic() {
                 <SelectInput
                   field={field}
                   selectOptions={microphoneOptions}
-                  placeholder="Choose Microphone"
+                  placeholder={t(
+                    "room.go-live.live-mic.microphone.placeholder"
+                  )}
                   ref={(el) => (inputRefs.current[0] = el)}
                 />
               )}
@@ -99,14 +109,14 @@ export default function LiveMic() {
           <div className="absolute bottom-0 left-0 right-0 flex w-full flex-col items-center gap-3 px-6 pb-10">
             <PrimaryButton
               type="submit"
-              text="Go Live"
+              text={t("room.go-live.live-mic.button")}
               disabled={!form.formState.isValid || form.formState.isSubmitting}
               shadow={true}
             />
             <p>
-              Need help?{" "}
+              {t("room.go-live.live-mic.help.text")}{" "}
               <Link to="/help" className="text-primary">
-                Click here
+                {t("room.go-live.live-mic.help.link")}
               </Link>
             </p>
           </div>
@@ -114,8 +124,8 @@ export default function LiveMic() {
       </Form>
       <SuccessDialog
         isOpen={success}
-        title={"You are live!"}
-        description={""}
+        title={t("room.go-live.live-mic.success.title")}
+        description={t("room.go-live.live-mic.success.description")}
       />
     </>
   )

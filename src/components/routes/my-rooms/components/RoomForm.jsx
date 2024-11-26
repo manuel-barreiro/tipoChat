@@ -5,47 +5,77 @@ import TextAreaInput from "@/components/common/input/TextAreaInput"
 import { UserIcon, EditIcon } from "@/assets/icons"
 import FixedBottomButton from "@/components/common/buttons/FixedBottomButton"
 import { Label } from "@/components/ui/label"
-
-const categoryOptions = [
-  { label: "Music", value: "Music" },
-  { label: "Entertainment", value: "Entertainment" },
-  { label: "Gaming", value: "Gaming" },
-  { label: "Lifestyle", value: "Lifestyle" },
-]
-
-const ageOptions = [
-  { label: "All Ages", value: "all" },
-  { label: "18+", value: "18+" },
-  { label: "21+", value: "21+" },
-]
-
-const typeOptions = [
-  { label: "Public", value: "Public" },
-  { label: "Private", value: "Private" },
-]
-
-const booleanOptions = [
-  { label: "Yes", value: true },
-  { label: "No", value: false },
-]
-
-const subCategoryOptions = [
-  { label: "Pop", value: "Pop" },
-  { label: "Rock", value: "Rock" },
-  { label: "Jazz", value: "Jazz" },
-  { label: "Hip-Hop", value: "Hip-Hop" },
-  { label: "Classical", value: "Classical" },
-  { label: "Electronic", value: "Electronic" },
-  { label: "Country", value: "Country" },
-  { label: "Reggae", value: "Reggae" },
-]
-
-const languageOptions = [
-  { label: "English", value: "English" },
-  { label: "Spanish", value: "Spanish" },
-]
+import { useTranslation } from "react-i18next"
 
 export default function RoomForm({ form, onSubmit, submitText }) {
+  const { t } = useTranslation()
+
+  const categoryOptions = [
+    { label: t("my-rooms.roomForm.category.options.music"), value: "Music" },
+    {
+      label: t("my-rooms.roomForm.category.options.entertainment"),
+      value: "Entertainment",
+    },
+    { label: t("my-rooms.roomForm.category.options.gaming"), value: "Gaming" },
+    {
+      label: t("my-rooms.roomForm.category.options.lifestyle"),
+      value: "Lifestyle",
+    },
+  ]
+
+  const ageOptions = [
+    { label: t("my-rooms.roomForm.age.options.all"), value: "all" },
+    { label: t("my-rooms.roomForm.age.options.18plus"), value: "18+" },
+    { label: t("my-rooms.roomForm.age.options.21plus"), value: "21+" },
+  ]
+
+  const typeOptions = [
+    { label: t("my-rooms.roomForm.type.options.public"), value: "Public" },
+    { label: t("my-rooms.roomForm.type.options.private"), value: "Private" },
+  ]
+
+  const booleanOptions = [
+    { label: t("my-rooms.roomForm.boolean.yes"), value: true },
+    { label: t("my-rooms.roomForm.boolean.no"), value: false },
+  ]
+
+  const subCategoryOptions = [
+    { label: t("my-rooms.roomForm.subCategory.options.pop"), value: "Pop" },
+    { label: t("my-rooms.roomForm.subCategory.options.rock"), value: "Rock" },
+    { label: t("my-rooms.roomForm.subCategory.options.jazz"), value: "Jazz" },
+    {
+      label: t("my-rooms.roomForm.subCategory.options.hipHop"),
+      value: "Hip-Hop",
+    },
+    {
+      label: t("my-rooms.roomForm.subCategory.options.classical"),
+      value: "Classical",
+    },
+    {
+      label: t("my-rooms.roomForm.subCategory.options.electronic"),
+      value: "Electronic",
+    },
+    {
+      label: t("my-rooms.roomForm.subCategory.options.country"),
+      value: "Country",
+    },
+    {
+      label: t("my-rooms.roomForm.subCategory.options.reggae"),
+      value: "Reggae",
+    },
+  ]
+
+  const languageOptions = [
+    {
+      label: t("my-rooms.roomForm.language.options.english"),
+      value: "English",
+    },
+    {
+      label: t("my-rooms.roomForm.language.options.spanish"),
+      value: "Spanish",
+    },
+  ]
+
   return (
     <section className="flex flex-col items-center gap-5">
       <div className="relative h-auto w-auto">
@@ -72,10 +102,12 @@ export default function RoomForm({ form, onSubmit, submitText }) {
             name="title"
             render={({ field }) => (
               <>
-                <Label htmlFor="title">Room Title</Label>
+                <Label htmlFor="title">
+                  {t("my-rooms.roomForm.title.label")}
+                </Label>
                 <TextInput
                   field={field}
-                  placeholder="Title"
+                  placeholder={t("my-rooms.roomForm.title.placeholder")}
                   type="text"
                   id="title"
                   onBlur={() => form.trigger("title")}
@@ -89,10 +121,12 @@ export default function RoomForm({ form, onSubmit, submitText }) {
             name="about"
             render={({ field }) => (
               <>
-                <Label htmlFor="about">About this Room</Label>
+                <Label htmlFor="about">
+                  {t("my-rooms.roomForm.about.label")}
+                </Label>
                 <TextAreaInput
                   field={field}
-                  placeholder="About"
+                  placeholder={t("my-rooms.roomForm.about.placeholder")}
                   type="text"
                   icon={UserIcon}
                   id="about"
@@ -108,12 +142,12 @@ export default function RoomForm({ form, onSubmit, submitText }) {
             render={({ field }) => (
               <>
                 <Label htmlFor="category" className="sr-only">
-                  Category
+                  {t("my-rooms.roomForm.category.label")}
                 </Label>
                 <SelectInput
                   field={field}
                   selectOptions={categoryOptions}
-                  placeholder="Category"
+                  placeholder={t("my-rooms.roomForm.category.placeholder")}
                   id="category"
                 />
               </>
@@ -126,12 +160,12 @@ export default function RoomForm({ form, onSubmit, submitText }) {
             render={({ field }) => (
               <>
                 <Label htmlFor="subCategory" className="sr-only">
-                  Sub-Category
+                  {t("my-rooms.roomForm.subCategory.label")}
                 </Label>
                 <SelectInput
                   field={field}
                   selectOptions={subCategoryOptions}
-                  placeholder="Sub-Category"
+                  placeholder={t("my-rooms.roomForm.subCategory.placeholder")}
                   id="subCategory"
                 />
               </>
@@ -144,12 +178,12 @@ export default function RoomForm({ form, onSubmit, submitText }) {
             render={({ field }) => (
               <>
                 <Label htmlFor="language" className="sr-only">
-                  Language
+                  {t("my-rooms.roomForm.language.label")}
                 </Label>
                 <SelectInput
                   field={field}
                   selectOptions={languageOptions}
-                  placeholder="Language"
+                  placeholder={t("my-rooms.roomForm.language.placeholder")}
                   id="language"
                 />
               </>
@@ -162,12 +196,12 @@ export default function RoomForm({ form, onSubmit, submitText }) {
             render={({ field }) => (
               <>
                 <Label htmlFor="age" className="sr-only">
-                  Age
+                  {t("my-rooms.roomForm.age.label")}
                 </Label>
                 <SelectInput
                   field={field}
                   selectOptions={ageOptions}
-                  placeholder="Age"
+                  placeholder={t("my-rooms.roomForm.age.placeholder")}
                   id="age"
                 />
               </>
@@ -180,12 +214,12 @@ export default function RoomForm({ form, onSubmit, submitText }) {
             render={({ field }) => (
               <>
                 <Label htmlFor="type" className="sr-only">
-                  Type
+                  {t("my-rooms.roomForm.type.label")}
                 </Label>
                 <SelectInput
                   field={field}
                   selectOptions={typeOptions}
-                  placeholder="Type"
+                  placeholder={t("my-rooms.roomForm.type.placeholder")}
                   id="type"
                 />
               </>
@@ -198,12 +232,12 @@ export default function RoomForm({ form, onSubmit, submitText }) {
             render={({ field }) => (
               <>
                 <Label htmlFor="indexRoom" className="">
-                  Index Room?
+                  {t("my-rooms.roomForm.indexRoom.label")}
                 </Label>
                 <SelectInput
                   field={field}
                   selectOptions={booleanOptions}
-                  placeholder="Index Room?"
+                  placeholder={t("my-rooms.roomForm.indexRoom.placeholder")}
                   id="indexRoom"
                 />
               </>
@@ -216,12 +250,12 @@ export default function RoomForm({ form, onSubmit, submitText }) {
             render={({ field }) => (
               <>
                 <Label htmlFor="allowEmbed" className="">
-                  Allow Embed?
+                  {t("my-rooms.roomForm.allowEmbed.label")}
                 </Label>
                 <SelectInput
                   field={field}
                   selectOptions={booleanOptions}
-                  placeholder="Allow Embed?"
+                  placeholder={t("my-rooms.roomForm.allowEmbed.placeholder")}
                   id="allowEmbed"
                 />
               </>

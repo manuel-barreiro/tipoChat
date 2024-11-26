@@ -37,21 +37,21 @@ export default function RoomCard({
 
           <div className="flex h-full w-1/2 flex-col">
             <h3 className="text-heading-5 font-bold">
-              {formatText(title, 15)}
+              {formatText(title, 11)}
             </h3>
             <p className="mt-1 text-sm text-gray-300">
               {formatText(description, 120)}
             </p>
-            <div className="flex flex-wrap justify-start gap-2 md:mt-2">
+            <div className="mt-1 flex flex-wrap justify-start gap-2">
               <CardTag text={privacy} variant="primary" />
-              {tags.slice(0, 2).map((tag) => (
+              {tags.slice(0, 1).map((tag) => (
                 <CardTag key={tag} text={tag} variant="secondary" />
               ))}
             </div>
           </div>
         </CardContent>
 
-        <div className="flex justify-between gap-2 md:justify-around">
+        <div className="flex justify-between">
           {actions.embed && (
             <CardActionChip
               action="embed"

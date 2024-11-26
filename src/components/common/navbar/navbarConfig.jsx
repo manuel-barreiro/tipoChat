@@ -43,7 +43,7 @@ export const navbarConfig = {
     rightContent: null,
   },
   "/profile/manage/links": {
-    titleKey: "navbar.manageYourLinks",
+    titleKey: "navbar.manageLinks",
     rightContent: null,
   },
   "/posts/admin": {

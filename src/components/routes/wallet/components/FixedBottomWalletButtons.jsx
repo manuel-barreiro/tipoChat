@@ -1,19 +1,23 @@
+import { useTranslation } from "react-i18next"
 import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 import { Link } from "react-router-dom"
 
 export default function FixedBottomButton({
-  text = "Fixed Button",
+  // text = "wallet.fixedButtons.default",
   type,
   onClick,
   link,
   disabled,
   shadow,
-  form, // New prop to handle form submission
+  form,
+  cancelText = "wallet.fixedButtons.cancel",
+  continueText = "wallet.fixedButtons.continue",
 }) {
+  const { t } = useTranslation()
   const handleClick = (e) => {
     if (form) {
-      e.preventDefault() // Prevent default link behavior
-      form.handleSubmit(onClick)(e) // Trigger form submission
+      e.preventDefault()
+      form.handleSubmit(onClick)(e)
     } else if (onClick) {
       onClick(e)
     }
@@ -28,7 +32,7 @@ export default function FixedBottomButton({
               className="w-full bg-dark-3 text-white"
               type={type || "button"}
               disabled={disabled}
-              text={text}
+              text={t(cancelText)}
               shadow={shadow}
             />
           </Link>
@@ -36,7 +40,7 @@ export default function FixedBottomButton({
             <PrimaryButton
               type={type || "button"}
               disabled={disabled}
-              text={text}
+              text={t(continueText)}
               shadow={shadow}
             />
           </Link>
@@ -48,14 +52,14 @@ export default function FixedBottomButton({
             className="w-full bg-dark-3 text-white"
             disabled={disabled}
             onClick={handleClick}
-            text={text}
+            text={t(cancelText)}
             shadow={shadow}
           />
           <PrimaryButton
             type={type || "button"}
             disabled={disabled}
             onClick={handleClick}
-            text={text}
+            text={t(continueText)}
             shadow={shadow}
           />
         </div>

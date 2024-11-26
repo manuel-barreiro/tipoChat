@@ -8,7 +8,7 @@ export default function CardActionChip({ action, onClick }) {
     <button
       onClick={onClick}
       className={cn(
-        "rounded-full border-[3px] bg-transparent px-4 py-1 text-center text-xs font-semibold duration-300 ease-in-out",
+        "rounded-full border-[3px] bg-transparent px-3 py-1 text-center text-xs font-semibold duration-300 ease-in-out md:px-4",
         action === "embed" &&
           "border-cyan text-cyan hover:bg-cyan hover:text-dark-2",
         action === "share" &&

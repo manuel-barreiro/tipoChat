@@ -1,13 +1,10 @@
 import { createContext, useContext, useState } from "react"
-import { loggedUser } from "@/static/loggedUser"
+import { loggedUser } from "@/static/mockData"
 
 export const AuthContext = createContext(null)
 
 export const AuthProvider = ({ children }) => {
-  const [currentUser] = useState({
-    ...loggedUser,
-    id: "123", // Current logged-in user ID
-  })
+  const [currentUser] = useState(loggedUser)
 
   return (
     <AuthContext.Provider value={{ currentUser }}>

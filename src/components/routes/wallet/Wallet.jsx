@@ -1,4 +1,5 @@
 import React from "react"
+import { useTranslation } from "react-i18next" // Add this
 import PointsCard from "@/components/common/cards/PointsCard"
 import { loggedUser } from "@/static/loggedUser"
 import TransactionHistory from "./components/TransactionHistory"
@@ -7,24 +8,26 @@ import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 
 const mockTransactionHistory = [
   {
-    action: "Buy",
+    action: "Bought",
     points: 100,
   },
   {
-    action: "Sell",
+    action: "Sold",
     points: 50,
   },
   {
-    action: "Gift",
+    action: "Gifted",
     points: 100,
   },
   {
-    action: "Buy",
+    action: "Bought",
     points: 100,
   },
 ]
 
 export default function Wallet() {
+  const { t } = useTranslation()
+
   return (
     <section className="flex flex-col gap-5">
       <PointsCard
@@ -40,11 +43,11 @@ export default function Wallet() {
             <PrimaryButton
               className="w-full bg-dark-3 text-white"
               type={"button"}
-              text={"Whithdraw"}
+              text={t("wallet.buttons.withdraw")}
             />
           </Link>
           <Link to={"buy-points"} className="w-full">
-            <PrimaryButton text={"Buy Points"} />
+            <PrimaryButton text={t("wallet.buttons.buyPoints")} />
           </Link>
         </div>
       </div>

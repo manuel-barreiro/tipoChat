@@ -19,7 +19,10 @@ export default function MyRooms() {
           actions={room.actions}
         />
       ))}
-      <FixedBottomButton text={t("my-rooms.createNewRoom")} link={"create"} />
+      <FixedBottomButton
+        text={t("my-rooms.createNewRoomButton")}
+        link={"create"}
+      />
     </section>
   )
 }

@@ -1,37 +1,35 @@
 import React from "react"
+import { useParams, Navigate } from "react-router-dom"
 import BottomMenu from "./components/chat/BottomMenu"
 import Header from "../../common/search-bar/SearchHeader"
 import Stream from "./components/Stream"
 import Chat from "./components/chat/Chat"
 import HamburgerMenu from "@/components/common/buttons/HamburgerMenu"
+import { useAuth } from "@/contexts/AuthContext"
+import { mockRooms } from "@/static/mockData"
 
-// Mock auth context - in real app, use proper auth context/provider
-const useAuth = () => {
-  // Mock user data - replace with real auth logic
-  return {
-    user: {
-      id: "123",
-      name: "Test User",
-      role: "admin", // or "user"
-      avatar: "/images/mockUser.png",
-    },
-    isAuthenticated: true,
-  }
-}
-
-// Main chat component
 const Room = () => {
-  const { user } = useAuth()
+  const { id } = useParams()
+  const { currentUser } = useAuth()
+  const room = mockRooms[id]
+
+  // Handle non-existent room
+  if (!room) {
+    return <Navigate to="/home" replace />
+  }
+
+  // Check if user is room owner
+  const isOwner = room.owner === currentUser.id
 
   return (
     <>
       <Header button={<HamburgerMenu />} />
 
-      <Stream user={user} />
+      <Stream room={room} isOwner={isOwner} />
 
-      <Chat />
+      <Chat room={room} />
 
-      <BottomMenu user={user} />
+      <BottomMenu user={currentUser} isOwner={isOwner} />
     </>
   )
 }

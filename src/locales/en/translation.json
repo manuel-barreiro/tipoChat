@@ -64,6 +64,66 @@
     "createNewRoom": "Create New Room"
   },
   "profile": {
+    "manage": {
+      "title": "Manage Profile",
+      "form": {
+        "fullName": "Full Name",
+        "nickName": "Nickname",
+        "bio": "Edit Bio...",
+        "email": "Email",
+        "gender": "Gender",
+        "genderOptions": {
+          "male": "Male",
+          "female": "Female",
+          "other": "Other"
+        },
+        "buttons": {
+          "update": "Update",
+          "manageLinks": "Manage your Links",
+          "resetPassword": "Reset your Password"
+        }
+      },
+      "links": {
+        "title": "ADD YOUR PERSONAL LINKS HERE",
+        "tabs": {
+          "addNew": "Add New URL",
+          "myUrls": "My URLs"
+        },
+        "addForm": {
+          "title": "Title",
+          "titlePlaceholder": "Title",
+          "url": "Text / URL",
+          "urlPlaceholder": "URL",
+          "addButton": "Add New Link"
+        },
+        "successDialog": {
+          "title": "Link Added!",
+          "description": "Your new link has been added successfully."
+        },
+        "deleteDialog": {
+          "title": "Are you sure?",
+          "description": "This action cannot be undone",
+          "confirm": "Yes, please",
+          "cancel": "Cancel"
+        },
+        "saveChanges": {
+          "button": "Save Changes",
+          "successTitle": "Changes Saved",
+          "successDescription": "You've successfully saved your changes"
+        }
+      },
+      "resetPassword": {
+        "title": "Reset Password",
+        "description": "Your password has been updated successfully.",
+        "newPassword": "New password",
+        "confirmPassword": "Confirm new password",
+        "continue": "Continue"
+      },
+      "successDialog": {
+        "title": "Profile Updated",
+        "description": "Your profile has been updated successfully."
+      }
+    },
     "userInfo": {
       "verifyNow": "Verify now",
       "following": "Following",
@@ -102,8 +162,266 @@
       }
     }
   },
+  "community": {
+    "title": "Manage your community",
+    "menu": {
+      "subscribers": "My Subscribers",
+      "subscriptions": "My Subscriptions",
+      "followers": "My Followers",
+      "following": "Following",
+      "bannedUsers": "Banned Users"
+    },
+    "userDisplay": {
+      "followers": "followers",
+      "removeBan": "Remove Ban",
+      "unfollowDialog": {
+        "title": "Unfollow User",
+        "description": "Are you sure you want to unfollow this user?"
+      },
+      "banDialog": {
+        "title": "Ban User",
+        "description": "Are you sure you want to ban this user?"
+      },
+      "removeBanDialog": {
+        "title": "Remove Ban",
+        "description": "Are you sure you want to remove the ban for this user?"
+      },
+      "dialog": {
+        "confirm": "Yes, please",
+        "cancel": "Cancel"
+      }
+    },
+    "pageTitle": {
+      "subscribers": "Your Subscribers",
+      "subscriptions": "Your Subscriptions",
+      "followers": "Look who is following you",
+      "following": "Look who you follow",
+      "banned": "Banned Users"
+    }
+  },
+  "wallet": {
+    "title": "You can buy points here",
+    "lastTransactions": "Last transactions",
+    "transactionDetails": {
+      "bought": "Bought",
+      "sold": "Sold",
+      "gifted": "Gifted",
+      "points": "Points",
+      "otherDetails": "Other details about transactions here"
+    },
+    "buyPoints": {
+      "chooseAmount": "Choose Amount",
+      "chooseMethod": "Choose Method",
+      "chooseNetwork": "Choose Network",
+      "amountPlaceholder": "Amount",
+      "methodPlaceholder": "Method",
+      "networkPlaceholder": "Network"
+    },
+    "cryptoPayment": {
+      "title": "You are buying {{amount}} Points With Crypto",
+      "quantity": "Quantity",
+      "crypto": "Crypto",
+      "cryptoType": "USDT.BEP20 - Tether USD",
+      "address": "Address",
+      "status": "Status",
+      "statusPending": "PENDING",
+      "waitingConfirmation": "Please wait for payment confirmation",
+      "buttons": {
+        "buyNow": "Buy Now",
+        "cancel": "Cancel",
+        "continue": "Continue"
+      }
+    },
+    "successDialog": {
+      "title": "Successful Order!",
+      "description": "You have bought {{amount}} Points. Enjoy the benefits!"
+    },
+    "buttons": {
+      "withdraw": "Withdraw",
+      "buyPoints": "Buy Points"
+    },
+    "fixedButtons": {
+      "cancel": "Cancel",
+      "continue": "Continue",
+      "default": "Fixed Button"
+    }
+  },
   "my-rooms": {
-    "createNewRoom": "Create New Room"
+    "createNewRoomButton": "Create New Room",
+    "editRoomButton": "Save Changes",
+    "create": {
+      "successDialog": {
+        "title": "Room Created!",
+        "description": "Your room has been created successfully."
+      }
+    },
+    "edit": {
+      "successDialog": {
+        "title": "Room Updated!",
+        "description": "Your room has been updated successfully."
+      }
+    },
+    "roomForm": {
+      "title": {
+        "label": "Room Title",
+        "placeholder": "Title"
+      },
+      "about": {
+        "label": "About this Room",
+        "placeholder": "About"
+      },
+      "category": {
+        "label": "Category",
+        "placeholder": "Category",
+        "options": {
+          "music": "Music",
+          "entertainment": "Entertainment",
+          "gaming": "Gaming",
+          "lifestyle": "Lifestyle"
+        }
+      },
+      "subCategory": {
+        "label": "Sub-Category",
+        "placeholder": "Sub-Category",
+        "options": {
+          "pop": "Pop",
+          "rock": "Rock",
+          "jazz": "Jazz",
+          "hipHop": "Hip-Hop",
+          "classical": "Classical",
+          "electronic": "Electronic",
+          "country": "Country",
+          "reggae": "Reggae"
+        }
+      },
+      "language": {
+        "label": "Language",
+        "placeholder": "Language",
+        "options": {
+          "english": "English",
+          "spanish": "Spanish"
+        }
+      },
+      "age": {
+        "label": "Age",
+        "placeholder": "Age",
+        "options": {
+          "all": "All Ages",
+          "18plus": "18+",
+          "21plus": "21+"
+        }
+      },
+      "type": {
+        "label": "Type",
+        "placeholder": "Type",
+        "options": {
+          "public": "Public",
+          "private": "Private"
+        }
+      },
+      "indexRoom": {
+        "label": "Index Room?",
+        "placeholder": "Index Room?"
+      },
+      "allowEmbed": {
+        "label": "Allow Embed?",
+        "placeholder": "Allow Embed?"
+      },
+      "boolean": {
+        "yes": "Yes",
+        "no": "No"
+      }
+    }
+  },
+  "room": {
+    "stream": {
+      "dropdown": {
+        "share": "Share Chat",
+        "embed": "Embed Chat",
+        "copy": "Copy Link",
+        "about": "About This Room",
+        "report": "Report Chat"
+      },
+      "embedDialog": {
+        "title": "Embed this Room",
+        "description": "Copy the link below to embed this chat room in your site.",
+        "copy": "Copy",
+        "cancel": "Cancel"
+      },
+      "aboutDialog": {
+        "title": "About This Room",
+        "description": "This room is for discussing various topics related to The Simpsons.",
+        "close": "Close"
+      },
+      "reportDialog": {
+        "title": "Report Chat",
+        "description": "Are you sure you want to report this chat?",
+        "confirm": "Yes, report",
+        "cancel": "Cancel"
+      }
+    },
+    "go-live": {
+      "title": "Go Live Now!",
+      "guidelines": {
+        "text": "Always remember to follow",
+        "link": "Tipo Chat Community Guidelines",
+        "description": "illegal activities, violence, harassment, hate speech, gore, sex, and nudity are inappropriate."
+      },
+      "options": {
+        "mic": {
+          "title": "Mic Live",
+          "description": "Start a live stream and interact with your audience"
+        },
+        "encoder": {
+          "title": "Live Encoder",
+          "description": "Use an encoder to stream to Tipo Chat"
+        }
+      },
+      "live-mic": {
+        "title": "You can buy points here",
+        "camera": {
+          "title": "Choose camera",
+          "placeholder": "Choose Camera"
+        },
+        "microphone": {
+          "title": "Choose microphone",
+          "placeholder": "Choose Microphone"
+        },
+        "success": {
+          "title": "You are live!",
+          "description": ""
+        },
+        "help": {
+          "text": "Need help?",
+          "link": "Click here"
+        },
+        "button": "Go Live"
+      },
+      "live-encoder": {
+        "title": "ADDITIONAL INFO",
+        "server": {
+          "label": "Server",
+          "placeholder": "Enter your server"
+        },
+        "publicKey": {
+          "label": "Public Key",
+          "placeholder": "Enter your public key"
+        },
+        "privateKey": {
+          "label": "Private Key",
+          "placeholder": "Enter your private key"
+        },
+        "help": {
+          "text": "Need help?",
+          "link": "Click here"
+        },
+        "button": "Update Streaming Keys",
+        "success": {
+          "title": "Streaming Credentials Updated",
+          "description": "Your credentials have been updated successfully."
+        }
+      }
+    }
   },
   "common": {
     "input": {
@@ -144,7 +462,11 @@
       }
     },
     "searchBar": {
-      "placeholder": "Search"
+      "placeholder": "Search",
+      "notFound": {
+        "title": "Not Found",
+        "description": "Sorry, the keyword you entered cannot be found, please check again or search with another keyword."
+      }
     },
     "drawer": {
       "shareDrawer": {
