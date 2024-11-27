@@ -12,7 +12,7 @@ import ActionDialog from "@/components/common/dialog/ActionDialog"
 import ShareDrawer from "@/components/common/drawer/ShareDrawer"
 import { useTranslation } from "react-i18next"
 
-export default function Stream({ user }) {
+export default function Stream({ room, isOwner }) {
   const [isEmbedOpen, setIsEmbedOpen] = useState(false)
   const [isShareOpen, setIsShareOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -51,7 +51,7 @@ export default function Stream({ user }) {
       </button>,
     ]
 
-    if (user?.role === "user") {
+    if (!isOwner) {
       return [
         <button
           onClick={() => {
@@ -90,11 +90,11 @@ export default function Stream({ user }) {
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-1">
               <ViewersIcon className="text-white" />
-              <span className="text-body-xsmall text-white">100K</span>
+              <span className="text-body-xsmall text-white">
+                {room.viewers}
+              </span>
             </div>
-            <h2 className="text-body-large font-medium">
-              Los Simpson, Lorem Ipsum
-            </h2>
+            <h2 className="text-body-large font-medium">{room.title}</h2>
             <DropdownMenu
               menuItems={getMenuItems()}
               onOpenChange={setIsDropdownOpen}

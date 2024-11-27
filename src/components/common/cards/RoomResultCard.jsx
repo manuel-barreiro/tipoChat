@@ -2,8 +2,11 @@ import React from "react"
 import CardTag from "@/components/common/cards/CardTag"
 import { formatStat } from "@/lib/formatStat"
 import { Link } from "react-router-dom"
+import { mockData } from "@/static/database"
 
 export default function RoomResultCard({ room }) {
+  const owner = mockData.users.find((u) => u.id === room.owner)
+
   return (
     <Link to={`/room/${room.id}`}>
       <div className="flex h-32 w-full items-stretch justify-between gap-5 py-4">
@@ -23,11 +26,11 @@ export default function RoomResultCard({ room }) {
         <div className="flex h-full basis-1/2 flex-col items-start justify-between">
           <span className="flex items-center gap-2">
             <img
-              src={room.userPic}
+              src={owner.profilePicUrl}
               className="h-7 w-7 rounded-full"
-              alt={room.owner}
+              alt={owner.nickName}
             />
-            <h4 className="text-body-large font-semibold">{room.owner}</h4>
+            <h4 className="text-body-large font-semibold">{owner.nickName}</h4>
           </span>
           <h3 className="text-body-medium text-gray-300">{room.title}</h3>
           <div className="flex items-center gap-2">

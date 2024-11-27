@@ -1,24 +1,40 @@
-// components/routes/profile/Profile.jsx
 import { useParams } from "react-router-dom"
 import { useAuth } from "@/contexts/AuthContext"
-import { findUserById } from "@/static/mockDatabase"
-import UserInfo from "@/components/routes/profile/components/UserInfo"
+import { findUserById, findRoomsByUserId } from "@/static/database"
+import UserInfo from "./components/UserInfo"
 import { Outlet } from "react-router-dom"
 import PointsCard from "@/components/common/cards/PointsCard"
-import AdminMenu from "@/components/routes/profile/components/AdminMenu"
-import TipoChatFooter from "@/components/routes/profile/components/TipoChatFooter"
-import UserActions from "@/components/routes/profile/UserActions"
+import AdminMenu from "./components/AdminMenu"
+import TipoChatFooter from "./components/TipoChatFooter"
+import UserActions from "./UserActions"
 import ToggleRoomsAndLinks from "./user/components/ToggleRoomsAndLinks"
+import { Navigate } from "react-router-dom"
+import { useEffect, useState } from "react"
+import ProfileSkeleton from "./ProfileSkeleton"
 
 export default function Profile() {
   const { id } = useParams()
   const { currentUser } = useAuth()
+  const [isLoading, setIsLoading] = useState(true)
 
   const isOwnProfile = !id || id === currentUser.id
   const profileData = isOwnProfile ? currentUser : findUserById(id)
 
   if (!isOwnProfile && !profileData) {
-    return <div>User not found</div>
+    return <Navigate to="/home" replace />
+  }
+
+  const userRooms = findRoomsByUserId(profileData.id)
+
+  useEffect(() => {
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
+  }, [])
+
+  if (isLoading) {
+    return <ProfileSkeleton />
   }
 
   return (
@@ -46,12 +62,11 @@ export default function Profile() {
           <TipoChatFooter />
         </>
       ) : (
-        // Other user profile view with subscribe/follow buttons
         <div className="flex w-full flex-col items-center gap-5">
           <UserActions user={profileData} />
-
           <ToggleRoomsAndLinks
-            rooms={profileData.rooms}
+            userId={profileData.id}
+            rooms={userRooms}
             links={profileData.links}
           />
         </div>

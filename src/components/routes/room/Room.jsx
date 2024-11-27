@@ -6,13 +6,13 @@ import Stream from "./components/Stream"
 import Chat from "./components/chat/Chat"
 import HamburgerMenu from "@/components/common/buttons/HamburgerMenu"
 import { useAuth } from "@/contexts/AuthContext"
-import { mockRooms } from "@/static/mockData"
+import { findRoomById } from "@/static/database"
+import { Link } from "react-router-dom"
 
 const Room = () => {
   const { id } = useParams()
   const { currentUser } = useAuth()
-  const room = mockRooms[id]
-
+  const room = findRoomById(id)
   // Handle non-existent room
   if (!room) {
     return <Navigate to="/home" replace />
@@ -23,12 +23,15 @@ const Room = () => {
 
   return (
     <>
-      <Header button={<HamburgerMenu />} />
-
+      <Header
+        button={
+          <Link to={"/home"}>
+            <HamburgerMenu />
+          </Link>
+        }
+      />
       <Stream room={room} isOwner={isOwner} />
-
       <Chat room={room} />
-
       <BottomMenu user={currentUser} isOwner={isOwner} />
     </>
   )

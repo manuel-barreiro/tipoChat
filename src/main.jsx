@@ -22,7 +22,7 @@ import UserPosts from "@/components/routes/posts/user/UserPosts"
 import PostsLayout from "@/components/routes/posts/PostsLayout"
 import CreatePost from "@/components/routes/posts/admin/create/CreatePost"
 import EditPost from "@/components/routes/posts/admin/edit/EditPost"
-import Post from "@/components/routes/posts/Post"
+import PostView from "@/components/routes/posts/PostView"
 import MyWalletLayout from "@/components/routes/wallet/MyWalletLayout"
 import Wallet from "@/components/routes/wallet/Wallet"
 import BuyPoints from "@/components/routes/wallet/components/BuyPoints"
@@ -42,6 +42,7 @@ import Home from "@/components/routes/home/Home"
 import { LanguageProvider } from "@/contexts/LanguageContext"
 import Profile from "@/components/routes/profile/Profile"
 import { AuthProvider } from "@/contexts/AuthContext"
+import RoomPosts from "@/components/routes/posts/RoomPosts"
 
 const router = createBrowserRouter([
   {
@@ -138,7 +139,7 @@ const router = createBrowserRouter([
           },
           {
             path: "view",
-            element: <Post />,
+            element: <PostView />,
           },
         ],
       },
@@ -209,6 +210,18 @@ const router = createBrowserRouter([
           {
             path: ":id/go-live/live-mic",
             element: <LiveMic />,
+          },
+          {
+            path: ":id/posts",
+            element: <RoomPosts />, // New route for all posts
+          },
+          {
+            path: ":id/posts/:postId",
+            element: <PostView />, // New route for single post
+          },
+          {
+            path: ":id/posts/:postId/edit",
+            element: <EditPost />, // New route for single post
           },
         ],
       },

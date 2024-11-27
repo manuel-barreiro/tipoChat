@@ -8,7 +8,7 @@ import {
 import { ChevronLeft } from "lucide-react"
 import { Link } from "react-router-dom"
 
-const BottomMenu = ({ user }) => {
+const BottomMenu = ({ isOwner, user }) => {
   const [showChatInput, setShowChatInput] = useState(false)
 
   return (
@@ -40,7 +40,7 @@ const BottomMenu = ({ user }) => {
             <ChatMenuIcon size={24} />
             <span className="text-body-xsmall">Chat</span>
           </button>
-          {user.role === "admin" ? (
+          {isOwner ? (
             <Link to={"go-live"}>
               <button className="flex flex-col items-center gap-1 text-grey-400 transition-colors hover:text-primary">
                 <GoLiveIcon size={24} />
@@ -49,14 +49,17 @@ const BottomMenu = ({ user }) => {
             </Link>
           ) : (
             <button className="relative flex flex-col items-center gap-1 text-grey-400 transition-colors hover:text-primary">
-              <img src={user.avatar} alt="avatar" className="w-14" />
+              <img src={user.profilePicUrl} alt="avatar" className="w-14" />
               <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-primary"></span>
             </button>
           )}
-          <button className="flex flex-col items-center gap-1 text-grey-400 transition-colors hover:text-primary">
+          <Link
+            to={"posts"}
+            className="flex flex-col items-center gap-1 text-grey-400 transition-colors hover:text-primary"
+          >
             <PostIcon size={24} />
             <span className="text-body-xsmall">Post</span>
-          </button>
+          </Link>
         </>
       )}
     </div>

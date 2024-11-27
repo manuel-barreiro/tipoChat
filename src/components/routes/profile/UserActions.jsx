@@ -18,8 +18,11 @@ export default function UserActions({ user }) {
       />
       <div className="flex w-full flex-col items-start gap-3">
         <h6 className="text-heading-6 font-semibold">
-          About UserName -{" "}
-          <span className="text-body-small font-medium">Man, 28 - ESP</span>
+          About {user.nickName} -{" "}
+          <span className="text-body-small font-medium">
+            {user.gender},{" "}
+            {new Date().getFullYear() - user.dateOfBirth.getFullYear()} - ESP
+          </span>
         </h6>
         <p className="text-justify text-body-medium font-semibold">
           {user.bio}
