@@ -25,7 +25,7 @@ export default function PostView() {
         {post.content}
       </p>
 
-      {post.image && (
+      {/* {post.image && (
         <img
           src={post.image}
           alt={post.title}
@@ -36,13 +36,15 @@ export default function PostView() {
       <div className="mt-4 flex gap-4">
         <span>Likes: {post.likes}</span>
         <span>Comments: {post.comments}</span>
-      </div>
+      </div> */}
 
       {isOwner && (
-        <FixedBottomButton
-          to={`/room/${id}/posts/${postId}/edit`}
-          text="Edit Post"
-        />
+        <div className="absolute bottom-0 left-0 right-0 px-6">
+          <FixedBottomButton
+            link={`/room/${id}/posts/${postId}/edit`}
+            text="Edit Post"
+          />
+        </div>
       )}
     </section>
   )

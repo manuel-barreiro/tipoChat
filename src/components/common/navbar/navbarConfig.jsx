@@ -102,6 +102,22 @@ export const navbarConfig = {
     titleKey: "navbar.yourCommunity",
     rightContent: null,
   },
+  "/room/:id/posts": {
+    titleKey: "navbar.posts",
+    rightContent: null,
+  },
+  "/room/:id/posts/create": {
+    titleKey: "navbar.createPost",
+    rightContent: null,
+  },
+  "/room/:id/posts/:id": {
+    titleKey: "navbar.myGamingPost",
+    rightContent: null,
+  },
+  "/room/:id/posts/:id/edit": {
+    titleKey: "navbar.editPost",
+    rightContent: null,
+  },
   "/room/:id/go-live": {
     titleKey: "navbar.goLive",
     rightContent: null,

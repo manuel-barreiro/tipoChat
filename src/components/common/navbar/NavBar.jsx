@@ -4,7 +4,7 @@ import { navbarConfig } from "./navbarConfig"
 import { useTranslation } from "react-i18next"
 
 const ROUTES_WITHOUT_NAVBAR = ["/search", "/room", "/home", "/"]
-const EXCEPTION_ROUTES = ["/go-live"]
+const EXCEPTION_ROUTES = ["/go-live", "/posts"]
 
 function matchPath(pattern, path) {
   const patternParts = pattern.split("/")

@@ -4,7 +4,6 @@ import { findPostsByRoomId, findRoomById } from "@/static/database"
 import { useAuth } from "@/contexts/AuthContext"
 import PostCard from "@/components/routes/posts/common/PostCard"
 import FixedBottomButton from "@/components/common/buttons/FixedBottomButton"
-import BackButton from "@/components/common/buttons/BackButton"
 
 export default function RoomPosts() {
   const { id } = useParams()
@@ -17,12 +16,6 @@ export default function RoomPosts() {
 
   return (
     <>
-      <nav className="sticky left-0 right-0 top-0 z-50 flex h-12 w-full items-center justify-between bg-dark-1 py-8">
-        <div className="flex items-center gap-2">
-          <BackButton />
-          <h1 className="text-heading-4">Room Posts</h1>
-        </div>
-      </nav>
       <section className="flex h-auto min-h-[75dvh] flex-col gap-4">
         {posts.map((post) => (
           <PostCard
@@ -44,7 +37,9 @@ export default function RoomPosts() {
           />
         ))}
         {isOwner && (
-          <FixedBottomButton text="Create New Post" link={"create"} />
+          <div className="absolute bottom-0 left-0 right-0 px-6">
+            <FixedBottomButton text="Create New Post" link={"create"} />
+          </div>
         )}
       </section>
     </>

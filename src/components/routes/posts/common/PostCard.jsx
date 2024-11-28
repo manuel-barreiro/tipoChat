@@ -37,7 +37,7 @@ export default function PostCard({
               <img
                 src={"/images/mockRoom.png"}
                 alt={title}
-                className="h-24 w-52 rounded-[16px] object-cover"
+                className="h-32 w-52 rounded-[16px] object-cover"
               />
               {!isOwner && isPrivate && (
                 <LockIcon className="absolute right-[43%] top-[40%] text-[#212121]" />
@@ -62,7 +62,7 @@ export default function PostCard({
           {isOwner ? (
             <div className="flex justify-start gap-3">
               {actions.edit && (
-                <Link to="edit">
+                <Link to={`${id}/edit`}>
                   <CardActionChip action="edit" />
                 </Link>
               )}

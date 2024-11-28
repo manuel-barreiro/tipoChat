@@ -213,15 +213,19 @@ const router = createBrowserRouter([
           },
           {
             path: ":id/posts",
-            element: <RoomPosts />, // New route for all posts
+            element: <RoomPosts />,
           },
           {
             path: ":id/posts/:postId",
-            element: <PostView />, // New route for single post
+            element: <PostView />,
           },
           {
             path: ":id/posts/:postId/edit",
-            element: <EditPost />, // New route for single post
+            element: <EditPost />,
+          },
+          {
+            path: ":id/posts/create",
+            element: <CreatePost />,
           },
         ],
       },
