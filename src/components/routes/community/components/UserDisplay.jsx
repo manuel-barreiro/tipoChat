@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { Trash2Icon, BanIcon } from "lucide-react"
 import { TrashIcon, BanIcon as BanIconFilled } from "@/assets/icons"
 import ActionDialog from "@/components/common/dialog/ActionDialog"
@@ -9,6 +10,7 @@ export default function UserDisplay({
   followers,
   pathname,
 }) {
+  const { t } = useTranslation()
   const [isUnfollowDialogOpen, setIsUnfollowDialogOpen] = useState(false)
   const [isBanDialogOpen, setIsBanDialogOpen] = useState(false)
   const [isRemoveBanDialogOpen, setIsRemoveBanDialogOpen] = useState(false)
@@ -41,7 +43,9 @@ export default function UserDisplay({
           />
           <div className="flex flex-col gap-1">
             <span className="text-body-medium">{nickName}</span>
-            <span className="text-body-xsmall">{followers} followers</span>
+            <span className="text-body-xsmall">
+              {followers} {t("community.userDisplay.followers")}
+            </span>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -50,7 +54,7 @@ export default function UserDisplay({
               className="items center flex gap-2 rounded-full border border-green px-4 py-2 text-green"
               onClick={() => setIsRemoveBanDialogOpen(true)}
             >
-              Remove Ban
+              {t("community.userDisplay.removeBan")}
               <BanIcon className="text-green" />
             </button>
           ) : (
@@ -75,8 +79,10 @@ export default function UserDisplay({
       <ActionDialog
         isOpen={isUnfollowDialogOpen}
         setIsOpen={setIsUnfollowDialogOpen}
-        title="Unfollow User"
-        description="Are you sure you want to unfollow this user?"
+        title={t("community.userDisplay.unfollowDialog.title")}
+        description={t("community.userDisplay.unfollowDialog.description")}
+        confirmText={t("community.userDisplay.dialog.confirm")}
+        cancelText={t("community.userDisplay.dialog.cancel")}
         icon={<TrashIcon className="mb-4 h-14 w-14 text-disabled" />}
         onConfirm={handleUnfollow}
         titleColor="text-disabled"
@@ -85,8 +91,10 @@ export default function UserDisplay({
       <ActionDialog
         isOpen={isBanDialogOpen}
         setIsOpen={setIsBanDialogOpen}
-        title="Ban User"
-        description="Are you sure you want to ban this user?"
+        title={t("community.userDisplay.banDialog.title")}
+        description={t("community.userDisplay.banDialog.description")}
+        confirmText={t("community.userDisplay.dialog.confirm")}
+        cancelText={t("community.userDisplay.dialog.cancel")}
         icon={<BanIconFilled className="mb-4 h-14 w-14 text-red" />}
         onConfirm={handleBan}
         titleColor="text-red"
@@ -95,8 +103,10 @@ export default function UserDisplay({
       <ActionDialog
         isOpen={isRemoveBanDialogOpen}
         setIsOpen={setIsRemoveBanDialogOpen}
-        title="Remove Ban"
-        description="Are you sure you want to remove the ban for this user?"
+        title={t("community.userDisplay.removeBanDialog.title")}
+        description={t("community.userDisplay.removeBanDialog.description")}
+        confirmText={t("community.userDisplay.dialog.confirm")}
+        cancelText={t("community.userDisplay.dialog.cancel")}
         icon={<BanIconFilled className="mb-4 h-14 w-14 text-green" />}
         onConfirm={handleRemoveBan}
         titleColor="text-green"

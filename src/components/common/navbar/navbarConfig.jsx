@@ -3,24 +3,23 @@ import { Link } from "react-router-dom"
 
 export const navbarConfig = {
   "/my-rooms": {
-    title: "My Rooms",
+    titleKey: "navbar.myRooms",
     rightContent: null,
   },
   "/my-rooms/create": {
-    title: "Create Room",
+    titleKey: "navbar.createRoom",
     rightContent: null,
   },
   "/my-rooms/edit": {
-    title: "Edit Room",
+    titleKey: "navbar.editRoom",
     rightContent: null,
   },
-
   "/forgot-password": {
-    title: "Password Recovery",
+    titleKey: "navbar.passwordRecovery",
     rightContent: null,
   },
   "/profile": {
-    title: "My Profile",
+    titleKey: "navbar.myProfile",
     rightContent: (
       <div className="flex items-center gap-4">
         <button className="text-heading-4 hover:text-primary focus:text-primary">
@@ -36,91 +35,107 @@ export const navbarConfig = {
     ),
   },
   "/profile/manage": {
-    title: "Manage Profile",
+    titleKey: "navbar.manageProfile",
     rightContent: null,
   },
   "/profile/manage/reset-password": {
-    title: "Create New Password",
+    titleKey: "navbar.createNewPassword",
     rightContent: null,
   },
   "/profile/manage/links": {
-    title: "Manage Your Links",
+    titleKey: "navbar.manageLinks",
     rightContent: null,
   },
   "/posts/admin": {
-    title: "My Posts",
+    titleKey: "navbar.myPosts",
     rightContent: null,
   },
   "/posts/user": {
-    title: "Posts",
+    titleKey: "navbar.posts",
     rightContent: null,
   },
   "/posts/admin/create": {
-    title: "Create Post",
+    titleKey: "navbar.createPost",
     rightContent: null,
   },
   "/posts/admin/edit": {
-    title: "Edit Post",
+    titleKey: "navbar.editPost",
     rightContent: null,
   },
   "/posts/view/": {
-    title: "My Gaming Post",
+    titleKey: "navbar.myGamingPost",
     rightContent: null,
   },
   "/wallet": {
-    title: "Your Wallet",
+    titleKey: "navbar.yourWallet",
     rightContent: null,
   },
   "/wallet/buy-points": {
-    title: "Buy Points",
+    titleKey: "navbar.buyPoints",
     rightContent: null,
   },
   "/wallet/choose-crypto-network": {
-    title: "Choose Network",
+    titleKey: "navbar.chooseNetwork",
     rightContent: null,
   },
   "/community": {
-    title: "Your Community",
+    titleKey: "navbar.yourCommunity",
     rightContent: null,
   },
   "/community/subscribers": {
-    title: "Your Community",
+    titleKey: "navbar.yourCommunity",
     rightContent: null,
   },
   "/community/subscriptions": {
-    title: "Your Community",
+    titleKey: "navbar.yourCommunity",
     rightContent: null,
   },
   "/community/followers": {
-    title: "Your Community",
+    titleKey: "navbar.yourCommunity",
     rightContent: null,
   },
   "/community/following": {
-    title: "Your Community",
+    titleKey: "navbar.yourCommunity",
     rightContent: null,
   },
   "/community/banned": {
-    title: "Your Community",
+    titleKey: "navbar.yourCommunity",
+    rightContent: null,
+  },
+  "/room/:id/posts": {
+    titleKey: "navbar.posts",
+    rightContent: null,
+  },
+  "/room/:id/posts/create": {
+    titleKey: "navbar.createPost",
+    rightContent: null,
+  },
+  "/room/:id/posts/:id": {
+    titleKey: "navbar.myGamingPost",
+    rightContent: null,
+  },
+  "/room/:id/posts/:id/edit": {
+    titleKey: "navbar.editPost",
     rightContent: null,
   },
   "/room/:id/go-live": {
-    title: "Go Live",
+    titleKey: "navbar.goLive",
     rightContent: null,
   },
   "/room/:id/go-live/live-encoder": {
-    title: "Streaming - Live Encoder",
+    titleKey: "navbar.streamingLiveEncoder",
     rightContent: null,
   },
   "/room/:id/go-live/live-mic": {
-    title: "Streaming - Mic Live",
+    titleKey: "navbar.streamingMicLive",
     rightContent: null,
   },
   "/help": {
-    title: "Help Center",
+    titleKey: "navbar.helpCenter",
     rightContent: null,
   },
   "/help/about": {
-    title: "About TipoChat",
+    titleKey: "navbar.aboutTipoChat",
     rightContent: null,
   },
 }

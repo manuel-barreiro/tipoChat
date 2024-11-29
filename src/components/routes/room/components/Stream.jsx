@@ -10,13 +10,15 @@ import DropdownMenu from "@/components/common/dropdown/DropdownMenu"
 import { useState } from "react"
 import ActionDialog from "@/components/common/dialog/ActionDialog"
 import ShareDrawer from "@/components/common/drawer/ShareDrawer"
+import { useTranslation } from "react-i18next"
 
-export default function Stream({ user }) {
+export default function Stream({ room, isOwner }) {
   const [isEmbedOpen, setIsEmbedOpen] = useState(false)
   const [isShareOpen, setIsShareOpen] = useState(false)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isAboutOpen, setIsAboutOpen] = useState(false)
   const [isReportOpen, setIsReportOpen] = useState(false)
+  const { t } = useTranslation()
 
   const getMenuItems = () => {
     const baseItems = [
@@ -29,7 +31,7 @@ export default function Stream({ user }) {
         className="flex items-center gap-2"
       >
         <SendMessagesIcon className="h-4 w-4" />
-        <span>Share Chat</span>
+        <span>{t("room.stream.dropdown.share")}</span>
       </button>,
       <button
         onClick={() => {
@@ -40,16 +42,16 @@ export default function Stream({ user }) {
         className="flex items-center gap-2"
       >
         <EmbedIcon className="h-4 w-4" />
-        <span>Embed Chat</span>
+        <span>{t("room.stream.dropdown.embed")}</span>
       </button>,
       <button onClick={() => {}} key={2} className="flex items-center gap-2">
         <CopyIcon className="h-4 w-4" />
 
-        <span>Copy Link</span>
+        <span>{t("room.stream.dropdown.copy")}</span>
       </button>,
     ]
 
-    if (user?.role === "user") {
+    if (!isOwner) {
       return [
         <button
           onClick={() => {
@@ -60,7 +62,7 @@ export default function Stream({ user }) {
           className="flex items-center gap-2"
         >
           <InfoReportIcon className="h-4 w-4 rotate-180" />
-          <span>About This Room</span>
+          <span>{t("room.stream.dropdown.about")}</span>
         </button>,
         ...baseItems,
         <button
@@ -72,7 +74,7 @@ export default function Stream({ user }) {
           className="flex items-center gap-2"
         >
           <InfoReportIcon className="h-4 w-4" />
-          <span>Report Chat</span>
+          <span>{t("room.stream.dropdown.report")}</span>
         </button>,
       ]
     }
@@ -88,11 +90,11 @@ export default function Stream({ user }) {
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-1">
               <ViewersIcon className="text-white" />
-              <span className="text-body-xsmall text-white">100K</span>
+              <span className="text-body-xsmall text-white">
+                {room.viewers}
+              </span>
             </div>
-            <h2 className="text-body-large font-medium">
-              Los Simpson, Lorem Ipsum
-            </h2>
+            <h2 className="text-body-large font-medium">{room.title}</h2>
             <DropdownMenu
               menuItems={getMenuItems()}
               onOpenChange={setIsDropdownOpen}
@@ -105,11 +107,12 @@ export default function Stream({ user }) {
       <ActionDialog
         isOpen={isEmbedOpen}
         setIsOpen={setIsEmbedOpen}
-        title="Embed this Room"
-        description="Copy the link below to embed this chat room in your site."
+        title={t("room.stream.embedDialog.title")}
+        description={t("room.stream.embedDialog.description")}
         icon={<EmbedIcon />}
         variant="embed"
-        confirmText="Copy"
+        confirmText={t("room.stream.embedDialog.copy")}
+        cancelText={t("room.stream.embedDialog.cancel")}
         embedText={
           '<iframe width="560" height="315" src="https://www.youtube.com/embed/eGUEAvNpz48" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
         }
@@ -117,22 +120,22 @@ export default function Stream({ user }) {
       <ActionDialog
         isOpen={isAboutOpen}
         setIsOpen={setIsAboutOpen}
-        title="About This Room"
-        description="This room is for discussing various topics related to The Simpsons."
+        title={t("room.stream.aboutDialog.title")}
+        description={t("room.stream.aboutDialog.description")}
         icon={<InfoReportIcon className="rotate-180" />}
         variant="default"
-        confirmText="Close"
+        confirmText={t("room.stream.aboutDialog.close")}
         showCancel={false}
       />
       <ActionDialog
         isOpen={isReportOpen}
         setIsOpen={setIsReportOpen}
-        title="Report Chat"
-        description="Are you sure you want to report this chat?"
+        title={t("room.stream.reportDialog.title")}
+        description={t("room.stream.reportDialog.description")}
         icon={<WarningIcon />}
         variant="warning"
-        confirmText="Yes, report"
-        cancelText="Cancel"
+        confirmText={t("room.stream.reportDialog.confirm")}
+        cancelText={t("room.stream.reportDialog.cancel")}
       />
     </>
   )

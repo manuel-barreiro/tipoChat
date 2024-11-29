@@ -7,8 +7,10 @@ import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 import { useNavigate } from "react-router-dom"
 import SelectInput from "@/components/common/input/SelectInput"
 import { Link } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 export default function BuyPoints() {
+  const { t } = useTranslation()
   const router = useNavigate()
   const inputRefs = useRef([])
 
@@ -41,10 +43,10 @@ export default function BuyPoints() {
   }
 
   const buyPointsOptions = [
-    { label: "10 Points", value: 10 },
-    { label: "20 Points", value: 20 },
-    { label: "50 Points", value: 50 },
-    { label: "100 Points", value: 100 },
+    { label: "10", value: 10 },
+    { label: "20", value: 20 },
+    { label: "50", value: 50 },
+    { label: "100", value: 100 },
   ]
 
   const paymentMethodOptions = [{ label: "Crypto", value: "Crypto" }]
@@ -56,8 +58,10 @@ export default function BuyPoints() {
           className="flex h-full w-full flex-col justify-between gap-10"
         >
           <div className="flex h-auto w-full flex-col gap-4">
-            <p className="mb-4 text-heading-6">You can buy points here</p>
-            <p className="text-heading-6">Choose Amount</p>
+            <p className="mb-4 text-heading-6">{t("wallet.title")}</p>
+            <p className="text-heading-6">
+              {t("wallet.buyPoints.chooseAmount")}
+            </p>
             <FormField
               control={form.control}
               name="amount"
@@ -65,12 +69,14 @@ export default function BuyPoints() {
                 <SelectInput
                   field={field}
                   selectOptions={buyPointsOptions}
-                  placeholder="Amount"
+                  placeholder={t("wallet.buyPoints.amountPlaceholder")}
                   ref={(el) => (inputRefs.current[0] = el)}
                 />
               )}
             />
-            <p className="text-heading-6">Choose Method</p>
+            <p className="text-heading-6">
+              {t("wallet.buyPoints.chooseMethod")}
+            </p>
             <FormField
               control={form.control}
               name="method"
@@ -78,7 +84,7 @@ export default function BuyPoints() {
                 <SelectInput
                   field={field}
                   selectOptions={paymentMethodOptions}
-                  placeholder="Method"
+                  placeholder={t("wallet.buyPoints.methodPlaceholder")}
                   ref={(el) => (inputRefs.current[0] = el)}
                 />
               )}
@@ -91,7 +97,7 @@ export default function BuyPoints() {
                 <PrimaryButton
                   className="w-full bg-dark-3 text-white"
                   type={"button"}
-                  text={"Cancel"}
+                  text={t("wallet.fixedButtons.cancel")}
                 />
               </Link>
               <PrimaryButton
@@ -99,7 +105,7 @@ export default function BuyPoints() {
                 disabled={
                   !form.formState.isValid || form.formState.isSubmitting
                 }
-                text={"Continue"}
+                text={t("wallet.fixedButtons.continue")}
               />
             </div>
           </div>

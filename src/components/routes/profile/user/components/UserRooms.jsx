@@ -13,6 +13,8 @@ export default function UserRooms({ rooms }) {
           privacy={room.privacy}
           tags={room.tags}
           actions={room.actions}
+          owner={room.owner}
+          roomPic={room.roomPic}
         />
       ))}
     </section>

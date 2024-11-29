@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import SuccessDialog from "@/components/common/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
 import RoomForm from "./RoomForm"
+import { useTranslation } from "react-i18next"
 
 export default function CreateRoom() {
   const router = useNavigate()
@@ -50,13 +51,19 @@ export default function CreateRoom() {
     }, 3000)
   }
 
+  const { t } = useTranslation()
+
   return (
     <>
-      <RoomForm form={form} onSubmit={onSubmit} submitText="Create New Room" />
+      <RoomForm
+        form={form}
+        onSubmit={onSubmit}
+        submitText={t("my-rooms.createNewRoomButton")}
+      />
       <SuccessDialog
         isOpen={success}
-        title="Room Created"
-        description="Your room has been created successfully."
+        title={t("my-rooms.create.successDialog.title")}
+        description={t("my-rooms.create.successDialog.description")}
       />
     </>
   )

@@ -1,7 +1,9 @@
-import { EditIcon, TrashIcon, WarningIcon, Check } from "@/assets/icons"
+import { EditIcon, TrashIcon, WarningIcon } from "@/assets/icons"
 import FixedBottomButton from "@/components/common/buttons/FixedBottomButton"
 import ActionDialog from "@/components/common/dialog/ActionDialog"
+import SuccessDialog from "@/components/common/dialog/SuccessDialog"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 
 const mockLinks = [
   { title: "Facebook", url: "https://www.facebook.com" },
@@ -15,6 +17,14 @@ const mockLinks = [
 export default function MyLinks() {
   const [isOpenSaveChanges, setIsOpenSaveChanges] = useState(false)
   const [isOpenConfirm, setIsOpenConfirm] = useState(false)
+  const { t } = useTranslation()
+
+  function onSaveChanges() {
+    setIsOpenSaveChanges(true)
+    setTimeout(() => {
+      setIsOpenSaveChanges(false)
+    }, 2000)
+  }
 
   return (
     <>
@@ -41,24 +51,23 @@ export default function MyLinks() {
         ))}
       </div>
       <FixedBottomButton
-        text="Save Changes"
-        onClick={() => setIsOpenSaveChanges(true)}
+        text={t("profile.manage.links.saveChanges.button")}
+        onClick={() => onSaveChanges()}
       />
       <ActionDialog
         isOpen={isOpenConfirm}
         setIsOpen={setIsOpenConfirm}
         icon={<WarningIcon />}
         variant="error"
-        title={"Are you sure?"}
-        description={"This action cannot be undone"}
+        title={t("profile.manage.links.deleteDialog.title")}
+        description={t("profile.manage.links.deleteDialog.description")}
+        confirmText={t("profile.manage.links.deleteDialog.confirm")}
+        cancelText={t("profile.manage.links.deleteDialog.cancel")}
       />
-      <ActionDialog
+      <SuccessDialog
         isOpen={isOpenSaveChanges}
-        setIsOpen={setIsOpenSaveChanges}
-        icon={<Check />}
-        variant="success"
-        title={"Changes Saved"}
-        description={"You’ve succesfully saved your changes"}
+        title={t("profile.manage.links.saveChanges.successTitle")}
+        description={t("profile.manage.links.saveChanges.successDescription")}
       />
     </>
   )

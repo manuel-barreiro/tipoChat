@@ -2,91 +2,109 @@ import React, { useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import CardActionChip from "@/components/common/cards/CardActionChip"
 import CardTag from "@/components/common/cards/CardTag"
-import { Link } from "react-router-dom"
-import { LockIcon, TrashIcon } from "@/assets/icons"
 import ActionDialog from "@/components/common/dialog/ActionDialog"
-
-function formatText(text, maxChars) {
-  if (text.length > maxChars) {
-    return text.substring(0, maxChars) + "..."
-  }
-  return text
-}
+import { Link } from "react-router-dom"
+import { TrashIcon } from "@/assets/icons"
+import { useTranslation } from "react-i18next"
+import { formatText } from "@/lib/formatText"
+import { cn } from "@/lib/utils"
+import { useAuth } from "@/contexts/AuthContext"
+import { LockIcon } from "@/assets/icons"
 
 export default function PostCard({
   id,
   title,
   description,
   privacy,
-  price,
   tags,
-  viewer,
+  actions,
   owner,
 }) {
+  const { t } = useTranslation()
+  const { currentUser } = useAuth()
   const [isDeleteOpen, setIsDeleteOpen] = useState(false)
+
+  // Check if current user owns this post
+  const isOwner = currentUser.id === owner
+  const isPrivate = privacy === "Private"
 
   return (
     <>
-      <Card className="flex h-full w-full flex-col gap-4 rounded-[20px] border-0 bg-dark-2 p-4 text-white">
-        <CardContent className="flex h-full items-stretch justify-between gap-4 p-0">
-          <div className="relative w-1/2 overflow-hidden rounded-[16px]">
-            <img
-              src="/images/mockRoom.png"
-              alt="room image"
-              title={id}
-              className="h-full w-full object-cover"
-            />
-            {viewer !== owner && price > 0 && (
-              <LockIcon className="absolute right-[43%] top-[40%] text-[#212121]" />
-            )}
-          </div>
-
-          <div className="flex h-full w-1/2 flex-col">
-            <h3 className="text-heading-5 font-bold">
-              {formatText(title, 15)}
-            </h3>
-            <p className="mt-1 text-sm text-gray-300">
-              {formatText(description, 120)}
-            </p>
-            <div className="md: mt-2 flex justify-start gap-1">
-              <CardTag text={privacy} variant="primary" />
-              {tags.map((tag) => (
-                <CardTag key={tag} text={tag} variant="secondary" />
-              ))}
+      <Link to={id}>
+        <Card className="flex h-full w-full flex-col gap-4 rounded-[20px] border-0 bg-dark-2 p-4 text-white">
+          <CardContent className="flex h-full items-stretch justify-between gap-4 p-0">
+            <div className="relative w-1/2 overflow-hidden rounded-[16px]">
+              <img
+                src={"/images/mockRoom.png"}
+                alt={title}
+                className="h-32 w-52 rounded-[16px] object-cover"
+              />
+              {!isOwner && isPrivate && (
+                <LockIcon className="absolute right-[43%] top-[40%] text-[#212121]" />
+              )}
             </div>
-          </div>
-        </CardContent>
 
-        {viewer === owner ? (
-          <div className="flex justify-start gap-2">
-            <Link to="edit">
-              <CardActionChip action="Edit" />
-            </Link>
+            <div className="flex h-full w-1/2 flex-col">
+              <h3 className="text-heading-5 font-bold">
+                {formatText(title, 11)}
+              </h3>
+              <p className="mt-1 text-sm text-gray-300">
+                {formatText(description, 120)}
+              </p>
+              <div className="mt-1 flex flex-wrap justify-start gap-2">
+                <CardTag text={privacy} variant="primary" />
+                {tags.slice(0, 1).map((tag) => (
+                  <CardTag key={tag} text={tag} variant="secondary" />
+                ))}
+              </div>
+            </div>
+          </CardContent>
+          {isOwner ? (
+            <div className="flex justify-start gap-3">
+              {actions.edit && (
+                <Link to={`${id}/edit`}>
+                  <CardActionChip action="edit" />
+                </Link>
+              )}
+              {actions.delete && (
+                <CardActionChip
+                  action="delete"
+                  onClick={() => setIsDeleteOpen(true)}
+                />
+              )}
+            </div>
+          ) : (
+            <button
+              className={cn(
+                "w-auto rounded-full border-[3px] bg-transparent px-3 py-1 text-center text-xs font-semibold duration-300 ease-in-out md:px-4",
 
-            <CardActionChip
-              action="Delete"
-              onClick={() => setIsDeleteOpen(true)}
-            />
-          </div>
-        ) : (
-          <div className="flex justify-start gap-2">
-            <button className="rounded-full border-[3px] border-orange bg-transparent px-4 py-1 text-center text-xs font-semibold text-orange duration-300 ease-in-out hover:bg-orange hover:text-dark-2 md:text-sm">
-              {price === 0 ? "Price: Free" : `Buy: ${price} Points`}
+                "border-orange text-orange hover:bg-orange hover:text-dark-2"
+              )}
+            >
+              {"Buy: 15 Points"}
             </button>
-          </div>
-        )}
-      </Card>
+          )}
+        </Card>
 
-      <ActionDialog
-        isOpen={isDeleteOpen}
-        setIsOpen={setIsDeleteOpen}
-        title="You are about to delete this room and its content"
-        description="Are you sure you want to procede?"
-        icon={<TrashIcon />}
-        variant="error"
-        confirmText="Yes, please"
-        cancelText="No, take me back"
-      />
+        {isOwner && (
+          <ActionDialog
+            isOpen={isDeleteOpen}
+            setIsOpen={setIsDeleteOpen}
+            title={t("common.cards.postCard.deleteConfirmationDialog.title")}
+            description={t(
+              "common.cards.postCard.deleteConfirmationDialog.description"
+            )}
+            icon={<TrashIcon />}
+            variant="error"
+            confirmText={t(
+              "common.cards.postCard.deleteConfirmationDialog.confirm"
+            )}
+            cancelText={t(
+              "common.cards.postCard.deleteConfirmationDialog.cancel"
+            )}
+          />
+        )}
+      </Link>
     </>
   )
 }

@@ -1,10 +1,13 @@
 import React from "react"
+import { useTranslation } from "react-i18next"
 import { TransactionIcon } from "@/assets/icons"
 
 export default function TransactionHistory({ transactions }) {
+  const { t } = useTranslation()
+
   return (
     <div className="flex w-full flex-col items-start gap-5">
-      <h4 className="text-heading-6">Last transactions</h4>
+      <h4 className="text-heading-6">{t("wallet.lastTransactions")}</h4>
 
       <div className="flex flex-col gap-3">
         {transactions.map((transaction, index) => (
@@ -15,18 +18,18 @@ export default function TransactionHistory({ transactions }) {
             <p className="flex w-full items-center gap-4">
               <TransactionIcon className="h-6 w-6" />
               <span className="text-heading-6">
-                {transaction.action} Points
+                {t(
+                  `wallet.transactionDetails.${transaction.action.toLowerCase()}`
+                )}{" "}
+                {t("wallet.transactionDetails.points")}
               </span>
             </p>
             <p className="ml-10 text-body-medium text-grey-300">
-              {transaction.action === "Buy"
-                ? "Bought"
-                : transaction.action === "Sell"
-                  ? "Sold"
-                  : transaction.action === "Gift"
-                    ? "Gifted"
-                    : ""}{" "}
-              {transaction.points} Points. Other details about transactions here
+              {t(
+                `wallet.transactionDetails.${transaction.action.toLowerCase()}`
+              )}{" "}
+              {transaction.points} {t("wallet.transactionDetails.points")}.{" "}
+              {t("wallet.transactionDetails.otherDetails")}
             </p>
           </div>
         ))}

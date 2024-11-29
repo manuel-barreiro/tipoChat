@@ -1,14 +1,16 @@
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { useTranslation } from "react-i18next"
 import AddLinkForm from "@/components/routes/profile/manage/links/components/AddLinkForm"
 import MyLinks from "@/components/routes/profile/manage/links/components/MyLinks"
 
 export default function ManageLinks() {
   const [selected, setSelected] = useState("add")
+  const { t } = useTranslation()
 
   return (
     <section className="flex h-full flex-col gap-4">
-      <p>ADD YOUR PERSONAL LINKS HERE</p>
+      <p>{t("profile.manage.links.title")}</p>
       <div className="flex w-full items-center justify-between">
         <button
           onClick={() => setSelected("add")}
@@ -17,7 +19,7 @@ export default function ManageLinks() {
             selected === "add" && "border-primary text-primary"
           )}
         >
-          Add New URL
+          {t("profile.manage.links.tabs.addNew")}
         </button>
         <button
           onClick={() => setSelected("myUrls")}
@@ -26,7 +28,7 @@ export default function ManageLinks() {
             selected === "myUrls" && "border-primary text-primary"
           )}
         >
-          My URLs
+          {t("profile.manage.links.tabs.myUrls")}
         </button>
       </div>
 

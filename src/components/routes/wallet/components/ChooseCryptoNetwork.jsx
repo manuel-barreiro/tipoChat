@@ -8,9 +8,10 @@ import CryptoDialog from "./CryptoDialog"
 import SelectInput from "@/components/common/input/SelectInput"
 import { Link } from "react-router-dom"
 import OrderSuccess from "./OrderSuccess"
+import { useTranslation } from "react-i18next"
 
 export default function ChooseCryptoNetwork() {
-  // const router = useNavigate()
+  const { t } = useTranslation()
   const [success, setSuccess] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const inputRefs = useRef([])
@@ -57,8 +58,10 @@ export default function ChooseCryptoNetwork() {
           className="flex h-full w-full flex-col justify-between gap-10"
         >
           <div className="flex h-auto w-full flex-col gap-4">
-            <p className="mb-4 text-heading-6">You can buy points here</p>
-            <p className="text-heading-6">Choose Network</p>
+            <p className="mb-4 text-heading-6">{t("wallet.title")}</p>
+            <p className="text-heading-6">
+              {t("wallet.buyPoints.chooseNetwork")}
+            </p>
             <FormField
               control={form.control}
               name="network"
@@ -66,7 +69,7 @@ export default function ChooseCryptoNetwork() {
                 <SelectInput
                   field={field}
                   selectOptions={cryptoNetworkOptions}
-                  placeholder="Network"
+                  placeholder={t("wallet.buyPoints.networkPlaceholder")}
                   ref={(el) => (inputRefs.current[0] = el)}
                 />
               )}
@@ -79,7 +82,7 @@ export default function ChooseCryptoNetwork() {
                 <PrimaryButton
                   className="w-full bg-dark-3 text-white"
                   type={"button"}
-                  text={"Cancel"}
+                  text={t("wallet.fixedButtons.cancel")}
                 />
               </Link>
               <PrimaryButton
@@ -87,7 +90,7 @@ export default function ChooseCryptoNetwork() {
                 disabled={
                   !form.formState.isValid || form.formState.isSubmitting
                 }
-                text={"Continue"}
+                text={t("wallet.fixedButtons.continue")}
               />
             </div>
           </div>
@@ -101,8 +104,8 @@ export default function ChooseCryptoNetwork() {
       />
       <OrderSuccess
         success={success}
-        title={"Successful Order!"}
-        description={"You have bought 100 Points. Enjoy the benefits!"}
+        title={t("wallet.successDialog.title")}
+        description={t("wallet.successDialog.description", { amount: 100 })}
         setSuccess={setSuccess}
       />
     </>

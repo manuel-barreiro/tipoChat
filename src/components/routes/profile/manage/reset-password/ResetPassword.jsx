@@ -9,8 +9,10 @@ import { useState, useEffect, useRef } from "react"
 import SuccessDialog from "@/components/common/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
 import PasswordInput from "@/components/common/input/PasswordInput"
+import { useTranslation } from "react-i18next"
 
 export default function ResetPassword() {
+  const { t } = useTranslation()
   const router = useNavigate()
   const [success, setSuccess] = useState(false)
   const inputRefs = useRef([])
@@ -57,14 +59,16 @@ export default function ResetPassword() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="flex h-auto w-full flex-col gap-6"
         >
-          <p className="font-semibold">Create Your New Password</p>
+          <p className="font-semibold">
+            {t("profile.manage.resetPassword.title")}
+          </p>
           <FormField
             control={form.control}
             name="password"
             render={({ field }) => (
               <PasswordInput
                 field={field}
-                placeholder="New password"
+                placeholder={t("profile.manage.resetPassword.newPassword")}
                 ref={(el) => (inputRefs.current[0] = el)}
               />
             )}
@@ -75,14 +79,14 @@ export default function ResetPassword() {
             render={({ field }) => (
               <PasswordInput
                 field={field}
-                placeholder="Confirm new password"
+                placeholder={t("profile.manage.resetPassword.confirmPassword")}
                 ref={(el) => (inputRefs.current[1] = el)}
               />
             )}
           />
           <PrimaryButton
             type="submit"
-            text="Continue"
+            text={t("profile.manage.resetPassword.continue")}
             disabled={!form.formState.isValid || form.formState.isSubmitting}
             shadow={true}
           />
@@ -91,8 +95,8 @@ export default function ResetPassword() {
 
       <SuccessDialog
         isOpen={success}
-        title={"Password Updated!"}
-        description={"Your password has been updated successfully."}
+        title={t("profile.manage.resetPassword.title")}
+        description={t("profile.manage.resetPassword.description")}
       />
     </section>
   )

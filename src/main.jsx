@@ -5,12 +5,11 @@ import Onboarding from "@/components/routes/onboarding/Onboarding"
 import SignUp from "@/components/routes/sign-up/SignUp"
 import SignIn from "@/components/routes/sign-in/SignIn"
 import ForgotPassword from "@/components/routes/forgot-password/ForgotPassword"
-import AdminProfile from "@/components/routes/profile/AdminProfile"
 import ErrorPage from "@/components/common/ErrorPage.jsx"
 import ManageProfile from "@/components/routes/profile/manage/ManageProfile"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import Layout from "@/components/common/Layout"
-import AdminProfileLayout from "@/components/routes/profile/AdminProfileLayout"
+import ProfileLayout from "@/components/routes/profile/ProfileLayout"
 import "@/index.css"
 import ResetPassword from "@/components/routes/profile/manage/reset-password/ResetPassword"
 import ManageLinks from "@/components/routes/profile/manage/links/ManageLinks"
@@ -18,13 +17,9 @@ import MyRooms from "@/components/routes/my-rooms/MyRooms"
 import MyRoomsLayout from "@/components/routes/my-rooms/MyRoomsLayout"
 import CreateRoom from "@/components/routes/my-rooms/components/CreateRoom"
 import EditRoom from "@/components/routes/my-rooms/components/EditRoom"
-import UserProfile from "@/components/routes/profile/user/UserProfile"
-import MyPosts from "@/components/routes/posts/admin/MyPosts"
-import UserPosts from "@/components/routes/posts/user/UserPosts"
-import PostsLayout from "@/components/routes/posts/PostsLayout"
 import CreatePost from "@/components/routes/posts/admin/create/CreatePost"
 import EditPost from "@/components/routes/posts/admin/edit/EditPost"
-import Post from "@/components/routes/posts/Post"
+import PostView from "@/components/routes/posts/PostView"
 import MyWalletLayout from "@/components/routes/wallet/MyWalletLayout"
 import Wallet from "@/components/routes/wallet/Wallet"
 import BuyPoints from "@/components/routes/wallet/components/BuyPoints"
@@ -34,13 +29,17 @@ import CommunityMenu from "@/components/routes/community/CommunityMenu"
 import CommunityPage from "@/components/routes/community/CommunityPage"
 import RoomLayout from "@/components/routes/room/RoomLayout"
 import Room from "@/components/routes/room/Room"
-import StartStreaming from "@/components/routes/room/components/start-streaming/StartStreaming"
-import LiveEncoder from "@/components/routes/room/components/start-streaming/live-encoder/LiveEncoder"
-import LiveMic from "@/components/routes/room/components/start-streaming/live-mic/LiveMic"
+import StartStreaming from "@/components/routes/room/components/go-live/StartStreaming"
+import LiveEncoder from "@/components/routes/room/components/go-live/live-encoder/LiveEncoder"
+import LiveMic from "@/components/routes/room/components/go-live/live-mic/LiveMic"
 import HelpCenter from "@/components/routes/help/HelpCenter"
 import About from "@/components/routes/help/About"
 import { SearchResults } from "@/components/routes/search/SearchResults"
 import Home from "@/components/routes/home/Home"
+import { LanguageProvider } from "@/contexts/LanguageContext"
+import Profile from "@/components/routes/profile/Profile"
+import { AuthProvider } from "@/contexts/AuthContext"
+import RoomPosts from "@/components/routes/posts/RoomPosts"
 
 const router = createBrowserRouter([
   {
@@ -73,15 +72,15 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
-        element: <AdminProfileLayout />,
+        element: <ProfileLayout />,
         children: [
           {
             path: "",
-            element: <AdminProfile />,
+            element: <Profile />,
           },
           {
             path: ":id",
-            element: <UserProfile />,
+            element: <Profile />,
           },
           {
             path: "manage",
@@ -115,32 +114,7 @@ const router = createBrowserRouter([
           },
         ],
       },
-      {
-        path: "posts",
-        element: <PostsLayout />,
-        children: [
-          {
-            path: "admin",
-            element: <MyPosts />,
-          },
-          {
-            path: "admin/create",
-            element: <CreatePost />,
-          },
-          {
-            path: "admin/edit",
-            element: <EditPost />,
-          },
-          {
-            path: "user",
-            element: <UserPosts />,
-          },
-          {
-            path: "view",
-            element: <Post />,
-          },
-        ],
-      },
+
       {
         path: "wallet",
         element: <MyWalletLayout />,
@@ -209,6 +183,22 @@ const router = createBrowserRouter([
             path: ":id/go-live/live-mic",
             element: <LiveMic />,
           },
+          {
+            path: ":id/posts",
+            element: <RoomPosts />,
+          },
+          {
+            path: ":id/posts/:postId",
+            element: <PostView />,
+          },
+          {
+            path: ":id/posts/:postId/edit",
+            element: <EditPost />,
+          },
+          {
+            path: ":id/posts/create",
+            element: <CreatePost />,
+          },
         ],
       },
       {
@@ -229,6 +219,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <LanguageProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </LanguageProvider>
   </StrictMode>
 )

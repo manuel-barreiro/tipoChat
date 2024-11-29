@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { useTranslation } from "react-i18next"
 import { Form, FormField } from "@/components/ui/form"
 import TextInput from "@/components/common/input/TextInput"
 import SelectInput from "@/components/common/input/SelectInput"
@@ -8,14 +9,8 @@ import FixedBottomButton from "@/components/common/buttons/FixedBottomButton"
 import { Label } from "@/components/ui/label"
 import { CameraIcon, XIcon } from "lucide-react"
 
-const typeOptions = [
-  { label: "Music", value: "Music" },
-  { label: "Entertainment", value: "Entertainment" },
-  { label: "Gaming", value: "Gaming" },
-  { label: "Lifestyle", value: "Lifestyle" },
-]
-
 export default function PostForm({ form, onSubmit, submitText }) {
+  const { t } = useTranslation()
   const [images, setImages] = useState([])
 
   useEffect(() => {
@@ -52,6 +47,16 @@ export default function PostForm({ form, onSubmit, submitText }) {
     onSubmit(formData)
   }
 
+  const typeOptions = [
+    { label: t("posts.form.type.options.music"), value: "Music" },
+    {
+      label: t("posts.form.type.options.entertainment"),
+      value: "Entertainment",
+    },
+    { label: t("posts.form.type.options.gaming"), value: "Gaming" },
+    { label: t("posts.form.type.options.lifestyle"), value: "Lifestyle" },
+  ]
+
   return (
     <section className="flex flex-col items-center gap-5">
       <Form {...form}>
@@ -65,11 +70,11 @@ export default function PostForm({ form, onSubmit, submitText }) {
             render={({ field }) => (
               <>
                 <Label htmlFor="title" className="text-lg">
-                  Post Title
+                  {t("posts.form.title.label")}
                 </Label>
                 <TextInput
                   field={field}
-                  placeholder="Title"
+                  placeholder={t("posts.form.title.placeholder")}
                   type="text"
                   id="title"
                   onBlur={() => form.trigger("title")}
@@ -84,11 +89,11 @@ export default function PostForm({ form, onSubmit, submitText }) {
             render={({ field }) => (
               <>
                 <Label htmlFor="about" className="text-lg">
-                  About this Post
+                  {t("posts.form.about.label")}
                 </Label>
                 <TextAreaInput
                   field={field}
-                  placeholder="About"
+                  placeholder={t("posts.form.about.placeholder")}
                   type="text"
                   icon={UserIcon}
                   id="about"
@@ -98,7 +103,9 @@ export default function PostForm({ form, onSubmit, submitText }) {
             )}
           />
 
-          <Label className="text-lg">Post Price & Type</Label>
+          <Label className="text-lg">
+            {t("posts.form.priceAndType.label")}
+          </Label>
 
           <div className="flex items-end gap-5">
             <FormField
@@ -107,7 +114,7 @@ export default function PostForm({ form, onSubmit, submitText }) {
               render={({ field }) => (
                 <div className="flex max-w-24 flex-col items-center gap-2">
                   <Label htmlFor="price" className="text-[10px] text-gray-500">
-                    Leave empty for Free
+                    {t("posts.form.price.label")}
                   </Label>
                   <TextInput
                     field={field}
@@ -124,12 +131,12 @@ export default function PostForm({ form, onSubmit, submitText }) {
               render={({ field }) => (
                 <div className="flex-grow">
                   <Label htmlFor="type" className="sr-only">
-                    Type
+                    {t("posts.form.type.label")}
                   </Label>
                   <SelectInput
                     field={field}
                     selectOptions={typeOptions}
-                    placeholder="Choose from List"
+                    placeholder={t("posts.form.type.placeholder")}
                     id="type"
                     className="w-full text-white placeholder-gray-400"
                   />
@@ -144,11 +151,11 @@ export default function PostForm({ form, onSubmit, submitText }) {
             render={({ field }) => (
               <>
                 <Label htmlFor="link" className="text-lg">
-                  Post Link
+                  {t("posts.form.link.label")}
                 </Label>
                 <TextInput
                   field={field}
-                  placeholder="Insert URL"
+                  placeholder={t("posts.form.link.placeholder")}
                   type="text"
                   id="link"
                   onBlur={() => form.trigger("link")}
@@ -168,7 +175,7 @@ export default function PostForm({ form, onSubmit, submitText }) {
               className="mb-4 flex w-full items-center justify-center rounded-full border-2 border-primary px-6 py-2 text-sm text-primary"
             >
               <CameraIcon className="mr-2 h-4 w-4" />
-              <span>Upload Image</span>
+              <span>{t("posts.form.images.button")}</span>
             </button>
             <input
               id="file-upload"

@@ -10,7 +10,6 @@ import CheckboxInput from "@/components/common/input/CheckboxInput"
 import PasswordInput from "@/components/common/input/PasswordInput"
 import PrimaryButton from "@/components/common/buttons/PrimaryButton"
 import { UserIcon, EmailIcon } from "@/assets/icons"
-import staticData from "@/static/staticData"
 import { useState, useEffect, useRef } from "react"
 import SuccessDialog from "@/components/common/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
@@ -19,49 +18,29 @@ const inputs = [
   {
     name: "fullName",
     type: "text",
-    placeholder: "Full Name",
     icon: UserIcon,
   },
   {
     name: "nickName",
     type: "text",
-    placeholder: "Nickname",
     icon: UserIcon,
   },
   {
     name: "email",
     type: "email",
-    placeholder: "Email",
     icon: EmailIcon,
   },
   {
     name: "password",
     type: "password",
-    placeholder: "Password",
   },
   {
     name: "confirmPassword",
     type: "password",
-    placeholder: "Confirm password",
   },
 ]
 
-const genderInputOptions = [
-  {
-    label: "Male",
-    value: "male",
-  },
-  {
-    label: "Female",
-    value: "female",
-  },
-  {
-    label: "Other",
-    value: "other",
-  },
-]
-
-export default function SignUpForm() {
+export default function SignUpForm({ translations }) {
   const router = useNavigate()
   const [success, setSuccess] = useState(false)
   const inputRefs = useRef([])
@@ -144,7 +123,7 @@ export default function SignUpForm() {
                 input.type === "password" ? (
                   <PasswordInput
                     field={field}
-                    placeholder={input.placeholder}
+                    placeholder={translations.inputs[input.name]}
                     ref={(el) => (inputRefs.current[index] = el)}
                     onKeyDown={(e) => handleKeyDown(e, index)}
                     onBlur={() => form.trigger(input.name)}
@@ -152,7 +131,7 @@ export default function SignUpForm() {
                 ) : (
                   <TextInput
                     field={field}
-                    placeholder={input.placeholder}
+                    placeholder={translations.inputs[input.name]}
                     type={input.type}
                     icon={input.icon}
                     ref={(el) => (inputRefs.current[index] = el)}
@@ -170,6 +149,7 @@ export default function SignUpForm() {
             render={({ field }) => (
               <DateInputDrawer
                 field={field}
+                placeholder={translations.inputs.dateOfBirth}
                 ref={(el) => (inputRefs.current[inputs.length] = el)}
                 onKeyDown={(e) => handleKeyDown(e, inputs.length)}
                 onChange={() => form.trigger("dateOfBirth")}
@@ -183,11 +163,11 @@ export default function SignUpForm() {
             render={({ field }) => (
               <SelectInput
                 field={field}
-                selectOptions={genderInputOptions}
+                selectOptions={translations.genderOptions}
                 ref={(el) => (inputRefs.current[inputs.length + 1] = el)}
                 onKeyDown={(e) => handleKeyDown(e, inputs.length + 1)}
                 onChange={() => form.trigger("gender")}
-                placeholder="Gender"
+                placeholder={translations.inputs.gender}
               />
             )}
           />
@@ -198,7 +178,7 @@ export default function SignUpForm() {
             render={({ field }) => (
               <CheckboxInput
                 field={field}
-                text={"Accept Terms And Conditions"}
+                text={translations.inputs.acceptTerms}
                 ref={(el) => (inputRefs.current[inputs.length + 1] = el)}
                 onKeyDown={(e) => handleKeyDown(e, inputs.length + 1)}
                 onChange={() => form.trigger("acceptTerms")}
@@ -214,7 +194,7 @@ export default function SignUpForm() {
 
           <PrimaryButton
             type="submit"
-            text="Sign Up"
+            text={translations.button}
             shadow={true}
             disabled={!form.formState.isValid || form.formState.isSubmitting}
           />
@@ -222,8 +202,8 @@ export default function SignUpForm() {
       </Form>
       <SuccessDialog
         isOpen={success}
-        title={staticData.dict.EN.signUpScreen.successModal.title}
-        description={staticData.dict.EN.signUpScreen.successModal.description}
+        title={translations.successModal.title}
+        description={translations.successModal.description}
       />
     </>
   )

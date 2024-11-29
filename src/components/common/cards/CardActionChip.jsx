@@ -1,21 +1,25 @@
 import { cn } from "@/lib/utils"
+import { useTranslation } from "react-i18next"
+
 export default function CardActionChip({ action, onClick }) {
+  const { t } = useTranslation()
+
   return (
     <button
       onClick={onClick}
       className={cn(
-        "rounded-full border-[3px] bg-transparent px-4 py-1 text-center text-xs font-semibold duration-300 ease-in-out md:text-sm",
-        action === "Embed" &&
+        "rounded-full border-[3px] bg-transparent px-3 py-1 text-center text-xs font-semibold duration-300 ease-in-out md:px-4",
+        action === "embed" &&
           "border-cyan text-cyan hover:bg-cyan hover:text-dark-2",
-        action === "Share" &&
+        action === "share" &&
           "border-success text-success hover:bg-success hover:text-dark-2",
-        action === "Edit" &&
+        action === "edit" &&
           "border-orange text-orange hover:bg-orange hover:text-dark-2",
-        action === "Delete" &&
+        action === "delete" &&
           "border-error text-error hover:bg-error hover:text-dark-2"
       )}
     >
-      {action}
+      {t(`common.cards.roomCard.cardActionChip.${action.toLowerCase()}`)}
     </button>
   )
 }

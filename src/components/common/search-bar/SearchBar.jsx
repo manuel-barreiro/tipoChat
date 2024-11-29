@@ -1,8 +1,10 @@
 // components/SearchBar.jsx
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 export const SearchBar = ({ initialQuery = "" }) => {
+  const { t } = useTranslation()
   const [query, setQuery] = useState(initialQuery)
   const navigate = useNavigate()
 
@@ -19,7 +21,7 @@ export const SearchBar = ({ initialQuery = "" }) => {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search"
+        placeholder={t("common.searchBar.placeholder")}
         className="w-full rounded-xl bg-dark-2 px-6 py-2 pr-12 text-body-medium text-grey-50 placeholder:text-grey-600"
       />
       <svg

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react"
 import SuccessDialog from "@/components/common/dialog/SuccessDialog"
 import { useNavigate } from "react-router-dom"
 import RoomForm from "./RoomForm"
+import { useTranslation } from "react-i18next"
 
 const mockRoomData = {
   title: "Rock Music Lovers",
@@ -52,14 +53,19 @@ export default function EditRoom() {
       router("/my-rooms")
     }, 3000)
   }
+  const { t } = useTranslation()
 
   return (
     <>
-      <RoomForm form={form} onSubmit={onSubmit} submitText="Save Changes" />
+      <RoomForm
+        form={form}
+        onSubmit={onSubmit}
+        submitText={t("my-rooms.editRoomButton")}
+      />
       <SuccessDialog
         isOpen={success}
-        title="Room Updated"
-        description="Your room has been updated successfully."
+        title={t("my-rooms.edit.successDialog.title")}
+        description={t("my-rooms.edit.successDialog.description")}
       />
     </>
   )
