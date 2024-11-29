@@ -498,5 +498,57 @@
     "streamingMicLive": "Streaming - Mic Live",
     "helpCenter": "Help Center",
     "aboutTipoChat": "About TipoChat"
+  },
+  "posts": {
+    "form": {
+      "title": {
+        "label": "Post Title",
+        "placeholder": "Title"
+      },
+      "about": {
+        "label": "About this Post",
+        "placeholder": "About"
+      },
+      "priceAndType": {
+        "label": "Precio y Tipo",
+        "placeholder": "Precio y Tipo"
+      },
+      "price": {
+        "label": "Leave empty for Free",
+        "placeholder": "0"
+      },
+      "type": {
+        "label": "Type",
+        "placeholder": "Choose from List",
+        "options": {
+          "music": "Music",
+          "entertainment": "Entertainment",
+          "gaming": "Gaming",
+          "lifestyle": "Lifestyle"
+        }
+      },
+      "link": {
+        "label": "Post Link",
+        "placeholder": "Insert URL"
+      },
+      "images": {
+        "label": "Images",
+        "button": "Upload Image"
+      }
+    },
+    "buttons": {
+      "createPost": "Create New Post",
+      "saveChanges": "Save Changes"
+    },
+    "success": {
+      "created": {
+        "title": "Post Created",
+        "description": "Your post has been created successfully."
+      },
+      "updated": {
+        "title": "Post Updated",
+        "description": "Your Post has been updated successfully."
+      }
+    }
   }
 }

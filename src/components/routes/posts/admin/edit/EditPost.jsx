@@ -1,12 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { postSchema } from "@/lib/zod-schemas"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import SuccessDialog from "@/components/common/dialog/SuccessDialog"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import PostForm from "@/components/routes/posts/common/PostForm"
 import { findPostById } from "@/static/database"
-import { useParams } from "react-router-dom"
+import { useTranslation } from "react-i18next"
 
 const images = [
   "/images/game1.png",
@@ -18,7 +18,7 @@ const images = [
 ]
 
 export default function EditPost() {
-  const router = useNavigate()
+  const { t } = useTranslation()
   const [success, setSuccess] = useState(false)
   const { id, postId } = useParams()
   const navigate = useNavigate()
@@ -27,43 +27,15 @@ export default function EditPost() {
   const form = useForm({
     resolver: zodResolver(postSchema),
     defaultValues: {
-      title: "",
-      about: "",
-      price: "",
-      type: "",
-      link: "",
-      images: [],
+      title: post.title || "",
+      about: post.content || "",
+      price: post.price || "",
+      type: post.type || "",
+      link: post.link || "",
+      images: post.images || [],
     },
-    mode: "onBlur",
+    mode: "onChange",
   })
-
-  useEffect(() => {
-    const subscription = form.watch(() => {
-      const values = form.getValues()
-      const allFieldsFilled = Object.keys(form.getValues()).every(
-        (key) => values[key] !== ""
-      )
-
-      if (allFieldsFilled) {
-        form.trigger()
-      }
-    })
-
-    return () => subscription.unsubscribe()
-  }, [form])
-
-  useEffect(() => {
-    if (post) {
-      form.reset({
-        title: post.title,
-        about: post.content,
-        price: post.price || "",
-        type: post.type,
-        link: post.link || "",
-        images: post.images || [],
-      })
-    }
-  }, [post, form])
 
   function onSubmit(values) {
     console.log(values)
@@ -80,11 +52,15 @@ export default function EditPost() {
 
   return (
     <>
-      <PostForm form={form} onSubmit={onSubmit} submitText="Save Changes" />
+      <PostForm
+        form={form}
+        onSubmit={onSubmit}
+        submitText={t("posts.buttons.saveChanges")}
+      />
       <SuccessDialog
         isOpen={success}
-        title="Post Updated"
-        description="Your Post has been updated successfully."
+        title={t("posts.success.updated.title")}
+        description={t("posts.success.updated.description")}
       />
     </>
   )

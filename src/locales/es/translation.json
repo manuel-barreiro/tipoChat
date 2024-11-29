@@ -498,5 +498,56 @@
     "streamingMicLive": "Micrófono en Vivo",
     "helpCenter": "Centro de Ayuda",
     "aboutTipoChat": "Acerca de TipoChat"
+  },
+  "posts": {
+    "form": {
+      "title": {
+        "label": "Título de la Publicación",
+        "placeholder": "Título"
+      },
+      "about": {
+        "label": "Acerca de esta Publicación",
+        "placeholder": "Descripción"
+      },
+      "priceAndType": {
+        "label": "Precio y Tipo"
+      },
+      "price": {
+        "label": "Vacío para Gratis",
+        "placeholder": "0"
+      },
+      "type": {
+        "label": "Tipo",
+        "placeholder": "Elegir de la Lista",
+        "options": {
+          "music": "Música",
+          "entertainment": "Entretenimiento",
+          "gaming": "Juegos",
+          "lifestyle": "Estilo de Vida"
+        }
+      },
+      "link": {
+        "label": "Enlace de la Publicación",
+        "placeholder": "Insertar URL"
+      },
+      "images": {
+        "label": "Imágenes",
+        "button": "Subir Imagen"
+      }
+    },
+    "buttons": {
+      "createPost": "Crear Nueva Publicación",
+      "saveChanges": "Guardar Cambios"
+    },
+    "success": {
+      "created": {
+        "title": "¡Publicación Creada!",
+        "description": "Tu publicación ha sido creada exitosamente."
+      },
+      "updated": {
+        "title": "¡Publicación Actualizada!",
+        "description": "Tu publicación ha sido actualizada exitosamente."
+      }
+    }
   }
 }

@@ -4,10 +4,12 @@ import { findPostsByRoomId, findRoomById } from "@/static/database"
 import { useAuth } from "@/contexts/AuthContext"
 import PostCard from "@/components/routes/posts/common/PostCard"
 import FixedBottomButton from "@/components/common/buttons/FixedBottomButton"
+import { useTranslation } from "react-i18next"
 
 export default function RoomPosts() {
   const { id } = useParams()
   const { currentUser } = useAuth()
+  const { t } = useTranslation()
 
   const room = findRoomById(id)
   const posts = findPostsByRoomId(id)
@@ -38,7 +40,10 @@ export default function RoomPosts() {
         ))}
         {isOwner && (
           <div className="absolute bottom-0 left-0 right-0 px-6">
-            <FixedBottomButton text="Create New Post" link={"create"} />
+            <FixedBottomButton
+              text={t("posts.buttons.createPost")}
+              link={"create"}
+            />
           </div>
         )}
       </section>
